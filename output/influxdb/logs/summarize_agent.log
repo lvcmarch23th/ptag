@@ -1,0 +1,58 @@
+2025-11-16 01:11:13 INFO     Logging to output/influxdb/logs/summarize_agent.log
+2025-11-16 01:11:13 INFO     Model loaded successfully (optional).
+2025-11-16 01:11:13 INFO     Preparing CVE list for target 'influxdb' (keyword 'InfluxDB') at base output/influxdb
+2025-11-16 01:11:16 INFO     Version constraint has been set, will use this to save tokens. This MAY NOT ACCURATE, please double check!
+2025-11-16 01:11:19 INFO     The following CVEs will be searched:
+[{'cve_id': 'CVE-2022-36640', 'min_version': 'N/min', 'max_version': '1.8.10'}]
+2025-11-16 01:11:19 INFO     Saved 1 CVEs to output/influxdb/summarize/cve_list.json
+2025-11-16 01:11:19 INFO     Completed. Outputs under: output/influxdb/summarize (logs in output/influxdb/logs)
+2025-11-16 01:11:56 INFO     Logging to output/influxdb/logs/summarize_agent.log
+2025-11-16 01:11:56 INFO     Model loaded successfully (optional).
+2025-11-16 01:11:56 INFO     Preparing CVE list for target 'influxdb' (keyword 'InfluxDB') at base output/influxdb
+2025-11-16 01:11:59 INFO     Version constraint has been set, will use this to save tokens. This MAY NOT ACCURATE, please double check!
+2025-11-16 01:12:09 INFO     The following CVEs will be searched:
+[{'cve_id': 'CVE-2019-20933', 'min_version': 'N/min', 'max_version': '1.7.5'}, {'cve_id': 'CVE-2019-10329', 'min_version': 'N/min', 'max_version': '1.21'}]
+2025-11-16 01:12:09 INFO     Saved 2 CVEs to output/influxdb/summarize/cve_list.json
+2025-11-16 01:12:09 INFO     Completed. Outputs under: output/influxdb/summarize (logs in output/influxdb/logs)
+2025-11-16 01:39:38 INFO     Logging to output/influxdb/logs/summarize_agent.log
+2025-11-16 01:39:38 INFO     Model loaded successfully (optional).
+2025-11-16 01:39:38 INFO     Preparing CVE list for target 'influxdb' (keyword 'InfluxDB') at base output/influxdb
+2025-11-16 01:39:40 INFO     Version constraint has been set, will use this to save tokens. This MAY NOT ACCURATE, please double check!
+2025-11-16 01:39:50 INFO     The following CVEs will be searched:
+[{'cve_id': 'CVE-2019-20933', 'min_version': 'N/min', 'max_version': '1.7.5'}, {'cve_id': 'CVE-2019-10329', 'min_version': 'N/min', 'max_version': '1.21'}]
+2025-11-16 01:39:50 INFO     Saved 2 CVEs to output/influxdb/summarize/cve_list.json
+2025-11-16 01:39:50 INFO     Completed. Outputs under: output/influxdb/summarize (logs in output/influxdb/logs)
+2025-11-16 15:51:43 INFO     Logging to output/influxdb/logs/summarize_agent.log
+2025-11-16 15:51:43 INFO     Model loaded successfully (optional).
+2025-11-16 15:51:43 INFO     Preparing CVE list for target='influxdb' keyword='InfluxDB' version='1.6.6'
+2025-11-16 15:51:56 INFO     Version filter (CVEMAP) reduced: 4 -> 2
+2025-11-16 15:51:58 INFO     Exploit-DB found 13 CVEs (keyword/version based)
+2025-11-16 15:51:58 INFO     Combine mode=intersect -> 0 CVEs
+2025-11-16 15:51:58 WARNING  No CVE found after all filters. Consider relaxing year range, switching exploitdb.mode to 'union', or removing version.
+2025-11-16 15:51:58 INFO     Saved 0 CVEs to output/influxdb/summarize/cve_list.json
+2025-11-16 15:51:58 INFO     Completed. Outputs under: output/influxdb/summarize (logs in output/influxdb/logs/summarize_agent.log)
+2025-11-16 15:54:23 INFO     Logging to output/influxdb/logs/summarize_agent.log
+2025-11-16 15:54:23 INFO     Model loaded successfully (optional).
+2025-11-16 15:54:23 INFO     Preparing CVE list for target='influxdb' keyword='InfluxDB' version='1.6.6'
+2025-11-16 15:54:34 INFO     Version filter (CVEMAP) reduced: 4 -> 2
+2025-11-16 15:54:36 INFO     Exploit-DB found 13 CVEs (keyword/version based)
+2025-11-16 15:54:36 INFO     Combine mode=intersect -> 0 CVEs
+2025-11-16 15:54:36 WARNING  No CVE found after all filters. Consider relaxing year range, switching exploitdb.mode to 'union', or removing version.
+2025-11-16 15:54:36 INFO     Saved 0 CVEs to output/influxdb/summarize/cve_list.json
+2025-11-16 15:54:36 INFO     Completed. Outputs under: output/influxdb/summarize (logs in output/influxdb/logs/summarize_agent.log)
+2025-11-16 15:55:15 INFO     Logging to output/influxdb/logs/summarize_agent.log
+2025-11-16 15:55:15 INFO     Model loaded successfully (optional).
+2025-11-16 15:55:15 INFO     Preparing CVE list for target='influxdb' keyword='InfluxDB' version='1.6.6'
+2025-11-16 15:55:26 INFO     Version filter (CVEMAP) reduced: 4 -> 2
+2025-11-16 15:55:27 INFO     Exploit-DB found 1 CVEs (keyword/version based)
+2025-11-16 15:55:27 INFO     Combine mode=intersect -> 0 CVEs
+2025-11-16 15:55:27 WARNING  No CVE found after all filters. Consider relaxing year range, switching exploitdb.mode to 'union', or removing version.
+2025-11-16 15:55:27 INFO     Saved 0 CVEs to output/influxdb/summarize/cve_list.json
+2025-11-16 15:55:27 INFO     Completed. Outputs under: output/influxdb/summarize (logs in output/influxdb/logs/summarize_agent.log)
+2025-11-16 16:32:57 INFO     Logging to output/influxdb/logs/summarize_agent.log
+2025-11-16 16:32:57 INFO     Model loaded (warm, optional).
+2025-11-16 16:32:57 INFO     Start summarize for target='influxdb' keyword='InfluxDB' version='1.6.6'
+2025-11-16 16:33:09 INFO     Version filter: 4 -> 2
+2025-11-16 16:33:10 INFO     Exploit-DB combine (union): 2 -> 2
+2025-11-16 16:33:10 INFO     Saved 2 CVEs -> output/influxdb/summarize/cve_list.json
+2025-11-16 16:33:10 INFO     Done. Outputs under summarize/. Logs: output/influxdb/logs/summarize_agent.log

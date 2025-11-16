@@ -1,0 +1,480 @@
+[
+  {
+    "cve_id": "CVE-2021-46088",
+    "cve_description": "Zabbix 4.0 LTS, 4.2, 4.4, and 5.0 LTS is vulnerable to Remote Code Execution (RCE). Any user with the \"Zabbix Admin\" role is able to run custom shell script on the application server in the context of the application user.",
+    "severity": "high",
+    "cvss_score": 7.2,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 6.5,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:S/C:P/I:P/A:P",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 7.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "NVD-CWE-noinfo"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.02966,
+      "epss_percentile": 0.8588
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:zabbix:zabbix:*:*:*:*:*:*:*:*",
+      "vendor": "zabbix",
+      "product": "zabbix"
+    },
+    "reference": [
+      "https://github.com/paalbra/zabbix-zbxsec-7",
+      "https://github.com/ARPSyndicate/cvemon"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/paalbra/zabbix-zbxsec-7",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/paalbra/zabbix-zbxsec-7",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/paalbra/zabbix-zbxsec-7",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2022-01-27T16:15:07.777",
+    "updated_at": "2024-11-21T06:33:37.607",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1242,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": false,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:zabbix:zabbix:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 23438,
+      "query": [
+        "cpe:\"cpe:2.3:a:zabbix:zabbix\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2021-27927",
+    "cve_description": "In Zabbix from 4.0.x before 4.0.28rc1, 5.0.0alpha1 before 5.0.10rc1, 5.2.x before 5.2.6rc1, and 5.4.0alpha1 before 5.4.0beta2, the CControllerAuthenticationUpdate controller lacks a CSRF protection mechanism. The code inside this controller calls diableSIDValidation inside the init() method. An attacker doesn't have to know Zabbix user login credentials, but has to know the correct Zabbix URL and contact information of an existing user with sufficient privileges.",
+    "severity": "high",
+    "cvss_score": 8.8,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 6.8,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:N/C:P/I:P/A:P",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-352",
+        "cwe_name": "Cross-Site Request Forgery (CSRF)"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00155,
+      "epss_percentile": 0.37266
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:zabbix:zabbix:*:*:*:*:*:*:*:*",
+      "vendor": "zabbix",
+      "product": "zabbix"
+    },
+    "reference": [
+      "https://lists.debian.org/debian-lts-announce/2023/04/msg00013.html",
+      "https://github.com/cc8700619/poc",
+      "https://github.com/nvn1729/advisories",
+      "https://github.com/r0eXpeR/redteam_vul",
+      "https://github.com/ARPSyndicate/cvemon",
+      "https://github.com/Awrrays/FrameVul"
+    ],
+    "vendor_advisory": "https://support.zabbix.com/browse/ZBX-18942",
+    "patch_url": [
+      "https://support.zabbix.com/browse/ZBX-18942",
+      "https://support.zabbix.com/browse/ZBX-18942"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2021-03-03T17:15:12.753",
+    "updated_at": "2024-11-21T05:58:50.260",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1572,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:zabbix:zabbix:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 23438,
+      "query": [
+        "cpe:\"cpe:2.3:a:zabbix:zabbix\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2020-15803",
+    "cve_description": "Zabbix before 3.0.32rc1, 4.x before 4.0.22rc1, 4.1.x through 4.4.x before 4.4.10rc1, and 5.x before 5.0.2rc1 allows stored XSS in the URL Widget.",
+    "severity": "medium",
+    "cvss_score": 6.1,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 4.3,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:N/C:N/I:P/A:N",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.02092,
+      "epss_percentile": 0.83231
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:zabbix:zabbix:*:*:*:*:*:*:*:*",
+      "vendor": "zabbix",
+      "product": "zabbix"
+    },
+    "reference": [
+      "http://lists.opensuse.org/opensuse-security-announce/2020-10/msg00007.html",
+      "https://lists.debian.org/debian-lts-announce/2020/08/msg00007.html",
+      "https://lists.debian.org/debian-lts-announce/2021/04/msg00018.html",
+      "https://lists.debian.org/debian-lts-announce/2023/04/msg00013.html",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/2ZHHIUYIVA5GZYLKW6A5G6HRELPOBZFE/",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/TIRIMOXH6GSBAANDCB3ANLJK4CRLWRXT/",
+      "https://github.com/20142995/nuclei-templates",
+      "https://github.com/cyb3r-w0lf/nuclei-template-collection"
+    ],
+    "poc": [
+      {
+        "url": "https://support.zabbix.com/browse/ZBX-18057",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "https://support.zabbix.com/browse/ZBX-18057",
+    "patch_url": [
+      "https://support.zabbix.com/browse/ZBX-18057",
+      "https://support.zabbix.com/browse/ZBX-18057"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2020-07-17T03:15:11.437",
+    "updated_at": "2024-11-21T05:06:12.923",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1802,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:zabbix:zabbix:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:zabbix:zabbix:3.0.32:rc1:*:*:*:*:*:*",
+      "cpe:2.3:a:zabbix:zabbix:4.0.22:-:*:*:*:*:*:*",
+      "cpe:2.3:a:zabbix:zabbix:4.0.22:rc1:*:*:*:*:*:*",
+      "cpe:2.3:a:zabbix:zabbix:4.4.10:-:*:*:*:*:*:*",
+      "cpe:2.3:a:zabbix:zabbix:4.4.10:rc1:*:*:*:*:*:*",
+      "cpe:2.3:a:zabbix:zabbix:5.0.2:-:*:*:*:*:*:*",
+      "cpe:2.3:a:zabbix:zabbix:5.0.2:rc1:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:31:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:32:*:*:*:*:*:*:*",
+      "cpe:2.3:o:debian:debian_linux:9.0:*:*:*:*:*:*:*",
+      "cpe:2.3:o:opensuse:backports:sle-15:sp1:*:*:*:*:*:*",
+      "cpe:2.3:o:opensuse:backports:sle-15:sp2:*:*:*:*:*:*",
+      "cpe:2.3:o:opensuse:leap:15.1:*:*:*:*:*:*:*",
+      "cpe:2.3:o:opensuse:leap:15.2:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 23438,
+      "query": [
+        "cpe:\"cpe:2.3:a:zabbix:zabbix\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2020-11800",
+    "cve_description": "Zabbix Server 2.2.x and 3.0.x before 3.0.31, and 3.2 allows remote attackers to execute arbitrary code.",
+    "severity": "critical",
+    "cvss_score": 9.8,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 7.5,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:N/C:P/I:P/A:P",
+        "severity": "high"
+      },
+      "cvss30": {
+        "score": 9,
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H",
+        "severity": "critical"
+      },
+      "cvss31": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "critical"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "NVD-CWE-noinfo"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.47881,
+      "epss_percentile": 0.97571
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:zabbix:zabbix:*:*:*:*:*:*:*:*",
+      "vendor": "zabbix",
+      "product": "zabbix"
+    },
+    "reference": [
+      "http://lists.opensuse.org/opensuse-security-announce/2020-10/msg00007.html",
+      "https://lists.debian.org/debian-lts-announce/2020/11/msg00039.html",
+      "https://github.com/cc8700619/poc",
+      "https://github.com/1f3lse/taiE",
+      "https://github.com/ARPSyndicate/cvemon",
+      "https://github.com/Awrrays/FrameVul",
+      "https://github.com/SexyBeast233/SecBooks",
+      "https://github.com/Threekiii/Awesome-POC",
+      "https://github.com/Threekiii/Vulhub-Reproduce",
+      "https://github.com/XiaomingX/awesome-poc-for-red-team"
+    ],
+    "vendor_advisory": "https://support.zabbix.com/browse/ZBXSEC-30",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2020-10-07T16:15:15.343",
+    "updated_at": "2024-11-21T04:58:39.210",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1719,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:zabbix:zabbix:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:zabbix:zabbix:3.2.0:-:*:*:*:*:*:*",
+      "cpe:2.3:a:opensuse:backports_sle:15.0:sp1:*:*:*:*:*:*",
+      "cpe:2.3:a:opensuse:backports_sle:15.0:sp2:*:*:*:*:*:*",
+      "cpe:2.3:o:opensuse:leap:15.1:*:*:*:*:*:*:*",
+      "cpe:2.3:o:opensuse:leap:15.2:*:*:*:*:*:*:*",
+      "cpe:2.3:o:debian:debian_linux:9.0:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 23438,
+      "query": [
+        "cpe:\"cpe:2.3:a:zabbix:zabbix\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2019-17382",
+    "cve_description": "An issue was discovered in zabbix.php?action=dashboard.view&dashboardid=1 in Zabbix through 4.4. An attacker can bypass the login page and access the dashboard page, and then create a Dashboard, Report, Screen, or Map without any Username/Password (i.e., anonymously). All created elements (Dashboard/Report/Screen/Map) are accessible by other users and by an admin.",
+    "severity": "critical",
+    "cvss_score": 9.1,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 6.4,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:N/C:P/I:P/A:N",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 9.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+        "severity": "critical"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-639",
+        "cwe_name": "Authorization Bypass Through User-Controlled Key"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.93689,
+      "epss_percentile": 0.99837
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:zabbix:zabbix:*:*:*:*:*:*:*:*",
+      "vendor": "zabbix",
+      "product": "zabbix"
+    },
+    "reference": [
+      "https://lists.debian.org/debian-lts-announce/2023/08/msg00027.html",
+      "https://github.com/huimzjty/vulwiki",
+      "https://github.com/20142995/nuclei-templates",
+      "https://github.com/Elsfa7-110/kenzer-templates",
+      "https://github.com/d4n-sec/d4n-sec.github.io",
+      "https://github.com/apit-review-account/apit-tool",
+      "https://github.com/merlinepedra25/nuclei-templates",
+      "https://github.com/ARPSyndicate/cvemon",
+      "https://github.com/ARPSyndicate/kenzer-templates",
+      "https://github.com/apif-review/APIF_tool_2024"
+    ],
+    "poc": [
+      {
+        "url": "https://www.exploit-db.com/exploits/47467",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://www.exploit-db.com/exploits/47467",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/K3ysTr0K3R/CVE-2019-17382-EXPLOIT",
+        "source": "gh-nomi-sec",
+        "added_at": "2023-12-23T14:02:13Z"
+      },
+      {
+        "url": "https://www.exploit-db.com/exploits/47467",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": true,
+    "nuclei_templates": {
+      "template_path": "http/cves/2019/CVE-2019-17382.yaml",
+      "template_url": "https://cloud.projectdiscovery.io/public/CVE-2019-17382",
+      "created_at": "2020-07-07T09:47:27+05:30",
+      "updated_at": "2025-05-27T10:39:47+08:00"
+    },
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2019-10-09T14:15:12.817",
+    "updated_at": "2024-11-21T04:32:13.523",
+    "hackerone": {
+      "rank": 1628,
+      "count": 2
+    },
+    "age_in_days": 2083,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:zabbix:zabbix:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 23438,
+      "query": [
+        "cpe:\"cpe:2.3:a:zabbix:zabbix\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2019-15132",
+    "cve_description": "Zabbix through 4.4.0alpha1 allows User Enumeration. With login requests, it is possible to enumerate application usernames based on the variability of server responses (e.g., the \"Login name or password is incorrect\" and \"No permissions for system access\" messages, or just blocking for a number of seconds). This affects both api_jsonrpc.php and index.php.",
+    "severity": "medium",
+    "cvss_score": 5.3,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 5,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:N/C:P/I:N/A:N",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-203",
+        "cwe_name": "Observable Discrepancy"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00412,
+      "epss_percentile": 0.6057
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:zabbix:zabbix:*:*:*:*:*:*:*:*",
+      "vendor": "zabbix",
+      "product": "zabbix"
+    },
+    "reference": [
+      "https://lists.debian.org/debian-lts-announce/2021/04/msg00018.html",
+      "https://lists.debian.org/debian-lts-announce/2023/04/msg00013.html",
+      "https://github.com/ARPSyndicate/cvemon"
+    ],
+    "vendor_advisory": "https://support.zabbix.com/browse/ZBX-16532",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2019-08-17T18:15:10.690",
+    "updated_at": "2024-11-21T04:28:07.297",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 2136,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:zabbix:zabbix:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:zabbix:zabbix:4.4.0:alpha1:*:*:*:*:*:*",
+      "cpe:2.3:o:debian:debian_linux:9.0:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 23438,
+      "query": [
+        "cpe:\"cpe:2.3:a:zabbix:zabbix\""
+      ]
+    }
+  }
+]

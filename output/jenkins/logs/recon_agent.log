@@ -1,0 +1,38 @@
+2025-11-15 19:55:24,139 - recon_agent - INFO - Log file: output/jenkins/logs/recon_agent.log
+2025-11-15 19:55:24,140 - recon_agent - INFO - Starting ReconAgent
+2025-11-15 19:55:24,140 - recon_agent - INFO - Initializing ReconAgent with model=google
+2025-11-15 19:55:24,141 - recon_agent - INFO - .env loaded from: /home/lc/Desktop/pentest-agent/agents/.env
+2025-11-15 19:55:24,159 - recon_agent - INFO - Model google loaded successfully
+2025-11-15 19:55:24,159 - recon_agent - INFO - Current topic: jenkins
+2025-11-15 19:55:24,159 - recon_agent - INFO - Target IP: 10.20.6.214
+2025-11-15 19:55:24,160 - recon_agent - INFO - Initializing thread for topic: jenkins
+2025-11-15 19:55:24,160 - recon_agent - INFO - Created memory for topic: jenkins
+2025-11-15 19:55:24,160 - recon_agent - INFO - No existing memory file for topic: jenkins
+2025-11-15 19:55:24,161 - recon_agent - INFO - Running thread for topic: jenkins
+2025-11-15 19:55:24,161 - recon_agent - INFO - Invoking LLM (attempt 1/3)
+2025-11-15 19:55:28,647 - recon_agent - INFO - LLM response appended to memory
+2025-11-15 19:58:15,885 - recon_agent - INFO - Command executed; output length=1776
+2025-11-15 19:58:15,886 - recon_agent - INFO - Running thread for topic: jenkins
+2025-11-15 19:58:15,886 - recon_agent - INFO - Invoking LLM (attempt 1/3)
+2025-11-15 19:58:23,472 - recon_agent - INFO - LLM response appended to memory
+2025-11-15 19:58:24,083 - recon_agent - INFO - Command executed; output length=657
+2025-11-15 19:58:24,085 - recon_agent - INFO - Running thread for topic: jenkins
+2025-11-15 19:58:24,085 - recon_agent - INFO - Invoking LLM (attempt 1/3)
+2025-11-15 19:58:27,903 - recon_agent - INFO - LLM response appended to memory
+2025-11-15 19:58:47,112 - recon_agent - INFO - Command executed; output length=1102
+2025-11-15 19:58:47,112 - recon_agent - INFO - Running thread for topic: jenkins
+2025-11-15 19:58:47,112 - recon_agent - INFO - Invoking LLM (attempt 1/3)
+2025-11-15 19:58:51,360 - recon_agent - INFO - LLM response appended to memory
+2025-11-15 19:58:51,381 - recon_agent - INFO - Command executed; output length=15548
+2025-11-15 19:58:51,382 - recon_agent - INFO - Running thread for topic: jenkins
+2025-11-15 19:58:51,382 - recon_agent - INFO - Invoking LLM (attempt 1/3)
+2025-11-15 19:58:58,523 - recon_agent - INFO - LLM response appended to memory
+2025-11-15 19:58:58,524 - recon_agent - INFO - Requesting final RECON_SUMMARY
+2025-11-15 19:58:58,524 - recon_agent - INFO - Running thread for final summary
+2025-11-15 19:58:58,524 - recon_agent - INFO - Running thread for topic: jenkins
+2025-11-15 19:58:58,524 - recon_agent - INFO - Invoking LLM (attempt 1/3)
+2025-11-15 19:59:10,418 - recon_agent - INFO - LLM response appended to memory
+2025-11-15 19:59:10,419 - recon_agent - INFO - Wrote RECON_SUMMARY to: output/jenkins/recon/recon_summary.json
+2025-11-15 19:59:10,419 - recon_agent - INFO - Saving memory to file
+2025-11-15 19:59:10,427 - recon_agent - INFO - Saved 12 messages to output/jenkins/logs/recon_memory/jenkins.json
+2025-11-15 19:59:10,427 - recon_agent - INFO - Reconnaissance agent execution completed in 226.29 seconds

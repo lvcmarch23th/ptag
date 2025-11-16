@@ -1,0 +1,30 @@
+{
+  "analysis": {
+    "ports": {
+      "80": {
+        "accessibility": "open",
+        "name": "Apache",
+        "version": "2.4.58"
+      },
+      "5005": {
+        "accessibility": "open",
+        "name": "JDWP",
+        "version": "17.0.9"
+      },
+      "8080": {
+        "accessibility": "open",
+        "name": "Jenkins",
+        "version": "2.441"
+      },
+      "50000": {
+        "accessibility": "open",
+        "name": "Jenkins",
+        "version": "2.441"
+      }
+    },
+    "OS": "Ubuntu",
+    "IP": "10.20.6.214"
+  },
+  "next_step": "Reconnaissance is complete. The next steps could involve vulnerability scanning for the identified services (Apache 2.4.58, Jenkins 2.441, JDWP 17.0.9), specifically looking for known exploits for these versions. For Jenkins, further investigation into its API and potential misconfigurations or default credentials would be a priority. For JDWP, assess if remote debugging is enabled and if it can be exploited.",
+  "executable": "None"
+}

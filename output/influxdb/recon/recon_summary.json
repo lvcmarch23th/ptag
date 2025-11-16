@@ -1,0 +1,20 @@
+{
+  "analysis": {
+    "ports": {
+      "80": {
+        "accessibility": "open",
+        "name": "Apache",
+        "version": "2.4.58"
+      },
+      "8086": {
+        "accessibility": "open",
+        "name": "InfluxDB",
+        "version": "1.6.6"
+      }
+    },
+    "OS": "Ubuntu",
+    "IP": "10.20.6.214"
+  },
+  "next_step": "All accessible ports have been analyzed. Further investigation could involve attempting to exploit identified vulnerabilities in Apache 2.4.58 or InfluxDB 1.6.6, or exploring the InfluxDB API with proper authentication if credentials can be obtained.",
+  "executable": "None"
+}

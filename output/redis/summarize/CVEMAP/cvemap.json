@@ -1,0 +1,4215 @@
+[
+  {
+    "cve_id": "CVE-2023-52775",
+    "cve_description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/smc: avoid data corruption caused by decline\n\nWe found a data corruption issue during testing of SMC-R on Redis\napplications.\n\nThe benchmark has a low probability of reporting a strange error as\nshown below.\n\n\"Error: Protocol error, got \"\\xe2\" as reply type byte\"\n\nFinally, we found that the retrieved error data was as follows:\n\n0xE2 0xD4 0xC3 0xD9 0x04 0x00 0x2C 0x20 0xA6 0x56 0x00 0x16 0x3E 0x0C\n0xCB 0x04 0x02 0x01 0x00 0x00 0x20 0x00 0x00 0x00 0x00 0x00 0x00 0x00\n0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0xE2\n\nIt is quite obvious that this is a SMC DECLINE message, which means that\nthe applications received SMC protocol message.\nWe found that this was caused by the following situations:\n\nclient                  server\n        ¦  clc proposal\n        ------------->\n        ¦  clc accept\n        <-------------\n        ¦  clc confirm\n        ------------->\nwait llc confirm\n\t\t\tsend llc confirm\n        ¦failed llc confirm\n        ¦   x------\n(after 2s)timeout\n                        wait llc confirm rsp\n\nwait decline\n\n(after 1s) timeout\n                        (after 2s) timeout\n        ¦   decline\n        -------------->\n        ¦   decline\n        <--------------\n\nAs a result, a decline message was sent in the implementation, and this\nmessage was read from TCP by the already-fallback connection.\n\nThis patch double the client timeout as 2x of the server value,\nWith this simple change, the Decline messages should never cross or\ncollide (during Confirm link timeout).\n\nThis issue requires an immediate solution, since the protocol updates\ninvolve a more long-term solution.",
+    "severity": "N/A",
+    "cvss_metrics": {},
+    "epss": {
+      "epss_score": 0.0014,
+      "epss_percentile": 0.34987
+    },
+    "reference": [
+      "https://git.kernel.org/stable/c/5ada292b5c504720a0acef8cae9acc62a694d19c",
+      "https://git.kernel.org/stable/c/7234d2b5dffa5af77fd4e0deaebab509e130c6b1",
+      "https://git.kernel.org/stable/c/90072af9efe8c7bd7d086709014ddd44cebd5e7c",
+      "https://git.kernel.org/stable/c/94a0ae698b4d5d5bb598e23228002a1491c50add",
+      "https://git.kernel.org/stable/c/e6d71b437abc2f249e3b6a1ae1a7228e09c6e563"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "416baaa9-dc9f-4396-8d5f-8c081fb06d67",
+    "published_at": "2024-05-21T16:15:16.610",
+    "updated_at": "2024-11-21T08:40:33.770",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 397,
+    "vuln_status": "unconfirmed",
+    "is_poc": false,
+    "is_remote": false,
+    "is_oss": false
+  },
+  {
+    "cve_id": "CVE-2023-50727",
+    "cve_description": "Resque is a Redis-backed Ruby library for creating background jobs, placing them on multiple queues, and processing them later. Reflected XSS issue occurs when /queues is appended with /\"><svg%20onload=alert(domain)>. This issue has been patched in version 2.6.0.",
+    "severity": "medium",
+    "cvss_score": 6.3,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 6.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:H/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00657,
+      "epss_percentile": 0.70008
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:resque:resque:*:*:*:*:*:ruby:*:*",
+      "vendor": "resque",
+      "product": "resque",
+      "framework": "ruby"
+    },
+    "vendor_advisory": "https://github.com/resque/resque/security/advisories/GHSA-r9mq-m72x-257g",
+    "patch_url": [
+      "https://github.com/resque/resque/commit/7623b8dfbdd0a07eb04b19fb25b16a8d6f087f9a",
+      "https://github.com/resque/resque/pull/1865",
+      "https://github.com/resque/resque/security/advisories/GHSA-r9mq-m72x-257g",
+      "https://github.com/resque/resque/commit/7623b8dfbdd0a07eb04b19fb25b16a8d6f087f9a",
+      "https://github.com/resque/resque/pull/1865",
+      "https://github.com/resque/resque/security/advisories/GHSA-r9mq-m72x-257g"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2023-12-22T21:15:07.690",
+    "updated_at": "2024-11-21T08:37:13.413",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 548,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:resque:resque:*:*:*:*:*:ruby:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2023-50725",
+    "cve_description": "Resque is a Redis-backed Ruby library for creating background jobs, placing them on multiple queues, and processing them later. The following paths in resque-web have been found to be vulnerable to reflected XSS: \"/failed/?class=<script>alert(document.cookie)</script>\" and \"/queues/><img src=a onerror=alert(document.cookie)>\". This issue has been patched in version 2.2.1.",
+    "severity": "medium",
+    "cvss_score": 6.3,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 6.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:H/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00657,
+      "epss_percentile": 0.70008
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:resque:resque:*:*:*:*:*:ruby:*:*",
+      "vendor": "resque",
+      "product": "resque",
+      "framework": "ruby"
+    },
+    "reference": [
+      "https://github.com/rubysec/ruby-advisory-db/blob/master/gems/resque/CVE-2023-50725.yml"
+    ],
+    "vendor_advisory": "https://github.com/resque/resque/security/advisories/GHSA-gc3j-vvwf-4rp8",
+    "patch_url": [
+      "https://github.com/resque/resque/commit/ee99d2ed6cc75d9d384483b70c2d96d312115f07",
+      "https://github.com/resque/resque/pull/1790",
+      "https://github.com/resque/resque/security/advisories/GHSA-gc3j-vvwf-4rp8",
+      "https://github.com/resque/resque/commit/ee99d2ed6cc75d9d384483b70c2d96d312115f07",
+      "https://github.com/resque/resque/pull/1790",
+      "https://github.com/resque/resque/security/advisories/GHSA-gc3j-vvwf-4rp8"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2023-12-22T20:15:07.657",
+    "updated_at": "2024-11-21T08:37:13.120",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 548,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:resque:resque:*:*:*:*:*:ruby:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2023-50724",
+    "cve_description": "Resque (pronounced like \"rescue\") is a Redis-backed library for creating background jobs, placing those jobs on multiple queues, and processing them later. resque-web in resque versions before 2.1.0 are vulnerable to reflected XSS through the current_queue parameter in the path of the queues endpoint. This issue has been patched in version 2.1.0.\n",
+    "severity": "medium",
+    "cvss_score": 6.3,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 6.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:H/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00943,
+      "epss_percentile": 0.75224
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:resque:resque:*:*:*:*:*:ruby:*:*",
+      "vendor": "resque",
+      "product": "resque",
+      "framework": "ruby"
+    },
+    "poc": [
+      {
+        "url": "https://github.com/resque/resque/issues/1679",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/resque/resque/issues/1679",
+        "source": "NVD",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "https://github.com/resque/resque/security/advisories/GHSA-r8xx-8vm8-x6wj",
+    "patch_url": [
+      "https://github.com/resque/resque/pull/1687",
+      "https://github.com/resque/resque/pull/1687"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2023-12-21T15:15:10.573",
+    "updated_at": "2024-11-21T08:37:12.957",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 549,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:resque:resque:*:*:*:*:*:ruby:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2023-47120",
+    "cve_description": "Discourse is an open source platform for community discussion. In versions 3.1.0 through 3.1.2 of the `stable` branch and versions 3.1.0,beta6 through 3.2.0.beta2 of the `beta` and `tests-passed` branches, Redis memory can be depleted by crafting a site with an abnormally long favicon URL and drafting multiple posts which Onebox it. The issue is patched in version 3.1.3 of the `stable` branch and version 3.2.0.beta3 of the `beta` and `tests-passed` branches. There are no known workarounds.",
+    "severity": "high",
+    "cvss_score": 7.5,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-770",
+        "cwe_name": "Allocation of Resources Without Limits or Throttling"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00247,
+      "epss_percentile": 0.47886
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:discourse:discourse:*:*:*:*:stable:*:*:*",
+      "vendor": "discourse",
+      "product": "discourse"
+    },
+    "vendor_advisory": "https://github.com/discourse/discourse/security/advisories/GHSA-77cw-xhj8-hfp3",
+    "patch_url": [
+      "https://github.com/discourse/discourse/commit/95a82d608d6377faf68a0e2c5d9640b043557852",
+      "https://github.com/discourse/discourse/commit/e910dd09140cb4abc3a563b95af4a137ca7fa0ce",
+      "https://github.com/discourse/discourse/commit/95a82d608d6377faf68a0e2c5d9640b043557852",
+      "https://github.com/discourse/discourse/commit/e910dd09140cb4abc3a563b95af4a137ca7fa0ce"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2023-11-10T16:15:33.473",
+    "updated_at": "2024-11-21T08:29:49.150",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 590,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:discourse:discourse:*:*:*:*:stable:*:*:*",
+      "cpe:2.3:a:discourse:discourse:3.1.0:beta6:*:*:beta:*:*:*",
+      "cpe:2.3:a:discourse:discourse:3.1.0:beta7:*:*:beta:*:*:*",
+      "cpe:2.3:a:discourse:discourse:3.1.0:beta8:*:*:beta:*:*:*",
+      "cpe:2.3:a:discourse:discourse:3.2.0:beta1:*:*:beta:*:*:*",
+      "cpe:2.3:a:discourse:discourse:3.2.0:beta2:*:*:beta:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2023-47004",
+    "cve_description": "Buffer Overflow vulnerability in Redis RedisGraph v.2.x through v.2.12.8 and fixed in v.2.12.9 allows an attacker to execute arbitrary code via the code logic after valid authentication.",
+    "severity": "high",
+    "cvss_score": 8.8,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-787",
+        "cwe_name": "Out-of-bounds Write"
+      },
+      {
+        "cwe_id": "CWE-120",
+        "cwe_name": "Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00427,
+      "epss_percentile": 0.61382
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redislabs:redisgraph:*:*:*:*:*:*:*:*",
+      "vendor": "redislabs",
+      "product": "redisgraph"
+    },
+    "poc": [
+      {
+        "url": "https://github.com/RedisGraph/RedisGraph/issues/3178",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/RedisGraph/RedisGraph/issues/3178",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/RedisGraph/RedisGraph/issues/3178",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "https://github.com/RedisGraph/RedisGraph/issues/3178",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2023-11-06T22:15:08.043",
+    "updated_at": "2025-04-29T20:15:24.890",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 594,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redislabs:redisgraph:*:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2023-45148",
+    "cve_description": "Nextcloud is an open source home cloud server. When Memcached is used as `memcache.distributed` the rate limiting in Nextcloud Server could be reset unexpectedly resetting the rate count earlier than intended. Users are advised to upgrade to versions 25.0.11, 26.0.6 or 27.1.0. Users unable to upgrade should change their config setting `memcache.distributed` to `\\OC\\Memcache\\Redis` and install Redis instead of Memcached.",
+    "severity": "medium",
+    "cvss_score": 4.3,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-307",
+        "cwe_name": "Improper Restriction of Excessive Authentication Attempts"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00177,
+      "epss_percentile": 0.39887
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:nextcloud:nextcloud_server:*:*:*:*:enterprise:*:*:*",
+      "vendor": "nextcloud",
+      "product": "nextcloud_server"
+    },
+    "reference": [
+      "https://hackerone.com/reports/2110945"
+    ],
+    "vendor_advisory": "https://github.com/nextcloud/security-advisories/security/advisories/GHSA-xmhp-7vr4-hp63",
+    "patch_url": [
+      "https://github.com/nextcloud/server/pull/40293",
+      "https://github.com/nextcloud/server/pull/40293"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2023-10-16T19:15:10.860",
+    "updated_at": "2024-11-21T08:26:26.757",
+    "hackerone": {
+      "rank": 2499,
+      "count": 1
+    },
+    "age_in_days": 615,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:nextcloud:nextcloud_server:*:*:*:*:enterprise:*:*:*",
+      "cpe:2.3:a:nextcloud:nextcloud_server:*:*:*:*:-:*:*:*",
+      "cpe:2.3:a:nextcloud:nextcloud_server:27.0.0:*:*:*:-:*:*:*",
+      "cpe:2.3:a:nextcloud:nextcloud_server:27.0.0:*:*:*:enterprise:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2023-45145",
+    "cve_description": "Redis is an in-memory database that persists on disk. On startup, Redis begins listening on a Unix socket before adjusting its permissions to the user-provided configuration. If a permissive umask(2) is used, this creates a race condition that enables, during a short period of time, another process to establish an otherwise unauthorized connection. This problem has existed since Redis 2.6.0-RC1. This issue has been addressed in Redis versions 7.2.2, 7.0.14 and 6.2.14. Users are advised to upgrade. For users unable to upgrade, it is possible to work around the problem by disabling Unix sockets, starting Redis with a restrictive umask, or storing the Unix socket file in a protected directory.",
+    "severity": "low",
+    "cvss_score": 3.6,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 3.6,
+        "vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N",
+        "severity": "low"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-668",
+        "cwe_name": "Exposure of Resource to Wrong Sphere"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00382,
+      "epss_percentile": 0.58708
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "vendor": "redis",
+      "product": "redis"
+    },
+    "reference": [
+      "https://lists.debian.org/debian-lts-announce/2023/10/msg00032.html",
+      "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/464JPNBWE433ZGYXO3KN72VR3KJPWHAW/",
+      "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/BNEK2K4IE7MPKRD6H36JXZMJKYS6I5GQ/",
+      "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/DZMGTTV5XM4LA66FSIJSETNBBRRPJYOQ/",
+      "https://security.netapp.com/advisory/ntap-20231116-0014/",
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "https://github.com/redis/redis/security/advisories/GHSA-ghmp-889m-7cvx",
+    "patch_url": [
+      "https://github.com/redis/redis/commit/03345ddc7faf7af079485f2cbe5d17a1611cbce1",
+      "https://github.com/redis/redis/commit/03345ddc7faf7af079485f2cbe5d17a1611cbce1"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2023-10-18T21:15:09.560",
+    "updated_at": "2024-11-21T08:26:26.370",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 613,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": false,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:redis:redis:2.6.0:rc1:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:37:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:38:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:39:*:*:*:*:*:*:*",
+      "cpe:2.3:o:debian:debian_linux:10.0:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 2,
+      "query": [
+        "http.html:\"redis.conf\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2023-43119",
+    "cve_description": "An Access Control issue discovered in Extreme Networks Switch Engine (EXOS) before 32.5.1.5, also fixed in 22.7, 31.7.2 allows attackers to gain escalated privileges using crafted telnet commands via Redis server.",
+    "severity": "critical",
+    "cvss_score": 9.8,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "critical"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-863",
+        "cwe_name": "Incorrect Authorization"
+      },
+      {
+        "cwe_id": "CWE-284",
+        "cwe_name": "Improper Access Control"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00373,
+      "epss_percentile": 0.58189
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:o:extremenetworks:exos:*:*:*:*:*:*:*:*",
+      "vendor": "extremenetworks",
+      "product": "exos"
+    },
+    "reference": [
+      "https://github.com/RhinoSecurityLabs/CVEs"
+    ],
+    "vendor_advisory": "https://extreme-networks.my.site.com/ExtrArticleDetail?an=000114378",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2023-10-16T20:15:15.160",
+    "updated_at": "2024-11-21T08:23:43.593",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 615,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:o:extremenetworks:exos:*:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2023-42809",
+    "cve_description": "Redisson is a Java Redis client that uses the Netty framework. Prior to version 3.22.0, some of the messages received from the Redis server contain Java objects that the client deserializes without further validation. Attackers that manage to trick clients into communicating with a malicious server can include especially crafted objects in its responses that, once deserialized by the client, force it to execute arbitrary code. This can be abused to take control of the machine the client is running in. Version 3.22.0 contains a patch for this issue.\n\nSome post-fix advice is available. Do NOT use `Kryo5Codec` as deserialization codec, as it is still vulnerable to arbitrary object deserialization due to the `setRegistrationRequired(false)` call. On the contrary, `KryoCodec` is safe to use. The fix applied to `SerializationCodec` only consists of adding an optional allowlist of class names, even though making this behavior the default is recommended. When instantiating `SerializationCodec` please use the `SerializationCodec(ClassLoader classLoader, Set<String> allowedClasses)` constructor to restrict the allowed classes for deserialization.",
+    "severity": "critical",
+    "cvss_score": 9.6,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 9.6,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+        "severity": "critical"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-502",
+        "cwe_name": "Deserialization of Untrusted Data"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00705,
+      "epss_percentile": 0.71099
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redisson:redisson:*:*:*:*:*:*:*:*",
+      "vendor": "redisson",
+      "product": "redisson"
+    },
+    "poc": [
+      {
+        "url": "https://securitylab.github.com/advisories/GHSL-2023-053_Redisson/",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://securitylab.github.com/advisories/GHSL-2023-053_Redisson/",
+        "source": "NVD",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/redisson/redisson/commit/fe6a2571801656ff1599ef87bdee20f519a5d1fe",
+      "https://github.com/redisson/redisson/commit/fe6a2571801656ff1599ef87bdee20f519a5d1fe"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2023-10-04T20:15:10.263",
+    "updated_at": "2024-11-21T08:23:12.200",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 627,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redisson:redisson:*:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2023-41056",
+    "cve_description": "Redis is an in-memory database that persists on disk. Redis incorrectly handles resizing of memory buffers which can result in integer overflow that leads to heap overflow and potential remote code execution. This issue has been patched in version 7.0.15 and 7.2.4.",
+    "severity": "high",
+    "cvss_score": 8.1,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 8.1,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-190",
+        "cwe_name": "Integer Overflow or Wraparound"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.05119,
+      "epss_percentile": 0.8935
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "vendor": "redis",
+      "product": "redis"
+    },
+    "reference": [
+      "https://github.com/redis/redis/releases/tag/7.0.15",
+      "https://github.com/redis/redis/releases/tag/7.2.4",
+      "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/3JTGQJ2YLYB24B72I5B5H32YIMPVSWIT/",
+      "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/JTWHPLC3RI67VNRDOIXLDVNC5YMYBMQN/",
+      "https://security.netapp.com/advisory/ntap-20240223-0003/",
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "https://github.com/redis/redis/security/advisories/GHSA-xr47-pcmx-fq2m",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2024-01-10T16:15:46.557",
+    "updated_at": "2024-11-21T08:20:28.383",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 529,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:38:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:39:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 2,
+      "query": [
+        "http.html:\"redis.conf\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2023-41053",
+    "cve_description": "Redis is an in-memory database that persists on disk. Redis does not correctly identify keys accessed by `SORT_RO` and as a result may grant users executing this command access to keys that are not explicitly authorized by the ACL configuration. The problem exists in Redis 7.0 or newer and has been fixed in Redis 7.0.13 and 7.2.1. Users are advised to upgrade. There are no known workarounds for this vulnerability.",
+    "severity": "low",
+    "cvss_score": 3.3,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 3.3,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "low"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-269",
+        "cwe_name": "Improper Privilege Management"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00375,
+      "epss_percentile": 0.58282
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "vendor": "redis",
+      "product": "redis"
+    },
+    "reference": [
+      "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/OLBPIUUD273UGRN2WAYHPVUAULY36QVL/",
+      "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/UA4MSJ623BH6HP5UHSJD2FOTN3QM5DQS/",
+      "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/YLYNYT52EHR63E7L7SHRTHEPUMAFFDLX/"
+    ],
+    "vendor_advisory": "https://github.com/redis/redis/security/advisories/GHSA-q4jr-5p56-4xwc",
+    "patch_url": [
+      "https://github.com/redis/redis/commit/9e505e6cd842338424e05883521ca1fb7d0f47f6",
+      "https://github.com/redis/redis/commit/9e505e6cd842338424e05883521ca1fb7d0f47f6"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2023-09-06T21:15:14.137",
+    "updated_at": "2024-11-21T08:20:27.997",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 655,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": false,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:redis:redis:7.2.0:-:*:*:*:*:*:*",
+      "cpe:2.3:a:redis:redis:7.2.0:rc1:*:*:*:*:*:*",
+      "cpe:2.3:a:redis:redis:7.2.0:rc2:*:*:*:*:*:*",
+      "cpe:2.3:a:redis:redis:7.2.0:rc3:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 2,
+      "query": [
+        "http.html:\"redis.conf\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2023-36824",
+    "cve_description": "Redis is an in-memory database that persists on disk. In Redit 7.0 prior to 7.0.12, extracting key names from a command and a list of arguments may, in some cases, trigger a heap overflow and result in reading random heap memory, heap corruption and potentially remote code execution. Several scenarios that may lead to authenticated users executing a specially crafted `COMMAND GETKEYS` or `COMMAND GETKEYSANDFLAGS`and authenticated users who were set with ACL rules that match key names, executing a specially crafted command that refers to a variadic list of key names. The vulnerability is patched in Redis 7.0.12.",
+    "severity": "high",
+    "cvss_score": 7.4,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 7.4,
+        "vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-122",
+        "cwe_name": "Heap-based Buffer Overflow"
+      },
+      {
+        "cwe_id": "CWE-787",
+        "cwe_name": "Out-of-bounds Write"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.91313,
+      "epss_percentile": 0.99627
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "vendor": "redis",
+      "product": "redis"
+    },
+    "reference": [
+      "https://github.com/redis/redis/releases/tag/7.0.12",
+      "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/MIF5MAGYARYUMRFK7PQI7HYXMK2HZE5T/",
+      "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/TDNNH2ONMVNBQ6LUIAOAGDNFPKXNST5K/",
+      "https://security.netapp.com/advisory/ntap-20230814-0009/"
+    ],
+    "vendor_advisory": "https://github.com/redis/redis/security/advisories/GHSA-4cfx-h9gq-xpx3",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2023-07-11T17:15:13.223",
+    "updated_at": "2025-04-10T20:54:22.217",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 712,
+    "vuln_status": "confirmed",
+    "is_poc": false,
+    "is_remote": false,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:37:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:38:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 2,
+      "query": [
+        "http.html:\"redis.conf\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2023-36510",
+    "cve_description": "Missing Authorization vulnerability in Reservation Diary ReDi Restaurant Reservation allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects ReDi Restaurant Reservation: from n/a through 23.0211.",
+    "severity": "high",
+    "cvss_score": 7.3,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 7.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-862",
+        "cwe_name": "Missing Authorization"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00066,
+      "epss_percentile": 0.20844
+    },
+    "reference": [
+      "https://patchstack.com/database/wordpress/plugin/redi-restaurant-reservation/vulnerability/wordpress-redi-restaurant-reservation-plugin-23-0211-broken-access-control-vulnerability?_s_id=cve",
+      "https://github.com/20142995/nuclei-templates"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "audit@patchstack.com",
+    "published_at": "2024-12-13T15:15:16.743",
+    "updated_at": "2024-12-13T15:15:16.743",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 191,
+    "vuln_status": "unconfirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false
+  },
+  {
+    "cve_id": "CVE-2023-31655",
+    "cve_description": "redis v7.0.10 was discovered to contain a segmentation violation. This vulnerability allows attackers to cause a Denial of Service (DoS) via unspecified vectors.",
+    "severity": "high",
+    "cvss_score": 7.5,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "NVD-CWE-noinfo"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00482,
+      "epss_percentile": 0.64134
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redis:redis:7.0.10:*:*:*:*:*:*:*",
+      "vendor": "redis",
+      "product": "redis"
+    },
+    "reference": [
+      "https://security.netapp.com/advisory/ntap-20230616-0005/",
+      "https://github.com/20142995/nuclei-templates",
+      "https://github.com/cyb3r-w0lf/nuclei-template-collection",
+      "https://github.com/ferpaesdias/LinuxTips-Giropops-Senhas-Chainguard"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/RedisLabs/redisraft/issues/608",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/RedisLabs/redisraft/issues/608",
+        "source": "NVD",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/RedisLabs/redisraft/issues/608",
+      "https://github.com/RedisLabs/redisraft/issues/608"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2023-05-18T20:15:09.407",
+    "updated_at": "2024-11-21T08:02:08.103",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 766,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redis:redis:7.0.10:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 2,
+      "query": [
+        "http.html:\"redis.conf\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2023-31654",
+    "cve_description": "Redis raft master-1b8bd86 to master-7b46079 was discovered to contain an ODR violation via the component hiredisAllocFns at /opt/fs/redisraft/deps/hiredis/alloc.c.",
+    "severity": "critical",
+    "cvss_score": 9.8,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "critical"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "NVD-CWE-noinfo"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00243,
+      "epss_percentile": 0.47564
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redis:redisraft:-:*:*:*:*:*:*:*",
+      "vendor": "redis",
+      "product": "redisraft"
+    },
+    "reference": [
+      "https://seclists.org/fulldisclosure/2024/Jan/13"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/RedisLabs/redisraft/issues/600",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/RedisLabs/redisraft/issues/600",
+        "source": "NVD",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2024-01-23T22:15:16.340",
+    "updated_at": "2025-05-30T15:15:21.710",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 516,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redis:redisraft:-:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2023-28859",
+    "cve_description": "redis-py before 4.4.4 and 4.5.x before 4.5.4 leaves a connection open after canceling an async Redis command at an inopportune time, and can send response data to the client of an unrelated request. (This could, for example, happen for a non-pipeline operation.) NOTE: the solutions for CVE-2023-28859 address data leakage across AsyncIO connections in general.",
+    "severity": "medium",
+    "cvss_score": 6.5,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-459",
+        "cwe_name": "Incomplete Cleanup"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00698,
+      "epss_percentile": 0.70945
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redis:redis-py:*:*:*:*:*:*:*:*",
+      "vendor": "redis",
+      "product": "redis-py"
+    },
+    "reference": [
+      "https://github.com/redis/redis-py/pull/2666",
+      "https://github.com/redis/redis-py/releases/tag/v4.4.4",
+      "https://github.com/redis/redis-py/releases/tag/v4.5.4",
+      "https://github.com/ferpaesdias/LinuxTips-Giropops-Senhas-Chainguard"
+    ],
+    "vendor_advisory": "https://github.com/redis/redis-py/issues/2665",
+    "patch_url": [
+      "https://github.com/redis/redis-py/issues/2665",
+      "https://github.com/redis/redis-py/pull/2641",
+      "https://github.com/redis/redis-py/issues/2665",
+      "https://github.com/redis/redis-py/pull/2641"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2023-03-26T19:15:06.850",
+    "updated_at": "2024-11-21T07:56:10.500",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 819,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redis:redis-py:*:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2023-28858",
+    "cve_description": "redis-py before 4.5.3 leaves a connection open after canceling an async Redis command at an inopportune time, and can send response data to the client of an unrelated request in an off-by-one manner. NOTE: this CVE Record was initially created in response to reports about ChatGPT, and 4.3.6, 4.4.3, and 4.5.3 were released (changing the behavior for pipeline operations); however, please see CVE-2023-28859 about addressing data leakage across AsyncIO connections in general.",
+    "severity": "low",
+    "cvss_score": 3.7,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 3.7,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "low"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-193",
+        "cwe_name": "Off-by-one Error"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.01782,
+      "epss_percentile": 0.81855
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redis:redis-py:*:*:*:*:*:*:*:*",
+      "vendor": "redis",
+      "product": "redis-py"
+    },
+    "reference": [
+      "https://github.com/redis/redis-py/issues/2624",
+      "https://openai.com/blog/march-20-chatgpt-outage"
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/redis/redis-py/compare/v4.3.5...v4.3.6",
+      "https://github.com/redis/redis-py/compare/v4.4.2...v4.4.3",
+      "https://github.com/redis/redis-py/compare/v4.5.2...v4.5.3",
+      "https://github.com/redis/redis-py/pull/2641",
+      "https://github.com/redis/redis-py/compare/v4.3.5...v4.3.6",
+      "https://github.com/redis/redis-py/compare/v4.4.2...v4.4.3",
+      "https://github.com/redis/redis-py/compare/v4.5.2...v4.5.3",
+      "https://github.com/redis/redis-py/pull/2641"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2023-03-26T19:15:06.780",
+    "updated_at": "2024-11-21T07:56:10.353",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 819,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redis:redis-py:*:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2023-28856",
+    "cve_description": "Redis is an open source, in-memory database that persists on disk. Authenticated users can use the `HINCRBYFLOAT` command to create an invalid hash field that will crash Redis on access in affected versions. This issue has been addressed in in versions 7.0.11, 6.2.12, and 6.0.19. Users are advised to upgrade. There are no known workarounds for this issue.",
+    "severity": "medium",
+    "cvss_score": 5.5,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 5.5,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-20",
+        "cwe_name": "Improper Input Validation"
+      },
+      {
+        "cwe_id": "CWE-617",
+        "cwe_name": "Reachable Assertion"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00133,
+      "epss_percentile": 0.34045
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "vendor": "redis",
+      "product": "redis"
+    },
+    "reference": [
+      "https://lists.debian.org/debian-lts-announce/2023/04/msg00023.html",
+      "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/EQ4DJSO4DMR55AWK6OPVJH5UTEB35R2Z/",
+      "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/LPUTH7NBQTZDVJWFNUD24ZCS6NDUFYS6/",
+      "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/OQGKMKSQE67L32HE6W5EI2I2YKW5VWHI/",
+      "https://security.netapp.com/advisory/ntap-20230601-0007/"
+    ],
+    "vendor_advisory": "https://github.com/redis/redis/security/advisories/GHSA-hjv8-vjf6-wcr6",
+    "patch_url": [
+      "https://github.com/redis/redis/commit/bc7fe41e5857a0854d524e2a63a028e9394d2a5c",
+      "https://github.com/redis/redis/pull/11149",
+      "https://github.com/redis/redis/commit/bc7fe41e5857a0854d524e2a63a028e9394d2a5c",
+      "https://github.com/redis/redis/pull/11149"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2023-04-18T21:15:09.313",
+    "updated_at": "2024-11-21T07:56:10.077",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 796,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": false,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "cpe:2.3:o:debian:debian_linux:10.0:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:36:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:37:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:38:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 2,
+      "query": [
+        "http.html:\"redis.conf\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2023-28425",
+    "cve_description": "Redis is an in-memory database that persists on disk. Starting in version 7.0.8 and prior to version 7.0.10, authenticated users can use the MSETNX command to trigger a runtime assertion and termination of the Redis server process. The problem is fixed in Redis version 7.0.10.",
+    "severity": "medium",
+    "cvss_score": 5.5,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 5.5,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-77",
+        "cwe_name": "Improper Neutralization of Special Elements used in a Command ('Command Injection')"
+      },
+      {
+        "cwe_id": "CWE-617",
+        "cwe_name": "Reachable Assertion"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.27369,
+      "epss_percentile": 0.96141
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "vendor": "redis",
+      "product": "redis"
+    },
+    "reference": [
+      "https://github.com/redis/redis/releases/tag/7.0.10",
+      "https://security.netapp.com/advisory/ntap-20230413-0005/",
+      "https://github.com/ARPSyndicate/cvemon",
+      "https://github.com/cckuailong/awesome-gpt-security"
+    ],
+    "vendor_advisory": "https://github.com/redis/redis/security/advisories/GHSA-mvmm-4vq6-vw8c",
+    "patch_url": [
+      "https://github.com/redis/redis/commit/48e0d4788434833b47892fe9f3d91be7687f25c9",
+      "https://github.com/redis/redis/commit/48e0d4788434833b47892fe9f3d91be7687f25c9"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2023-03-20T20:15:52.787",
+    "updated_at": "2024-11-21T07:55:02.423",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 825,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": false,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 2,
+      "query": [
+        "http.html:\"redis.conf\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2023-25155",
+    "cve_description": "Redis is an in-memory database that persists on disk. Authenticated users issuing specially crafted `SRANDMEMBER`, `ZRANDMEMBER`, and `HRANDFIELD` commands can trigger an integer overflow, resulting in a runtime assertion and termination of the Redis server process. This problem affects all Redis versions. Patches were released in Redis version(s) 6.0.18, 6.2.11 and 7.0.9.",
+    "severity": "medium",
+    "cvss_score": 5.5,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 5.5,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-190",
+        "cwe_name": "Integer Overflow or Wraparound"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.0296,
+      "epss_percentile": 0.85864
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "vendor": "redis",
+      "product": "redis"
+    },
+    "reference": [
+      "https://github.com/redis/redis/releases/tag/6.0.18",
+      "https://github.com/redis/redis/releases/tag/6.2.11",
+      "https://github.com/redis/redis/releases/tag/7.0.9"
+    ],
+    "vendor_advisory": "https://github.com/redis/redis/security/advisories/GHSA-x2r7-j9vw-3w83",
+    "patch_url": [
+      "https://github.com/redis/redis/commit/2a2a582e7cd99ba3b531336b8bd41df2b566e619",
+      "https://github.com/redis/redis/commit/2a2a582e7cd99ba3b531336b8bd41df2b566e619"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2023-03-02T04:15:10.807",
+    "updated_at": "2024-11-21T07:49:12.907",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 844,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": false,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 2,
+      "query": [
+        "http.html:\"redis.conf\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2023-22593",
+    "cve_description": "\nIBM Robotic Process Automation for Cloud Pak 21.0.1 through 21.0.7.3 and 23.0.0 through 23.0.3 is vulnerable to security misconfiguration of the Redis container which may provide elevated privileges.  IBM X-Force ID:  244074.\n\n",
+    "severity": "medium",
+    "cvss_score": 4,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 4,
+        "vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "NVD-CWE-noinfo"
+      },
+      {
+        "cwe_id": "CWE-863",
+        "cwe_name": "Incorrect Authorization"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00025,
+      "epss_percentile": 0.05063
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:ibm:robotic_process_automation:*:*:*:*:*:*:*:*",
+      "vendor": "ibm",
+      "product": "robotic_process_automation"
+    },
+    "vendor_advisory": "https://www.ibm.com/support/pages/node/7006001",
+    "patch_url": [
+      "https://www.ibm.com/support/pages/node/7006001",
+      "https://www.ibm.com/support/pages/node/7006001"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "psirt@us.ibm.com",
+    "published_at": "2023-06-27T19:15:09.187",
+    "updated_at": "2024-11-21T07:45:01.570",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 726,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": false,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:ibm:robotic_process_automation:*:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2023-22458",
+    "cve_description": "Redis is an in-memory database that persists on disk. Authenticated users can issue a `HRANDFIELD` or `ZRANDMEMBER` command with specially crafted arguments to trigger a denial-of-service by crashing Redis with an assertion failure. This problem affects Redis versions 6.2 or newer up to but not including 6.2.9 as well as versions 7.0 up to but not including 7.0.8. Users are advised to upgrade. There are no known workarounds for this vulnerability.",
+    "severity": "medium",
+    "cvss_score": 5.5,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 5.5,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-190",
+        "cwe_name": "Integer Overflow or Wraparound"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.667,
+      "epss_percentile": 0.98425
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "vendor": "redis",
+      "product": "redis"
+    },
+    "reference": [
+      "https://github.com/redis/redis/releases/tag/6.2.9",
+      "https://github.com/redis/redis/releases/tag/7.0.8",
+      "https://github.com/redis/redis/security/advisories/GHSA-r8w2-2m53-gprj",
+      "https://github.com/ARPSyndicate/cvemon",
+      "https://github.com/redis-windows/redis-windows"
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/redis/redis/commit/16f408b1a0121cacd44cbf8aee275d69dc627f02",
+      "https://github.com/redis/redis/commit/16f408b1a0121cacd44cbf8aee275d69dc627f02"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2023-01-20T19:15:17.917",
+    "updated_at": "2024-11-21T07:44:50.810",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 884,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": false,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 2,
+      "query": [
+        "http.html:\"redis.conf\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2022-41331",
+    "cve_description": "A missing authentication for critical function vulnerability [CWE-306] in FortiPresence infrastructure server before version 1.2.1 allows a remote, unauthenticated attacker to access the Redis and MongoDB instances via crafted authentication requests.",
+    "severity": "critical",
+    "cvss_score": 9.8,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "critical"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-306",
+        "cwe_name": "Missing Authentication for Critical Function"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.01089,
+      "epss_percentile": 0.76885
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:fortinet:fortiproxy:*:*:*:*:*:*:*:*",
+      "vendor": "fortinet",
+      "product": "fortiproxy"
+    },
+    "reference": [
+      "https://github.com/karimhabush/cyberowl"
+    ],
+    "vendor_advisory": "https://fortiguard.com/psirt/FG-IR-22-355",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "psirt@fortinet.com",
+    "published_at": "2023-04-11T17:15:07.437",
+    "updated_at": "2024-11-21T07:23:04.220",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 803,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:fortinet:fortiproxy:*:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2022-39267",
+    "cve_description": "Bifrost is a heterogeneous middleware that synchronizes MySQL, MariaDB to Redis, MongoDB, ClickHouse, MySQL and other services for production environments. Versions prior to 1.8.8-release are subject to authentication bypass in the admin and monitor user groups by deleting the X-Requested-With: XMLHttpRequest field in the request header. This issue has been patched in 1.8.8-release. There are no known workarounds.",
+    "severity": "high",
+    "cvss_score": 8.8,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-287",
+        "cwe_name": "Improper Authentication"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00039,
+      "epss_percentile": 0.11305
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:xbifrost:bifrost:*:*:*:*:*:*:*:*",
+      "vendor": "xbifrost",
+      "product": "bifrost"
+    },
+    "reference": [
+      "https://github.com/brockercap/Bifrost/pull/201"
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/brokercap/Bifrost/security/advisories/GHSA-mxrx-fg8p-5p5j",
+      "https://github.com/brokercap/Bifrost/security/advisories/GHSA-mxrx-fg8p-5p5j"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2022-10-19T13:15:08.753",
+    "updated_at": "2024-11-21T07:17:55.117",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 977,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:xbifrost:bifrost:*:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2022-39263",
+    "cve_description": "`@next-auth/upstash-redis-adapter` is the Upstash Redis adapter for NextAuth.js, which provides authentication for Next.js. Applications that use `next-auth` Email Provider and `@next-auth/upstash-redis-adapter` before v3.0.2 are affected by this vulnerability. The Upstash Redis adapter implementation did not check for both the identifier (email) and the token, but only checking for the identifier when verifying the token in the email callback flow. An attacker who knows about the victim's email could easily sign in as the victim, given the attacker also knows about the verification token's expired duration. The vulnerability is patched in v3.0.2. A workaround is available. Using Advanced Initialization, developers can check the requests and compare the query's token and identifier before proceeding.",
+    "severity": "medium",
+    "cvss_score": 6.8,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 6.8,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-287",
+        "cwe_name": "Improper Authentication"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00095,
+      "epss_percentile": 0.27776
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:nextauth.js:next-auth:*:*:*:*:*:node.js:*:*",
+      "vendor": "nextauth.js",
+      "product": "next-auth",
+      "framework": "node.js"
+    },
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/nextauthjs/next-auth/commit/d16e04848ee703cf797724194d4ad2907fe125a9",
+      "https://github.com/nextauthjs/next-auth/security/advisories/GHSA-4rxr-27mm-mxq9",
+      "https://github.com/nextauthjs/next-auth/commit/d16e04848ee703cf797724194d4ad2907fe125a9",
+      "https://github.com/nextauthjs/next-auth/security/advisories/GHSA-4rxr-27mm-mxq9"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2022-09-28T21:15:14.590",
+    "updated_at": "2024-11-21T07:17:54.553",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 998,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:nextauth.js:next-auth:*:*:*:*:*:node.js:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2022-3734",
+    "cve_description": "A vulnerability was found in a port or fork of Redis. It has been declared as critical. This vulnerability affects unknown code in the library C:/Program Files/Redis/dbghelp.dll. The manipulation leads to uncontrolled search path. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. The real existence of this vulnerability is still doubted at the moment. The identifier of this vulnerability is VDB-212416. NOTE: The official Redis release is not affected. This issue might affect an unofficial fork or port on Windows only.",
+    "severity": "medium",
+    "cvss_score": 6.3,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 6.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-426",
+        "cwe_name": "Untrusted Search Path"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00113,
+      "epss_percentile": 0.3095
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redis:redis:-:*:*:*:*:*:*:*",
+      "vendor": "redis",
+      "product": "redis"
+    },
+    "reference": [
+      "https://vuldb.com/?id.212416",
+      "https://www.cnblogs.com/J0o1ey/p/16829380.html",
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "poc": [
+      {
+        "url": "https://vuldb.com/?id.212416",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cna@vuldb.com",
+    "published_at": "2022-10-28T08:15:14.640",
+    "updated_at": "2024-11-21T07:20:07.950",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 969,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redis:redis:-:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 2,
+      "query": [
+        "http.html:\"redis.conf\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2022-3647",
+    "cve_description": "** DISPUTED ** A vulnerability, which was classified as problematic, was found in Redis up to 6.2.7/7.0.5. Affected is the function sigsegvHandler of the file debug.c of the component Crash Report. The manipulation leads to denial of service. The complexity of an attack is rather high. The exploitability is told to be difficult. The real existence of this vulnerability is still doubted at the moment. Upgrading to version 6.2.8 and 7.0.6 is able to address this issue. The patch is identified as 0bf90d944313919eb8e63d3588bf63a367f020a3. It is recommended to apply a patch to fix this issue. VDB-211962 is the identifier assigned to this vulnerability. NOTE: The vendor claims that this is not a DoS because it applies to the crash logging mechanism which is triggered after a crash has occurred.",
+    "severity": "low",
+    "cvss_score": 3.1,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 1.8,
+        "vector": "CVSS:2.0/AV:A/AC:H/Au:N/C:N/I:N/A:P",
+        "severity": "low"
+      },
+      "cvss31": {
+        "score": 3.1,
+        "vector": "CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L",
+        "severity": "low"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-404",
+        "cwe_name": "Improper Resource Shutdown or Release"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.0007,
+      "epss_percentile": 0.22071
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "vendor": "redis",
+      "product": "redis"
+    },
+    "reference": [
+      "https://vuldb.com/?ctiid.211962",
+      "https://vuldb.com/?id.211962",
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/redis/redis/commit/0bf90d944313919eb8e63d3588bf63a367f020a3",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/redis/redis/commit/0bf90d944313919eb8e63d3588bf63a367f020a3",
+        "source": "NVD",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/redis/redis/commit/0bf90d944313919eb8e63d3588bf63a367f020a3",
+      "https://github.com/redis/redis/commit/0bf90d944313919eb8e63d3588bf63a367f020a3"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cna@vuldb.com",
+    "published_at": "2022-10-21T18:15:10.183",
+    "updated_at": "2024-11-21T07:19:57.000",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 975,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": false,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 2,
+      "query": [
+        "http.html:\"redis.conf\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2022-36076",
+    "cve_description": "NodeBB Forum Software is powered by Node.js and supports either Redis, MongoDB, or a PostgreSQL database. Due to an unnecessarily strict conditional in the code handling the first step of the SSO process, the pre-existing logic that added (and later checked) a nonce was inadvertently rendered opt-in instead of opt-out. This re-exposed a vulnerability in that a specially crafted Man-in-the-Middle (MITM) attack could theoretically take over another user account during the single sign-on process. The issue has been fully patched in version 1.17.2.",
+    "severity": "high",
+    "cvss_score": 8.8,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-352",
+        "cwe_name": "Cross-Site Request Forgery (CSRF)"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00114,
+      "epss_percentile": 0.30981
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:nodebb:nodebb:*:*:*:*:*:*:*:*",
+      "vendor": "nodebb",
+      "product": "nodebb"
+    },
+    "poc": [
+      {
+        "url": "https://blogs.opera.com/security/2022/03/bug-bounty-adventures-a-nodebb-0-day/",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/NodeBB/NodeBB/security/advisories/GHSA-xmgg-fx9p-prq6",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://blogs.opera.com/security/2022/03/bug-bounty-adventures-a-nodebb-0-day/",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/NodeBB/NodeBB/security/advisories/GHSA-xmgg-fx9p-prq6",
+        "source": "NVD",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/NodeBB/NodeBB/commit/a2400f6baff44cb2996487bcd0cc6e2acc74b3d4",
+      "https://github.com/NodeBB/NodeBB/security/advisories/GHSA-xmgg-fx9p-prq6",
+      "https://github.com/NodeBB/NodeBB/commit/a2400f6baff44cb2996487bcd0cc6e2acc74b3d4",
+      "https://github.com/NodeBB/NodeBB/security/advisories/GHSA-xmgg-fx9p-prq6"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2022-09-02T13:15:08.847",
+    "updated_at": "2024-11-21T07:12:19.727",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1024,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:nodebb:nodebb:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 802,
+      "query": [
+        "cpe:\"cpe:2.3:a:nodebb:nodebb\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2022-36045",
+    "cve_description": "NodeBB Forum Software is powered by Node.js and supports either Redis, MongoDB, or a PostgreSQL database. It utilizes web sockets for instant interactions and real-time notifications. `utils.generateUUID`, a helper function available in essentially all versions of NodeBB (as far back as v1.0.1 and potentially earlier) used a cryptographically insecure Pseudo-random number generator (`Math.random()`), which meant that a specially crafted script combined with multiple invocations of the password reset functionality could enable an attacker to correctly calculate the reset code for an account they do not have access to. This vulnerability impacts all installations of NodeBB. The vulnerability allows for an attacker to take over any account without the involvement of the victim, and as such, the remediation should be applied immediately (either via NodeBB upgrade or cherry-pick of the specific changeset. The vulnerability has been patched in version 2.x and 1.19.x. There is no known workaround, but the patch sets listed above will fully patch the vulnerability.",
+    "severity": "critical",
+    "cvss_score": 9,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 9,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H",
+        "severity": "critical"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-330",
+        "cwe_name": "Use of Insufficiently Random Values"
+      },
+      {
+        "cwe_id": "CWE-338",
+        "cwe_name": "Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.0022,
+      "epss_percentile": 0.44705
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:nodebb:nodebb:*:*:*:*:*:*:*:*",
+      "vendor": "nodebb",
+      "product": "nodebb"
+    },
+    "reference": [
+      "https://github.com/NodeBB/NodeBB/security/advisories/GHSA-p4cc-w597-6cpm",
+      "https://github.com/HakuPiku/CVEs"
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/NodeBB/NodeBB/commit/81e3c1ba488d03371a5ce8d0ebb5c5803026e0f9",
+      "https://github.com/NodeBB/NodeBB/commit/e802fab87f94a13f397f04cfe6068f2f7ddf7888",
+      "https://github.com/NodeBB/NodeBB/commit/81e3c1ba488d03371a5ce8d0ebb5c5803026e0f9",
+      "https://github.com/NodeBB/NodeBB/commit/e802fab87f94a13f397f04cfe6068f2f7ddf7888"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2022-08-31T15:15:08.857",
+    "updated_at": "2024-11-21T07:12:15.687",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1026,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:nodebb:nodebb:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:nodebb:nodebb:2.0.0:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 802,
+      "query": [
+        "cpe:\"cpe:2.3:a:nodebb:nodebb\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2022-36021",
+    "cve_description": "Redis is an in-memory database that persists on disk. Authenticated users can use string matching commands (like `SCAN` or `KEYS`) with a specially crafted pattern to trigger a denial-of-service attack on Redis, causing it to hang and consume 100% CPU time. The problem is fixed in Redis versions 6.0.18, 6.2.11, 7.0.9.\n",
+    "severity": "medium",
+    "cvss_score": 5.5,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 5.5,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-407",
+        "cwe_name": "Inefficient Algorithmic Complexity"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.737,
+      "epss_percentile": 0.98733
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "vendor": "redis",
+      "product": "redis"
+    },
+    "reference": [
+      "https://github.com/thaliaarchi/antirez-stringmatch"
+    ],
+    "vendor_advisory": "https://github.com/redis/redis/security/advisories/GHSA-jr7j-rfj5-8xqv",
+    "patch_url": [
+      "https://github.com/redis/redis/commit/dcbfcb916ca1a269b3feef86ee86835294758f84",
+      "https://github.com/redis/redis/commit/dcbfcb916ca1a269b3feef86ee86835294758f84"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2023-03-01T16:15:09.400",
+    "updated_at": "2024-11-21T07:12:12.090",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 844,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": false,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 2,
+      "query": [
+        "http.html:\"redis.conf\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2022-35977",
+    "cve_description": "Redis is an in-memory database that persists on disk. Authenticated users issuing specially crafted `SETRANGE` and `SORT(_RO)` commands can trigger an integer overflow, resulting with Redis attempting to allocate impossible amounts of memory and abort with an out-of-memory (OOM) panic. The problem is fixed in Redis versions 7.0.8, 6.2.9 and 6.0.17. Users are advised to upgrade. There are no known workarounds for this vulnerability.",
+    "severity": "medium",
+    "cvss_score": 5.5,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 5.5,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-190",
+        "cwe_name": "Integer Overflow or Wraparound"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.46126,
+      "epss_percentile": 0.97489
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "vendor": "redis",
+      "product": "redis"
+    },
+    "reference": [
+      "https://github.com/redis/redis/releases/tag/6.0.17",
+      "https://github.com/redis/redis/releases/tag/6.2.9",
+      "https://github.com/redis/redis/releases/tag/7.0.8",
+      "https://github.com/redis/redis/security/advisories/GHSA-mrcw-fhw9-fj8j",
+      "https://github.com/ARPSyndicate/cvemon",
+      "https://github.com/leesh3288/leesh3288",
+      "https://github.com/redis-windows/redis-windows"
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/redis/redis/commit/1ec82e6e97e1db06a72ca505f9fbf6b981f31ef7",
+      "https://github.com/redis/redis/commit/1ec82e6e97e1db06a72ca505f9fbf6b981f31ef7"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2023-01-20T19:15:14.470",
+    "updated_at": "2024-11-21T07:12:05.760",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 884,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": false,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 2,
+      "query": [
+        "http.html:\"redis.conf\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2022-35951",
+    "cve_description": "Redis is an in-memory database that persists on disk. Versions 7.0.0 and above, prior to 7.0.5 are vulnerable to an Integer Overflow. Executing an `XAUTOCLAIM` command on a stream key in a specific state, with a specially crafted `COUNT` argument may cause an integer overflow, a subsequent heap overflow, and potentially lead to remote code execution. This has been patched in Redis version 7.0.5. No known workarounds exist.",
+    "severity": "high",
+    "cvss_score": 7,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 7,
+        "vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-190",
+        "cwe_name": "Integer Overflow or Wraparound"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.80412,
+      "epss_percentile": 0.99065
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "vendor": "redis",
+      "product": "redis"
+    },
+    "reference": [
+      "https://github.com/redis/redis/security/advisories/GHSA-5gc4-76rx-22c9",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/A7INCOOFPPEAKNDBZU3TIZJPYXBULI2C/",
+      "https://security.gentoo.org/glsa/202209-17",
+      "https://security.netapp.com/advisory/ntap-20221020-0005/",
+      "https://github.com/ARPSyndicate/cvemon",
+      "https://github.com/leesh3288/leesh3288"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2022-09-23T04:15:11.220",
+    "updated_at": "2024-11-21T07:12:02.297",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1004,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": false,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:37:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 2,
+      "query": [
+        "http.html:\"redis.conf\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2022-33105",
+    "cve_description": "Redis v7.0 was discovered to contain a memory leak via the component streamGetEdgeID.",
+    "severity": "high",
+    "cvss_score": 7.5,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 5,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:N/C:N/I:N/A:P",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-401",
+        "cwe_name": "Missing Release of Memory after Effective Lifetime"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00595,
+      "epss_percentile": 0.6828
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redis:redis:7.0:*:*:*:*:*:*:*",
+      "vendor": "redis",
+      "product": "redis"
+    },
+    "reference": [
+      "https://raw.githubusercontent.com/redis/redis/7.0.1/00-RELEASENOTES",
+      "https://security.gentoo.org/glsa/202209-17",
+      "https://security.netapp.com/advisory/ntap-20220729-0005/",
+      "https://github.com/cyb3r-w0lf/nuclei-template-collection",
+      "https://github.com/20142995/nuclei-templates",
+      "https://github.com/ARPSyndicate/cvemon"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/redis/redis/pull/10753",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/redis/redis/pull/10829",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/redis/redis/pull/10753",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/redis/redis/pull/10829",
+        "source": "NVD",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/redis/redis/commit/4a7a4e42db8ff757cdf3f4a824f66426036034ef",
+      "https://github.com/redis/redis/pull/10753",
+      "https://github.com/redis/redis/commit/4a7a4e42db8ff757cdf3f4a824f66426036034ef",
+      "https://github.com/redis/redis/pull/10753"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2022-06-23T17:15:14.747",
+    "updated_at": "2024-11-21T07:07:32.907",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1095,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redis:redis:7.0:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 2,
+      "query": [
+        "http.html:\"redis.conf\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2022-31144",
+    "cve_description": "Redis is an in-memory database that persists on disk. A specially crafted `XAUTOCLAIM` command on a stream key in a specific state may result with heap overflow, and potentially remote code execution. This problem affects versions on the 7.x branch prior to 7.0.4. The patch is released in version 7.0.4.",
+    "severity": "high",
+    "cvss_score": 7,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 7,
+        "vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-122",
+        "cwe_name": "Heap-based Buffer Overflow"
+      },
+      {
+        "cwe_id": "CWE-787",
+        "cwe_name": "Out-of-bounds Write"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.12625,
+      "epss_percentile": 0.93622
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "vendor": "redis",
+      "product": "redis"
+    },
+    "reference": [
+      "https://github.com/redis/redis/releases/tag/7.0.4",
+      "https://github.com/redis/redis/security/advisories/GHSA-96f7-42fg-2jrh",
+      "https://security.gentoo.org/glsa/202209-17",
+      "https://security.netapp.com/advisory/ntap-20220909-0002/",
+      "https://github.com/ARPSyndicate/cvemon",
+      "https://github.com/SpiralBL0CK/CVE-2022-31144",
+      "https://github.com/k0mi-tg/CVE-POC",
+      "https://github.com/manas3c/CVE-POC",
+      "https://github.com/nomi-sec/PoC-in-GitHub",
+      "https://github.com/whoforget/CVE-POC"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/SpiralBL0CK/CVE-2022-31144",
+        "source": "gh-nomi-sec",
+        "added_at": "2023-02-03T08:40:38Z"
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2022-07-19T21:15:15.087",
+    "updated_at": "2024-11-21T07:03:59.330",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1069,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": false,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 2,
+      "query": [
+        "http.html:\"redis.conf\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2022-24834",
+    "cve_description": "Redis is an in-memory database that persists on disk. A specially crafted Lua script executing in Redis can trigger a heap overflow in the cjson library, and result with heap corruption and potentially remote code execution. The problem exists in all versions of Redis with Lua scripting support, starting from 2.6, and affects only authenticated and authorized users. The problem is fixed in versions 7.0.12, 6.2.13, and 6.0.20.",
+    "severity": "high",
+    "cvss_score": 7,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 7,
+        "vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-122",
+        "cwe_name": "Heap-based Buffer Overflow"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.29967,
+      "epss_percentile": 0.96397
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "vendor": "redis",
+      "product": "redis"
+    },
+    "reference": [
+      "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/MIF5MAGYARYUMRFK7PQI7HYXMK2HZE5T/",
+      "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/TDNNH2ONMVNBQ6LUIAOAGDNFPKXNST5K/",
+      "https://security.netapp.com/advisory/ntap-20230814-0006/",
+      "https://github.com/0xor0ne/awesome-list",
+      "https://github.com/DukeSec97/CVE-2022-24834-",
+      "https://github.com/PsychoPunkSage/Chronark",
+      "https://github.com/convisolabs/CVE-2022-24834",
+      "https://github.com/nomi-sec/PoC-in-GitHub"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/DukeSec97/CVE-2022-24834-",
+        "source": "gh-nomi-sec",
+        "added_at": "2024-08-18T12:33:36Z"
+      },
+      {
+        "url": "https://github.com/convisolabs/CVE-2022-24834",
+        "source": "gh-nomi-sec",
+        "added_at": "2023-07-28T17:42:33Z"
+      }
+    ],
+    "vendor_advisory": "https://github.com/redis/redis/security/advisories/GHSA-p8x2-9v9q-c838",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2023-07-13T15:15:08.817",
+    "updated_at": "2024-11-21T06:51:12.103",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 710,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": false,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:37:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:38:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 2,
+      "query": [
+        "http.html:\"redis.conf\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2022-24736",
+    "cve_description": "Redis is an in-memory database that persists on disk. Prior to versions 6.2.7 and 7.0.0, an attacker attempting to load a specially crafted Lua script can cause NULL pointer dereference which will result with a crash of the redis-server process. The problem is fixed in Redis versions 7.0.0 and 6.2.7. An additional workaround to mitigate this problem without patching the redis-server executable, if Lua scripting is not being used, is to block access to `SCRIPT LOAD` and `EVAL` commands using ACL rules.",
+    "severity": "low",
+    "cvss_score": 3.3,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 2.1,
+        "vector": "CVSS:2.0/AV:L/AC:L/Au:N/C:N/I:N/A:P",
+        "severity": "low"
+      },
+      "cvss31": {
+        "score": 3.3,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L",
+        "severity": "low"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-476",
+        "cwe_name": "NULL Pointer Dereference"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00344,
+      "epss_percentile": 0.56266
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "vendor": "redis",
+      "product": "redis"
+    },
+    "reference": [
+      "https://github.com/redis/redis/releases/tag/6.2.7",
+      "https://github.com/redis/redis/releases/tag/7.0.0",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/J4ZK3675DGHVVDOFLJN7WX6YYH27GPMK/",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/VPYKSG7LKUJGVM2P72EHXKVRVRWHLORX/",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/WSTPUCAPBRHIFPSCOURR4OYX4E2OISAF/",
+      "https://security.gentoo.org/glsa/202209-17",
+      "https://security.netapp.com/advisory/ntap-20220715-0003/",
+      "https://github.com/ARPSyndicate/cvemon"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/redis/redis/pull/10651",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/redis/redis/pull/10651",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://www.oracle.com/security-alerts/cpujul2022.html",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/redis/redis/security/advisories/GHSA-3qpw-7686-5984",
+      "https://www.oracle.com/security-alerts/cpujul2022.html",
+      "https://github.com/redis/redis/security/advisories/GHSA-3qpw-7686-5984",
+      "https://www.oracle.com/security-alerts/cpujul2022.html"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2022-04-27T20:15:09.857",
+    "updated_at": "2024-11-21T06:50:58.983",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1152,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": false,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:redis:redis:7.0:rc1:*:*:*:*:*:*",
+      "cpe:2.3:a:redis:redis:7.0:rc2:*:*:*:*:*:*",
+      "cpe:2.3:a:redis:redis:7.0:rc3:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:34:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:35:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:36:*:*:*:*:*:*:*",
+      "cpe:2.3:a:netapp:management_services_for_element_software:-:*:*:*:*:*:*:*",
+      "cpe:2.3:a:netapp:management_services_for_netapp_hci:-:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:communications_operations_monitor:4.3:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:communications_operations_monitor:4.4:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:communications_operations_monitor:5.0:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 2,
+      "query": [
+        "http.html:\"redis.conf\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2022-24735",
+    "cve_description": "Redis is an in-memory database that persists on disk. By exploiting weaknesses in the Lua script execution environment, an attacker with access to Redis prior to version 7.0.0 or 6.2.7 can inject Lua code that will execute with the (potentially higher) privileges of another Redis user. The Lua script execution environment in Redis provides some measures that prevent a script from creating side effects that persist and can affect the execution of the same, or different script, at a later time. Several weaknesses of these measures have been publicly known for a long time, but they had no security impact as the Redis security model did not endorse the concept of users or privileges. With the introduction of ACLs in Redis 6.0, these weaknesses can be exploited by a less privileged users to inject Lua code that will execute at a later time, when a privileged user executes a Lua script. The problem is fixed in Redis versions 7.0.0 and 6.2.7. An additional workaround to mitigate this problem without patching the redis-server executable, if Lua scripting is not being used, is to block access to `SCRIPT LOAD` and `EVAL` commands using ACL rules.",
+    "severity": "low",
+    "cvss_score": 3.9,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 6.8,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:N/C:P/I:P/A:P",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 3.9,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:N",
+        "severity": "low"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-94",
+        "cwe_name": "Improper Control of Generation of Code ('Code Injection')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.01946,
+      "epss_percentile": 0.82582
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "vendor": "redis",
+      "product": "redis"
+    },
+    "reference": [
+      "https://github.com/redis/redis/releases/tag/6.2.7",
+      "https://github.com/redis/redis/releases/tag/7.0.0",
+      "https://github.com/redis/redis/security/advisories/GHSA-647m-2wmq-qmvq",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/J4ZK3675DGHVVDOFLJN7WX6YYH27GPMK/",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/VPYKSG7LKUJGVM2P72EHXKVRVRWHLORX/",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/WSTPUCAPBRHIFPSCOURR4OYX4E2OISAF/",
+      "https://security.gentoo.org/glsa/202209-17",
+      "https://security.netapp.com/advisory/ntap-20220715-0003/",
+      "https://github.com/ARPSyndicate/cvemon"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/redis/redis/pull/10651",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/redis/redis/pull/10651",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://www.oracle.com/security-alerts/cpujul2022.html",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://www.oracle.com/security-alerts/cpujul2022.html",
+      "https://www.oracle.com/security-alerts/cpujul2022.html"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2022-04-27T20:15:09.730",
+    "updated_at": "2024-11-21T06:50:58.810",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1152,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": false,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:redis:redis:7.0:rc1:*:*:*:*:*:*",
+      "cpe:2.3:a:redis:redis:7.0:rc2:*:*:*:*:*:*",
+      "cpe:2.3:a:redis:redis:7.0:rc3:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:34:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:35:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:36:*:*:*:*:*:*:*",
+      "cpe:2.3:a:netapp:management_services_for_element_software:-:*:*:*:*:*:*:*",
+      "cpe:2.3:a:netapp:management_services_for_netapp_hci:-:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:communications_operations_monitor:4.3:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:communications_operations_monitor:4.4:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:communications_operations_monitor:5.0:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 2,
+      "query": [
+        "http.html:\"redis.conf\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2022-20821",
+    "cve_description": "A vulnerability in the health check RPM of Cisco IOS XR Software could allow an unauthenticated, remote attacker to access the Redis instance that is running within the NOSi container. This vulnerability exists because the health check RPM opens TCP port 6379 by default upon activation. An attacker could exploit this vulnerability by connecting to the Redis instance on the open port. A successful exploit could allow the attacker to write to the Redis in-memory database, write arbitrary files to the container filesystem, and retrieve information about the Redis database. Given the configuration of the sandboxed container that the Redis instance runs in, a remote attacker would be unable to execute remote code or abuse the integrity of the Cisco IOS XR Software host system.",
+    "severity": "medium",
+    "cvss_score": 6.5,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 6.4,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:N/C:P/I:P/A:N",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-200",
+        "cwe_name": "Exposure of Sensitive Information to an Unauthorized Actor"
+      },
+      {
+        "cwe_id": "NVD-CWE-noinfo"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.26217,
+      "epss_percentile": 0.96015
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:o:cisco:ios_xr:-:*:*:*:*:*:*:*",
+      "vendor": "cisco",
+      "product": "ios_xr"
+    },
+    "reference": [
+      "https://github.com/Ostorlab/KEV",
+      "https://github.com/Ostorlab/known_exploited_vulnerbilities_detectors",
+      "https://github.com/santosomar/kev_checker"
+    ],
+    "vendor_advisory": "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-iosxr-redis-ABJyE5xK",
+    "is_template": false,
+    "is_exploited": true,
+    "kev": {
+      "added_date": "2022-05-23",
+      "due_date": "2022-06-13",
+      "known_ransomware_campaign_use": false
+    },
+    "assignee": "psirt@cisco.com",
+    "published_at": "2022-05-26T14:15:08.123",
+    "updated_at": "2025-02-24T15:24:27.177",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1123,
+    "vuln_status": "confirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:o:cisco:ios_xr:-:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2022-0543",
+    "cve_description": "It was discovered, that redis, a persistent key-value database, due to a packaging issue, is prone to a (Debian-specific) Lua sandbox escape, which could result in remote code execution.",
+    "severity": "critical",
+    "cvss_score": 10,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 10,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:N/C:C/I:C/A:C",
+        "severity": "critical"
+      },
+      "cvss31": {
+        "score": 10,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+        "severity": "critical"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-862",
+        "cwe_name": "Missing Authorization"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.94385,
+      "epss_percentile": 0.9996
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redis:redis:-:*:*:*:*:*:*:*",
+      "vendor": "redis",
+      "product": "redis"
+    },
+    "reference": [
+      "https://lists.debian.org/debian-security-announce/2022/msg00048.html",
+      "https://security.netapp.com/advisory/ntap-20220331-0004/",
+      "https://www.debian.org/security/2022/dsa-5081",
+      "https://www.ubercomp.com/posts/2022-01-20_redis_on_debian_rce",
+      "https://github.com/Yang8miao/prov_navigator",
+      "https://github.com/aodsec/CVE-2022-0543",
+      "https://github.com/gwyomarch/Shared-HTB-Writeup-FR",
+      "https://github.com/zecool/cve",
+      "https://github.com/ARPSyndicate/cvemon",
+      "https://github.com/soosmile/POC"
+    ],
+    "poc": [
+      {
+        "url": "http://packetstormsecurity.com/files/166885/Redis-Lua-Sandbox-Escape.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "http://packetstormsecurity.com/files/166885/Redis-Lua-Sandbox-Escape.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/SiennaSkies/redisHack",
+        "source": "gh-nomi-sec",
+        "added_at": "2023-05-10T05:05:31Z"
+      },
+      {
+        "url": "https://github.com/JacobEbben/CVE-2022-0543",
+        "source": "gh-nomi-sec",
+        "added_at": "2022-09-01T16:44:56Z"
+      },
+      {
+        "url": "https://github.com/z92g/CVE-2022-0543",
+        "source": "gh-nomi-sec",
+        "added_at": "2022-07-06T04:35:59Z"
+      },
+      {
+        "url": "https://github.com/0x7eTeam/CVE-2022-0543",
+        "source": "gh-nomi-sec",
+        "added_at": "2022-03-16T06:41:50Z"
+      },
+      {
+        "url": "http://packetstormsecurity.com/files/166885/Redis-Lua-Sandbox-Escape.html",
+        "source": "trickest",
+        "added_at": ""
+      },
+      {
+        "url": "https://www.ubercomp.com/posts/2022-01-20_redis_on_debian_rce",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://bugs.debian.org/1005787",
+      "https://bugs.debian.org/1005787"
+    ],
+    "is_template": true,
+    "nuclei_templates": {
+      "template_path": "network/cves/2022/CVE-2022-0543.yaml",
+      "template_url": "https://cloud.projectdiscovery.io/public/CVE-2022-0543",
+      "created_at": "2022-04-28T20:21:04+07:00",
+      "updated_at": "2025-05-27T10:39:47+08:00"
+    },
+    "is_exploited": true,
+    "kev": {
+      "added_date": "2022-03-28",
+      "due_date": "2022-04-18",
+      "known_ransomware_campaign_use": false
+    },
+    "assignee": "security@debian.org",
+    "published_at": "2022-02-18T20:15:17.583",
+    "updated_at": "2025-04-02T20:22:56.740",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1220,
+    "vuln_status": "confirmed",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redis:redis:-:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 2,
+      "query": [
+        "http.html:\"redis.conf\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2021-43697",
+    "cve_description": "Workerman-ThinkPHP-Redis (last update Mar 16, 2018) is affected by a Cross Site Scripting (XSS) vulnerability. In file Controller.class.php, the exit function will terminate the script and print the message to the user. The message will contain $_GET{C('VAR_JSONP_HANDLER')] then there is a XSS vulnerability.",
+    "severity": "medium",
+    "cvss_score": 6.1,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 4.3,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:N/C:N/I:P/A:N",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.0024,
+      "epss_percentile": 0.47263
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:workerman-thinkphp-redis_project:workerman-thinkphp-redis:*:*:*:*:*:*:*:*",
+      "vendor": "workerman-thinkphp-redis_project",
+      "product": "workerman-thinkphp-redis"
+    },
+    "poc": [
+      {
+        "url": "https://github.com/happyliu2014/Workerman-ThinkPHP-Redis/issues/1",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/happyliu2014/Workerman-ThinkPHP-Redis/issues/1",
+        "source": "NVD",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2021-11-29T13:15:07.447",
+    "updated_at": "2024-11-21T06:29:38.470",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1301,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:workerman-thinkphp-redis_project:workerman-thinkphp-redis:*:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2021-41230",
+    "cve_description": "Pomerium is an open source identity-aware access proxy. In affected versions changes to the OIDC claims of a user after initial login are not reflected in policy evaluation when using `allowed_idp_claims` as part of policy. If using `allowed_idp_claims` and a user's claims are changed, Pomerium can make incorrect authorization decisions. This issue has been resolved in v0.15.6. For users unable to upgrade clear data on `databroker` service by clearing redis or restarting the in-memory databroker to force claims to be updated.",
+    "severity": "medium",
+    "cvss_score": 5.3,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 6.5,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:S/C:P/I:P/A:P",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-863",
+        "cwe_name": "Incorrect Authorization"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00238,
+      "epss_percentile": 0.46817
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:pomerium:pomerium:*:*:*:*:*:*:*:*",
+      "vendor": "pomerium",
+      "product": "pomerium"
+    },
+    "reference": [
+      "https://github.com/pomerium/pomerium/security/advisories/GHSA-j6wp-3859-vxfg"
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/pomerium/pomerium/pull/2724",
+      "https://github.com/pomerium/pomerium/pull/2724"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2021-11-05T23:15:08.727",
+    "updated_at": "2024-11-21T06:25:50.297",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1325,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:pomerium:pomerium:*:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2021-41172",
+    "cve_description": "AS_Redis is an AntSword plugin for Redis. The Redis Manage plugin for AntSword prior to version 0.5 is vulnerable to Self-XSS due to due to insufficient input validation and sanitization via redis server configuration. Self-XSS in the plugin configuration leads to code execution. This issue is patched in version 0.5.",
+    "severity": "medium",
+    "cvss_score": 6.4,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 3.5,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:S/C:N/I:P/A:N",
+        "severity": "low"
+      },
+      "cvss31": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.0033,
+      "epss_percentile": 0.55279
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:antsword_redis_project:antsword_redis:*:*:*:*:*:antsword:*:*",
+      "vendor": "antsword_redis_project",
+      "product": "antsword_redis",
+      "framework": "antsword"
+    },
+    "reference": [
+      "https://github.com/Medicean/AS_Redis/security/advisories/GHSA-j8j6-f829-w425"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/AntSword-Store/AS_Redis/issues/1",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://mp.weixin.qq.com/s/yjuG6DLT_bSRnpggPj21Xw",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/AntSword-Store/AS_Redis/issues/1",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://mp.weixin.qq.com/s/yjuG6DLT_bSRnpggPj21Xw",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/AntSword-Store/AS_Redis/issues/1",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2021-10-26T14:15:08.067",
+    "updated_at": "2024-11-21T06:25:40.093",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1335,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:antsword_redis_project:antsword_redis:*:*:*:*:*:antsword:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2021-41099",
+    "cve_description": "Redis is an open source, in-memory database that persists on disk. An integer overflow bug in the underlying string library can be used to corrupt the heap and potentially result with denial of service or remote code execution. The vulnerability involves changing the default proto-max-bulk-len configuration parameter to a very large value and constructing specially crafted network payloads or commands. The problem is fixed in Redis versions 6.2.6, 6.0.16 and 5.0.14. An additional workaround to mitigate the problem without patching the redis-server executable is to prevent users from modifying the proto-max-bulk-len configuration parameter. This can be done using ACL to restrict unprivileged users from using the CONFIG SET command.",
+    "severity": "high",
+    "cvss_score": 7.5,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 6,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:S/C:P/I:P/A:P",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-190",
+        "cwe_name": "Integer Overflow or Wraparound"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00404,
+      "epss_percentile": 0.60052
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "vendor": "redis",
+      "product": "redis"
+    },
+    "reference": [
+      "https://github.com/redis/redis/security/advisories/GHSA-j3cr-9h5g-6cph",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/HTYQ5ZF37HNGTZWVNJD3VXP7I6MEEF42/",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/VL5KXFN3ATM7IIM7Q4O4PWTSRGZ5744Z/",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/WR5WKJWXD4D6S3DJCZ56V74ESLTDQRAB/",
+      "https://security.gentoo.org/glsa/202209-17",
+      "https://security.netapp.com/advisory/ntap-20211104-0003/",
+      "https://www.debian.org/security/2021/dsa-5001"
+    ],
+    "poc": [
+      {
+        "url": "https://www.oracle.com/security-alerts/cpuapr2022.html",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/redis/redis/commit/c6ad876774f3cc11e32681ea02a2eead00f2c521",
+      "https://www.oracle.com/security-alerts/cpuapr2022.html",
+      "https://github.com/redis/redis/commit/c6ad876774f3cc11e32681ea02a2eead00f2c521",
+      "https://www.oracle.com/security-alerts/cpuapr2022.html"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2021-10-04T18:15:09.493",
+    "updated_at": "2024-11-21T06:25:27.890",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1357,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:33:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:34:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:35:*:*:*:*:*:*:*",
+      "cpe:2.3:o:debian:debian_linux:10.0:*:*:*:*:*:*:*",
+      "cpe:2.3:o:debian:debian_linux:11.0:*:*:*:*:*:*:*",
+      "cpe:2.3:a:netapp:management_services_for_element_software_and_netapp_hci:-:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:communications_operations_monitor:4.3:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:communications_operations_monitor:4.4:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:communications_operations_monitor:5.0:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 2,
+      "query": [
+        "http.html:\"redis.conf\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2021-36043",
+    "cve_description": "Magento Commerce versions 2.4.2 (and earlier), 2.4.2-p1 (and earlier) and 2.3.7 (and earlier) are affected by a blind SSRF vulnerability in the bundled dotmailer extension. An attacker with admin privileges could abuse this to achieve remote code execution should Redis be enabled.",
+    "severity": "high",
+    "cvss_score": 8,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 6,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:S/C:P/I:P/A:P",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 8,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:C/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-918",
+        "cwe_name": "Server-Side Request Forgery (SSRF)"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.0261,
+      "epss_percentile": 0.84961
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:adobe:adobe_commerce:*:*:*:*:*:*:*:*",
+      "vendor": "adobe",
+      "product": "adobe_commerce"
+    },
+    "vendor_advisory": "https://helpx.adobe.com/security/products/magento/apsb21-64.html",
+    "patch_url": [
+      "https://helpx.adobe.com/security/products/magento/apsb21-64.html",
+      "https://helpx.adobe.com/security/products/magento/apsb21-64.html"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "psirt@adobe.com",
+    "published_at": "2021-09-01T15:15:10.293",
+    "updated_at": "2024-11-21T06:13:00.833",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1390,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": false,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:adobe:adobe_commerce:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:adobe:adobe_commerce:2.4.2:p1:*:*:*:*:*:*",
+      "cpe:2.3:a:adobe:magento_open_source:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:adobe:magento_open_source:2.4.2:p1:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2021-3470",
+    "cve_description": "A heap overflow issue was found in Redis in versions before 5.0.10, before 6.0.9 and before 6.2.0 when using a heap allocator other than jemalloc or glibc's malloc, leading to potential out of bound write or process crash. Effectively this flaw does not affect the vast majority of users, who use jemalloc or glibc malloc.",
+    "severity": "medium",
+    "cvss_score": 5.3,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 5,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:N/C:N/I:N/A:P",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-119",
+        "cwe_name": "Improper Restriction of Operations within the Bounds of a Memory Buffer"
+      },
+      {
+        "cwe_id": "CWE-787",
+        "cwe_name": "Out-of-bounds Write"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00538,
+      "epss_percentile": 0.66533
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redislabs:redis:*:*:*:*:*:*:*:*",
+      "vendor": "redislabs",
+      "product": "redis"
+    },
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://bugzilla.redhat.com/show_bug.cgi?id=1943623",
+      "https://bugzilla.redhat.com/show_bug.cgi?id=1943623"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "secalert@redhat.com",
+    "published_at": "2021-03-31T14:15:20.937",
+    "updated_at": "2024-11-21T06:21:37.290",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1544,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redislabs:redis:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:redislabs:redis:6.2.0:rc1:*:*:*:*:*:*",
+      "cpe:2.3:a:redislabs:redis:6.2.0:rc2:*:*:*:*:*:*",
+      "cpe:2.3:a:redislabs:redis:6.2.0:rc3:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 262002,
+      "query": [
+        "cpe:\"cpe:2.3:a:redislabs:redis\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2021-33026",
+    "cve_description": "The Flask-Caching extension through 1.10.1 for Flask relies on Pickle for serialization, which may lead to remote code execution or local privilege escalation. If an attacker gains access to cache storage (e.g., filesystem, Memcached, Redis, etc.), they can construct a crafted payload, poison the cache, and execute Python code. NOTE: a third party indicates that exploitation is extremely unlikely unless the machine is already compromised; in other cases, the attacker would be unable to write their payload to the cache and generate the required collision",
+    "severity": "critical",
+    "cvss_score": 9.8,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 7.5,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:N/C:P/I:P/A:P",
+        "severity": "high"
+      },
+      "cvss31": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "critical"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-502",
+        "cwe_name": "Deserialization of Untrusted Data"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.20366,
+      "epss_percentile": 0.95215
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:flask-caching_project:flask-caching:*:*:*:*:*:flask:*:*",
+      "vendor": "flask-caching_project",
+      "product": "flask-caching",
+      "framework": "flask"
+    },
+    "reference": [
+      "https://github.com/nomi-sec/PoC-in-GitHub",
+      "https://github.com/seeu-inspace/easyg",
+      "https://github.com/soosmile/POC",
+      "https://github.com/vin01/bogus-cves",
+      "https://github.com/ARPSyndicate/cvemon",
+      "https://github.com/Agilevatester/FlaskCache_CVE-2021-33026_POC",
+      "https://github.com/CarlosG13/CVE-2021-33026"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/Agilevatester/FlaskCache_CVE-2021-33026_POC",
+        "source": "gh-nomi-sec",
+        "added_at": "2024-10-08T17:27:56Z"
+      },
+      {
+        "url": "https://github.com/CarlosG13/CVE-2021-33026",
+        "source": "gh-nomi-sec",
+        "added_at": "2021-11-05T18:11:54Z"
+      }
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/pallets-eco/flask-caching/pull/209#issuecomment-1136397937",
+      "https://github.com/sh4nks/flask-caching/pull/209",
+      "https://github.com/pallets-eco/flask-caching/pull/209#issuecomment-1136397937",
+      "https://github.com/sh4nks/flask-caching/pull/209"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2021-05-13T23:15:07.367",
+    "updated_at": "2024-11-21T06:08:09.140",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1501,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:flask-caching_project:flask-caching:*:*:*:*:*:flask:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2021-32785",
+    "cve_description": "mod_auth_openidc is an authentication/authorization module for the Apache 2.x HTTP server that functions as an OpenID Connect Relying Party, authenticating users against an OpenID Connect Provider. When mod_auth_openidc versions prior to 2.4.9 are configured to use an unencrypted Redis cache (`OIDCCacheEncrypt off`, `OIDCSessionType server-cache`, `OIDCCacheType redis`), `mod_auth_openidc` wrongly performed argument interpolation before passing Redis requests to `hiredis`, which would perform it again and lead to an uncontrolled format string bug. Initial assessment shows that this bug does not appear to allow gaining arbitrary code execution, but can reliably provoke a denial of service by repeatedly crashing the Apache workers. This bug has been corrected in version 2.4.9 by performing argument interpolation only once, using the `hiredis` API. As a workaround, this vulnerability can be mitigated by setting `OIDCCacheEncrypt` to `on`, as cache keys are cryptographically hashed before use when this option is enabled.",
+    "severity": "medium",
+    "cvss_score": 5.3,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 4.3,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:N/C:N/I:N/A:P",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-134",
+        "cwe_name": "Use of Externally-Controlled Format String"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00423,
+      "epss_percentile": 0.61225
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:openidc:mod_auth_openidc:*:*:*:*:*:*:*:*",
+      "vendor": "openidc",
+      "product": "mod_auth_openidc"
+    },
+    "reference": [
+      "https://github.com/zmartzone/mod_auth_openidc/releases/tag/v2.4.9",
+      "https://github.com/zmartzone/mod_auth_openidc/security/advisories/GHSA-55r8-6w97-xxr4",
+      "https://lists.debian.org/debian-lts-announce/2023/04/msg00034.html",
+      "https://security.netapp.com/advisory/ntap-20210902-0001/"
+    ],
+    "poc": [
+      {
+        "url": "https://www.oracle.com/security-alerts/cpuapr2022.html",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/zmartzone/mod_auth_openidc/commit/dc672688dc1f2db7df8ad4abebc367116017a449",
+      "https://www.oracle.com/security-alerts/cpuapr2022.html",
+      "https://github.com/zmartzone/mod_auth_openidc/commit/dc672688dc1f2db7df8ad4abebc367116017a449",
+      "https://www.oracle.com/security-alerts/cpuapr2022.html"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2021-07-22T22:15:08.140",
+    "updated_at": "2024-11-21T06:07:44.050",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1431,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:openidc:mod_auth_openidc:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:netapp:cloud_backup:-:*:*:*:*:*:*:*",
+      "cpe:2.3:o:debian:debian_linux:10.0:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2021-32765",
+    "cve_description": "Hiredis is a minimalistic C client library for the Redis database. In affected versions Hiredis is vulnurable to integer overflow if provided maliciously crafted or corrupted `RESP` `mult-bulk` protocol data. When parsing `multi-bulk` (array-like) replies, hiredis fails to check if `count * sizeof(redisReply*)` can be represented in `SIZE_MAX`. If it can not, and the `calloc()` call doesn't itself make this check, it would result in a short allocation and subsequent buffer overflow. Users of hiredis who are unable to update may set the [maxelements](https://github.com/redis/hiredis#reader-max-array-elements) context option to a value small enough that no overflow is possible.",
+    "severity": "high",
+    "cvss_score": 8.8,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 6.5,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:S/C:P/I:P/A:P",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-190",
+        "cwe_name": "Integer Overflow or Wraparound"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00479,
+      "epss_percentile": 0.64015
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redis:hiredis:*:*:*:*:*:*:*:*",
+      "vendor": "redis",
+      "product": "hiredis"
+    },
+    "reference": [
+      "https://github.com/redis/hiredis/security/advisories/GHSA-hfm9-39pp-55p2",
+      "https://lists.debian.org/debian-lts-announce/2021/10/msg00007.html",
+      "https://security.gentoo.org/glsa/202210-32",
+      "https://security.netapp.com/advisory/ntap-20211104-0003/",
+      "https://wiki.sei.cmu.edu/confluence/display/c/MEM07-C.+Ensure+that+the+arguments+to+calloc%28%29%2C+when+multiplied%2C+do+not+wrap",
+      "https://github.com/ARPSyndicate/cvemon",
+      "https://github.com/deepin-community/hiredis",
+      "https://github.com/redis/hiredis",
+      "https://github.com/terrablue/hirediz",
+      "https://github.com/wl-ttg/test1"
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/redis/hiredis/commit/76a7b10005c70babee357a7d0f2becf28ec7ed1e",
+      "https://github.com/redis/hiredis/commit/76a7b10005c70babee357a7d0f2becf28ec7ed1e"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2021-10-04T21:15:12.527",
+    "updated_at": "2024-11-21T06:07:41.780",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1357,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redis:hiredis:*:*:*:*:*:*:*:*",
+      "cpe:2.3:o:debian:debian_linux:9.0:*:*:*:*:*:*:*",
+      "cpe:2.3:a:netapp:management_services_for_element_software_and_netapp_hci:-:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2021-32762",
+    "cve_description": "Redis is an open source, in-memory database that persists on disk. The redis-cli command line tool and redis-sentinel service may be vulnerable to integer overflow when parsing specially crafted large multi-bulk network replies. This is a result of a vulnerability in the underlying hiredis library which does not perform an overflow check before calling the calloc() heap allocation function. This issue only impacts systems with heap allocators that do not perform their own overflow checks. Most modern systems do and are therefore not likely to be affected. Furthermore, by default redis-sentinel uses the jemalloc allocator which is also not vulnerable. The problem is fixed in Redis versions 6.2.6, 6.0.16 and 5.0.14.",
+    "severity": "high",
+    "cvss_score": 7.5,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 9,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:S/C:C/I:C/A:C",
+        "severity": "critical"
+      },
+      "cvss31": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-190",
+        "cwe_name": "Integer Overflow or Wraparound"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.01083,
+      "epss_percentile": 0.76833
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "vendor": "redis",
+      "product": "redis"
+    },
+    "reference": [
+      "https://github.com/redis/redis/security/advisories/GHSA-833w-8v3m-8wwr",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/HTYQ5ZF37HNGTZWVNJD3VXP7I6MEEF42/",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/VL5KXFN3ATM7IIM7Q4O4PWTSRGZ5744Z/",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/WR5WKJWXD4D6S3DJCZ56V74ESLTDQRAB/",
+      "https://security.gentoo.org/glsa/202209-17",
+      "https://security.netapp.com/advisory/ntap-20211104-0003/",
+      "https://www.debian.org/security/2021/dsa-5001",
+      "https://github.com/ARPSyndicate/cvemon"
+    ],
+    "poc": [
+      {
+        "url": "https://www.oracle.com/security-alerts/cpuapr2022.html",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/redis/redis/commit/0215324a66af949be39b34be2d55143232c1cb71",
+      "https://www.oracle.com/security-alerts/cpuapr2022.html",
+      "https://github.com/redis/redis/commit/0215324a66af949be39b34be2d55143232c1cb71",
+      "https://www.oracle.com/security-alerts/cpuapr2022.html"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2021-10-04T18:15:09.043",
+    "updated_at": "2024-11-21T06:07:41.363",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1357,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "cpe:2.3:o:debian:debian_linux:10.0:*:*:*:*:*:*:*",
+      "cpe:2.3:o:debian:debian_linux:11.0:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:33:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:34:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:35:*:*:*:*:*:*:*",
+      "cpe:2.3:a:netapp:management_services_for_element_software:-:*:*:*:*:*:*:*",
+      "cpe:2.3:a:netapp:management_services_for_netapp_hci:-:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:communications_operations_monitor:4.3:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:communications_operations_monitor:4.4:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:communications_operations_monitor:5.0:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 2,
+      "query": [
+        "http.html:\"redis.conf\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2021-32761",
+    "cve_description": "Redis is an in-memory database that persists on disk. A vulnerability involving out-of-bounds read and integer overflow to buffer overflow exists starting with version 2.2 and prior to versions 5.0.13, 6.0.15, and 6.2.5. On 32-bit systems, Redis `*BIT*` command are vulnerable to integer overflow that can potentially be exploited to corrupt the heap, leak arbitrary heap contents or trigger remote code execution. The vulnerability involves changing the default `proto-max-bulk-len` configuration parameter to a very large value and constructing specially crafted commands bit commands. This problem only affects Redis on 32-bit platforms, or compiled as a 32-bit binary. Redis versions 5.0.`3m 6.0.15, and 6.2.5 contain patches for this issue. An additional workaround to mitigate the problem without patching the `redis-server` executable is to prevent users from modifying the `proto-max-bulk-len` configuration parameter. This can be done using ACL to restrict unprivileged users from using the CONFIG SET command.",
+    "severity": "high",
+    "cvss_score": 7.5,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 6,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:S/C:P/I:P/A:P",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-125",
+        "cwe_name": "Out-of-bounds Read"
+      },
+      {
+        "cwe_id": "CWE-190",
+        "cwe_name": "Integer Overflow or Wraparound"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00528,
+      "epss_percentile": 0.66171
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redislabs:redis:*:*:*:*:*:*:*:*",
+      "vendor": "redislabs",
+      "product": "redis"
+    },
+    "reference": [
+      "https://github.com/redis/redis/security/advisories/GHSA-8wxq-j7rp-g8wj",
+      "https://lists.debian.org/debian-lts-announce/2021/07/msg00017.html",
+      "https://lists.debian.org/debian-lts-announce/2021/08/msg00026.html",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6O7AUOROBYGP5IMGJPC5HZ3R2RB6GZ5X/",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/VGX7RRAWGXWXEAKJTQYSDSBO2BC3SAHD/",
+      "https://security.gentoo.org/glsa/202209-17",
+      "https://security.netapp.com/advisory/ntap-20210827-0004/",
+      "https://www.debian.org/security/2021/dsa-5001",
+      "https://github.com/ARPSyndicate/cvemon",
+      "https://github.com/eeenvik1/scripts_for_YouTrack"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2021-07-21T21:15:07.670",
+    "updated_at": "2024-11-21T06:07:41.223",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1432,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redislabs:redis:*:*:*:*:*:*:*:*",
+      "cpe:2.3:o:debian:debian_linux:9.0:*:*:*:*:*:*:*",
+      "cpe:2.3:o:debian:debian_linux:10.0:*:*:*:*:*:*:*",
+      "cpe:2.3:o:debian:debian_linux:11.0:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:33:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:34:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 262002,
+      "query": [
+        "cpe:\"cpe:2.3:a:redislabs:redis\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2021-32743",
+    "cve_description": "Icinga is a monitoring system which checks the availability of network resources, notifies users of outages, and generates performance data for reporting. In versions prior to 2.11.10 and from version 2.12.0 through version 2.12.4, some of the Icinga 2 features that require credentials for external services expose those credentials through the API to authenticated API users with read permissions for the corresponding object types. IdoMysqlConnection and IdoPgsqlConnection (every released version) exposes the password of the user used to connect to the database. IcingaDB (added in 2.12.0) exposes the password used to connect to the Redis server. ElasticsearchWriter (added in 2.8.0)exposes the password used to connect to the Elasticsearch server. An attacker who obtains these credentials can impersonate Icinga to these services and add, modify and delete information there. If credentials with more permissions are in use, this increases the impact accordingly. Starting with the 2.11.10 and 2.12.5 releases, these passwords are no longer exposed via the API. As a workaround, API user permissions can be restricted to not allow querying of any affected objects, either by explicitly listing only the required object types for object query permissions, or by applying a filter rule.",
+    "severity": "high",
+    "cvss_score": 8.8,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 6.5,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:S/C:P/I:P/A:P",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-202",
+        "cwe_name": "Exposure of Sensitive Information Through Data Queries"
+      },
+      {
+        "cwe_id": "NVD-CWE-Other"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.0074,
+      "epss_percentile": 0.71874
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:icinga:icinga:*:*:*:*:*:*:*:*",
+      "vendor": "icinga",
+      "product": "icinga"
+    },
+    "reference": [
+      "https://lists.debian.org/debian-lts-announce/2021/11/msg00010.html"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/Icinga/icinga2/security/advisories/GHSA-wrpw-pmr8-qgj7",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://icinga.com/blog/2021/07/15/releasing-icinga-2-12-5-and-2-11-10/",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/Icinga/icinga2/security/advisories/GHSA-wrpw-pmr8-qgj7",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://icinga.com/blog/2021/07/15/releasing-icinga-2-12-5-and-2-11-10/",
+        "source": "NVD",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "https://icinga.com/blog/2021/07/15/releasing-icinga-2-12-5-and-2-11-10/",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2021-07-15T16:15:09.620",
+    "updated_at": "2024-11-21T06:07:39.243",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1438,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:icinga:icinga:*:*:*:*:*:*:*:*",
+      "cpe:2.3:o:debian:debian_linux:9.0:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2021-32687",
+    "cve_description": "Redis is an open source, in-memory database that persists on disk. An integer overflow bug affecting all versions of Redis can be exploited to corrupt the heap and potentially be used to leak arbitrary contents of the heap or trigger remote code execution. The vulnerability involves changing the default set-max-intset-entries configuration parameter to a very large value and constructing specially crafted commands to manipulate sets. The problem is fixed in Redis versions 6.2.6, 6.0.16 and 5.0.14. An additional workaround to mitigate the problem without patching the redis-server executable is to prevent users from modifying the set-max-intset-entries configuration parameter. This can be done using ACL to restrict unprivileged users from using the CONFIG SET command.",
+    "severity": "high",
+    "cvss_score": 7.5,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 6,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:S/C:P/I:P/A:P",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-190",
+        "cwe_name": "Integer Overflow or Wraparound"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00986,
+      "epss_percentile": 0.7579
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "vendor": "redis",
+      "product": "redis"
+    },
+    "reference": [
+      "https://github.com/redis/redis/security/advisories/GHSA-m3mf-8x9w-r27q",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/HTYQ5ZF37HNGTZWVNJD3VXP7I6MEEF42/",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/VL5KXFN3ATM7IIM7Q4O4PWTSRGZ5744Z/",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/WR5WKJWXD4D6S3DJCZ56V74ESLTDQRAB/",
+      "https://security.gentoo.org/glsa/202209-17",
+      "https://security.netapp.com/advisory/ntap-20211104-0003/",
+      "https://www.debian.org/security/2021/dsa-5001"
+    ],
+    "poc": [
+      {
+        "url": "https://www.oracle.com/security-alerts/cpuapr2022.html",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/redis/redis/commit/a30d367a71b7017581cf1ca104242a3c644dec0f",
+      "https://www.oracle.com/security-alerts/cpuapr2022.html",
+      "https://github.com/redis/redis/commit/a30d367a71b7017581cf1ca104242a3c644dec0f",
+      "https://www.oracle.com/security-alerts/cpuapr2022.html"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2021-10-04T18:15:08.980",
+    "updated_at": "2024-11-21T06:07:31.953",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1357,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:33:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:34:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:35:*:*:*:*:*:*:*",
+      "cpe:2.3:o:debian:debian_linux:10.0:*:*:*:*:*:*:*",
+      "cpe:2.3:o:debian:debian_linux:11.0:*:*:*:*:*:*:*",
+      "cpe:2.3:a:netapp:management_services_for_element_software:-:*:*:*:*:*:*:*",
+      "cpe:2.3:a:netapp:management_services_for_netapp_hci:-:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:communications_operations_monitor:4.3:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:communications_operations_monitor:4.4:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:communications_operations_monitor:5.0:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 2,
+      "query": [
+        "http.html:\"redis.conf\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2021-32675",
+    "cve_description": "Redis is an open source, in-memory database that persists on disk. When parsing an incoming Redis Standard Protocol (RESP) request, Redis allocates memory according to user-specified values which determine the number of elements (in the multi-bulk header) and size of each element (in the bulk header). An attacker delivering specially crafted requests over multiple connections can cause the server to allocate significant amount of memory. Because the same parsing mechanism is used to handle authentication requests, this vulnerability can also be exploited by unauthenticated users. The problem is fixed in Redis versions 6.2.6, 6.0.16 and 5.0.14. An additional workaround to mitigate this problem without patching the redis-server executable is to block access to prevent unauthenticated users from connecting to Redis. This can be done in different ways: Using network access control tools like firewalls, iptables, security groups, etc. or Enabling TLS and requiring users to authenticate using client side certificates.",
+    "severity": "high",
+    "cvss_score": 7.5,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 5,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:N/C:N/I:N/A:P",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-770",
+        "cwe_name": "Allocation of Resources Without Limits or Throttling"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.02827,
+      "epss_percentile": 0.85533
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "vendor": "redis",
+      "product": "redis"
+    },
+    "reference": [
+      "https://github.com/redis/redis/security/advisories/GHSA-f6pw-v9gw-v64p",
+      "https://lists.apache.org/thread.html/ra603ff6e04549d7f290f61f9b11e2d2e4dba693b05ff053f4ec6bc47%40%3Cnotifications.geode.apache.org%3E",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/HTYQ5ZF37HNGTZWVNJD3VXP7I6MEEF42/",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/VL5KXFN3ATM7IIM7Q4O4PWTSRGZ5744Z/",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/WR5WKJWXD4D6S3DJCZ56V74ESLTDQRAB/",
+      "https://security.gentoo.org/glsa/202209-17",
+      "https://security.netapp.com/advisory/ntap-20211104-0003/",
+      "https://www.debian.org/security/2021/dsa-5001",
+      "https://github.com/chezming/openeuler-syscare",
+      "https://github.com/cyb3r-w0lf/nuclei-template-collection"
+    ],
+    "poc": [
+      {
+        "url": "https://www.oracle.com/security-alerts/cpuapr2022.html",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/redis/redis/commit/5674b0057ff2903d43eaff802017eddf37c360f8",
+      "https://www.oracle.com/security-alerts/cpuapr2022.html",
+      "https://github.com/redis/redis/commit/5674b0057ff2903d43eaff802017eddf37c360f8",
+      "https://www.oracle.com/security-alerts/cpuapr2022.html"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2021-10-04T18:15:08.923",
+    "updated_at": "2024-11-21T06:07:30.460",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1357,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:33:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:34:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:35:*:*:*:*:*:*:*",
+      "cpe:2.3:o:debian:debian_linux:10.0:*:*:*:*:*:*:*",
+      "cpe:2.3:o:debian:debian_linux:11.0:*:*:*:*:*:*:*",
+      "cpe:2.3:a:netapp:management_services_for_element_software:-:*:*:*:*:*:*:*",
+      "cpe:2.3:a:netapp:management_services_for_netapp_hci:-:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:communications_operations_monitor:4.3:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:communications_operations_monitor:4.4:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:communications_operations_monitor:5.0:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 2,
+      "query": [
+        "http.html:\"redis.conf\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2021-32672",
+    "cve_description": "Redis is an open source, in-memory database that persists on disk. When using the Redis Lua Debugger, users can send malformed requests that cause the debugger’s protocol parser to read data beyond the actual buffer. This issue affects all versions of Redis with Lua debugging support (3.2 or newer). The problem is fixed in versions 6.2.6, 6.0.16 and 5.0.14.",
+    "severity": "medium",
+    "cvss_score": 5.3,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 4,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:S/C:P/I:N/A:N",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-125",
+        "cwe_name": "Out-of-bounds Read"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00391,
+      "epss_percentile": 0.59311
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "vendor": "redis",
+      "product": "redis"
+    },
+    "reference": [
+      "https://github.com/redis/redis/security/advisories/GHSA-9mj9-xx53-qmxm",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/HTYQ5ZF37HNGTZWVNJD3VXP7I6MEEF42/",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/VL5KXFN3ATM7IIM7Q4O4PWTSRGZ5744Z/",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/WR5WKJWXD4D6S3DJCZ56V74ESLTDQRAB/",
+      "https://security.gentoo.org/glsa/202209-17",
+      "https://security.netapp.com/advisory/ntap-20211104-0003/",
+      "https://www.debian.org/security/2021/dsa-5001"
+    ],
+    "poc": [
+      {
+        "url": "https://www.oracle.com/security-alerts/cpuapr2022.html",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/redis/redis/commit/6ac3c0b7abd35f37201ed2d6298ecef4ea1ae1dd",
+      "https://www.oracle.com/security-alerts/cpuapr2022.html",
+      "https://github.com/redis/redis/commit/6ac3c0b7abd35f37201ed2d6298ecef4ea1ae1dd",
+      "https://www.oracle.com/security-alerts/cpuapr2022.html"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2021-10-04T18:15:08.780",
+    "updated_at": "2024-11-21T06:07:30.103",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1357,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:redhat:software_collections:-:*:*:*:*:*:*:*",
+      "cpe:2.3:o:redhat:enterprise_linux:8.0:*:*:*:*:*:*:*",
+      "cpe:2.3:o:debian:debian_linux:10.0:*:*:*:*:*:*:*",
+      "cpe:2.3:o:debian:debian_linux:11.0:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:33:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:34:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:35:*:*:*:*:*:*:*",
+      "cpe:2.3:a:netapp:management_services_for_element_software:-:*:*:*:*:*:*:*",
+      "cpe:2.3:a:netapp:management_services_for_netapp_hci:-:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:communications_operations_monitor:4.3:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:communications_operations_monitor:4.4:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:communications_operations_monitor:5.0:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 2,
+      "query": [
+        "http.html:\"redis.conf\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2021-32628",
+    "cve_description": "Redis is an open source, in-memory database that persists on disk. An integer overflow bug in the ziplist data structure used by all versions of Redis can be exploited to corrupt the heap and potentially result with remote code execution. The vulnerability involves modifying the default ziplist configuration parameters (hash-max-ziplist-entries, hash-max-ziplist-value, zset-max-ziplist-entries or zset-max-ziplist-value) to a very large value, and then constructing specially crafted commands to create very large ziplists. The problem is fixed in Redis versions 6.2.6, 6.0.16, 5.0.14. An additional workaround to mitigate the problem without patching the redis-server executable is to prevent users from modifying the above configuration parameters. This can be done using ACL to restrict unprivileged users from using the CONFIG SET command.",
+    "severity": "high",
+    "cvss_score": 7.5,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 6,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:S/C:P/I:P/A:P",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-190",
+        "cwe_name": "Integer Overflow or Wraparound"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00588,
+      "epss_percentile": 0.68086
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "vendor": "redis",
+      "product": "redis"
+    },
+    "reference": [
+      "https://github.com/redis/redis/security/advisories/GHSA-vw22-qm3h-49pr",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/HTYQ5ZF37HNGTZWVNJD3VXP7I6MEEF42/",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/VL5KXFN3ATM7IIM7Q4O4PWTSRGZ5744Z/",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/WR5WKJWXD4D6S3DJCZ56V74ESLTDQRAB/",
+      "https://security.gentoo.org/glsa/202209-17",
+      "https://security.netapp.com/advisory/ntap-20211104-0003/",
+      "https://www.debian.org/security/2021/dsa-5001",
+      "https://github.com/Dashrath158/CVE-Management-App-using-Flask",
+      "https://github.com/amanmaner011/CVE_Management_API"
+    ],
+    "poc": [
+      {
+        "url": "https://www.oracle.com/security-alerts/cpuapr2022.html",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/redis/redis/commit/f6a40570fa63d5afdd596c78083d754081d80ae3",
+      "https://www.oracle.com/security-alerts/cpuapr2022.html",
+      "https://github.com/redis/redis/commit/f6a40570fa63d5afdd596c78083d754081d80ae3",
+      "https://www.oracle.com/security-alerts/cpuapr2022.html"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2021-10-04T18:15:08.577",
+    "updated_at": "2024-11-21T06:07:24.730",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1357,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:33:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:34:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:35:*:*:*:*:*:*:*",
+      "cpe:2.3:o:debian:debian_linux:10.0:*:*:*:*:*:*:*",
+      "cpe:2.3:o:debian:debian_linux:11.0:*:*:*:*:*:*:*",
+      "cpe:2.3:a:netapp:management_services_for_element_software:-:*:*:*:*:*:*:*",
+      "cpe:2.3:a:netapp:management_services_for_netapp_hci:-:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:communications_operations_monitor:4.3:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:communications_operations_monitor:4.4:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:communications_operations_monitor:5.0:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 2,
+      "query": [
+        "http.html:\"redis.conf\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2021-32627",
+    "cve_description": "Redis is an open source, in-memory database that persists on disk. In affected versions an integer overflow bug in Redis can be exploited to corrupt the heap and potentially result with remote code execution. The vulnerability involves changing the default proto-max-bulk-len and client-query-buffer-limit configuration parameters to very large values and constructing specially crafted very large stream elements. The problem is fixed in Redis 6.2.6, 6.0.16 and 5.0.14. For users unable to upgrade an additional workaround to mitigate the problem without patching the redis-server executable is to prevent users from modifying the proto-max-bulk-len configuration parameter. This can be done using ACL to restrict unprivileged users from using the CONFIG SET command.",
+    "severity": "high",
+    "cvss_score": 7.5,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 6,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:S/C:P/I:P/A:P",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-190",
+        "cwe_name": "Integer Overflow or Wraparound"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00797,
+      "epss_percentile": 0.72966
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "vendor": "redis",
+      "product": "redis"
+    },
+    "reference": [
+      "https://github.com/redis/redis/security/advisories/GHSA-f434-69fm-g45v",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/HTYQ5ZF37HNGTZWVNJD3VXP7I6MEEF42/",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/VL5KXFN3ATM7IIM7Q4O4PWTSRGZ5744Z/",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/WR5WKJWXD4D6S3DJCZ56V74ESLTDQRAB/",
+      "https://security.gentoo.org/glsa/202209-17",
+      "https://security.netapp.com/advisory/ntap-20211104-0003/",
+      "https://www.debian.org/security/2021/dsa-5001",
+      "https://github.com/ARPSyndicate/cvemon"
+    ],
+    "poc": [
+      {
+        "url": "https://www.oracle.com/security-alerts/cpuapr2022.html",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/redis/redis/commit/f6a40570fa63d5afdd596c78083d754081d80ae3",
+      "https://www.oracle.com/security-alerts/cpuapr2022.html",
+      "https://github.com/redis/redis/commit/f6a40570fa63d5afdd596c78083d754081d80ae3",
+      "https://www.oracle.com/security-alerts/cpuapr2022.html"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2021-10-04T18:15:08.353",
+    "updated_at": "2024-11-21T06:07:24.570",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1357,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:33:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:34:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:35:*:*:*:*:*:*:*",
+      "cpe:2.3:o:debian:debian_linux:10.0:*:*:*:*:*:*:*",
+      "cpe:2.3:o:debian:debian_linux:11.0:*:*:*:*:*:*:*",
+      "cpe:2.3:a:netapp:management_services_for_element_software:-:*:*:*:*:*:*:*",
+      "cpe:2.3:a:netapp:management_services_for_netapp_hci:-:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:communications_operations_monitor:4.3:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:communications_operations_monitor:4.4:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:communications_operations_monitor:5.0:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 2,
+      "query": [
+        "http.html:\"redis.conf\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2021-32626",
+    "cve_description": "Redis is an open source, in-memory database that persists on disk. In affected versions specially crafted Lua scripts executing in Redis can cause the heap-based Lua stack to be overflowed, due to incomplete checks for this condition. This can result with heap corruption and potentially remote code execution. This problem exists in all versions of Redis with Lua scripting support, starting from 2.6. The problem is fixed in versions 6.2.6, 6.0.16 and 5.0.14. For users unable to update an additional workaround to mitigate the problem without patching the redis-server executable is to prevent users from executing Lua scripts. This can be done using ACL to restrict EVAL and EVALSHA commands.",
+    "severity": "high",
+    "cvss_score": 7.5,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 6.5,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:S/C:P/I:P/A:P",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-122",
+        "cwe_name": "Heap-based Buffer Overflow"
+      },
+      {
+        "cwe_id": "CWE-787",
+        "cwe_name": "Out-of-bounds Write"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.01145,
+      "epss_percentile": 0.77484
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "vendor": "redis",
+      "product": "redis"
+    },
+    "reference": [
+      "https://github.com/redis/redis/security/advisories/GHSA-p486-xggp-782c",
+      "https://lists.apache.org/thread.html/r75490c61c2cb7b6ae2c81238fd52ae13636c60435abcd732d41531a0%40%3Ccommits.druid.apache.org%3E",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/HTYQ5ZF37HNGTZWVNJD3VXP7I6MEEF42/",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/VL5KXFN3ATM7IIM7Q4O4PWTSRGZ5744Z/",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/WR5WKJWXD4D6S3DJCZ56V74ESLTDQRAB/",
+      "https://security.gentoo.org/glsa/202209-17",
+      "https://security.netapp.com/advisory/ntap-20211104-0003/",
+      "https://www.debian.org/security/2021/dsa-5001",
+      "https://github.com/jiuxi-tech/cybersec",
+      "https://github.com/ARPSyndicate/cvemon"
+    ],
+    "poc": [
+      {
+        "url": "https://www.oracle.com/security-alerts/cpuapr2022.html",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/redis/redis/commit/666ed7facf4524bf6d19b11b20faa2cf93fdf591",
+      "https://www.oracle.com/security-alerts/cpuapr2022.html",
+      "https://github.com/redis/redis/commit/666ed7facf4524bf6d19b11b20faa2cf93fdf591",
+      "https://www.oracle.com/security-alerts/cpuapr2022.html"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2021-10-04T18:15:08.140",
+    "updated_at": "2024-11-21T06:07:24.403",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1357,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:33:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:34:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:35:*:*:*:*:*:*:*",
+      "cpe:2.3:a:netapp:management_services_for_element_software:-:*:*:*:*:*:*:*",
+      "cpe:2.3:a:netapp:management_services_for_netapp_hci:-:*:*:*:*:*:*:*",
+      "cpe:2.3:o:debian:debian_linux:10.0:*:*:*:*:*:*:*",
+      "cpe:2.3:o:debian:debian_linux:11.0:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:communications_operations_monitor:4.3:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:communications_operations_monitor:4.4:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:communications_operations_monitor:5.0:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 2,
+      "query": [
+        "http.html:\"redis.conf\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2021-32625",
+    "cve_description": "Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache, and message broker. An integer overflow bug in Redis version 6.0 or newer, could be exploited using the STRALGO LCS command to corrupt the heap and potentially result with remote code execution. This is a result of an incomplete fix by CVE-2021-29477. The problem is fixed in version 6.2.4 and 6.0.14. An additional workaround to mitigate the problem without patching the redis-server executable is to use ACL configuration to prevent clients from using the STRALGO LCS command. On 64 bit systems which have the fixes of CVE-2021-29477 (6.2.3 or 6.0.13), it is sufficient to make sure that the proto-max-bulk-len config parameter is smaller than 2GB (default is 512MB).",
+    "severity": "high",
+    "cvss_score": 7.5,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 6.5,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:S/C:P/I:P/A:P",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-680",
+        "cwe_name": "Integer Overflow to Buffer Overflow"
+      },
+      {
+        "cwe_id": "CWE-190",
+        "cwe_name": "Integer Overflow or Wraparound"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.01575,
+      "epss_percentile": 0.80682
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redislabs:redis:*:*:*:*:*:*:x84:*",
+      "vendor": "redislabs",
+      "product": "redis"
+    },
+    "reference": [
+      "https://github.com/redis/redis/releases/tag/6.0.14",
+      "https://github.com/redis/redis/releases/tag/6.2.4",
+      "https://github.com/redis/redis/security/advisories/GHSA-46cp-x4x9-6pfq",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/BHWOF7CBVUGDK3AN6H3BN3VNTH2TDUZZ/",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/SN7INTZFE34MIQJO7WDDTIY5LIBGN6GI/"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2021-06-02T20:15:07.187",
+    "updated_at": "2024-11-21T06:07:24.280",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1481,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redislabs:redis:*:*:*:*:*:*:x84:*",
+      "cpe:2.3:o:fedoraproject:fedora:33:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:34:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 262002,
+      "query": [
+        "cpe:\"cpe:2.3:a:redislabs:redis\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2021-31649",
+    "cve_description": "In applications using jfinal 4.9.08 and below, there is a deserialization vulnerability when using redis,may be vulnerable to remote code execute",
+    "severity": "critical",
+    "cvss_score": 9.8,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 7.5,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:N/C:P/I:P/A:P",
+        "severity": "high"
+      },
+      "cvss31": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "critical"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-502",
+        "cwe_name": "Deserialization of Untrusted Data"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00405,
+      "epss_percentile": 0.60141
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:jfinal:jfinal:*:*:*:*:*:*:*:*",
+      "vendor": "jfinal",
+      "product": "jfinal"
+    },
+    "poc": [
+      {
+        "url": "http://note.youdao.com/noteshare?id=787ccbb8345dbd4a905aebe35f1d8aa8&sub=6C5C072C901949429EFD978405212FA4",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://note.youdao.com/ynoteshare1/index.html?id=787ccbb8345dbd4a905aebe35f1d8aa8&type=note",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "http://note.youdao.com/noteshare?id=787ccbb8345dbd4a905aebe35f1d8aa8&sub=6C5C072C901949429EFD978405212FA4",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://note.youdao.com/ynoteshare1/index.html?id=787ccbb8345dbd4a905aebe35f1d8aa8&type=note",
+        "source": "NVD",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2021-06-24T16:15:08.523",
+    "updated_at": "2024-11-21T06:06:04.580",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1459,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:jfinal:jfinal:*:*:*:*:*:*:*:*"
+    ]
+  }
+]

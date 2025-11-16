@@ -1,0 +1,58 @@
+2025-11-15 22:51:36,326 - recon_agent - INFO - Log file: output/weblogic/logs/recon_agent.log
+2025-11-15 22:51:36,327 - recon_agent - INFO - Starting ReconAgent
+2025-11-15 22:51:36,327 - recon_agent - INFO - Initializing ReconAgent with model=google
+2025-11-15 22:51:36,328 - recon_agent - INFO - .env loaded from: /home/lc/Desktop/pentest-agent/agents/.env
+2025-11-15 22:51:36,346 - recon_agent - INFO - Model google loaded successfully
+2025-11-15 22:51:36,346 - recon_agent - INFO - Current topic: weblogic
+2025-11-15 22:51:36,346 - recon_agent - INFO - Target IP: 10.20.6.214
+2025-11-15 22:51:36,346 - recon_agent - INFO - Initializing thread for topic: weblogic
+2025-11-15 22:51:36,347 - recon_agent - INFO - Created memory for topic: weblogic
+2025-11-15 22:51:36,347 - recon_agent - INFO - No existing memory file for topic: weblogic
+2025-11-15 22:51:36,347 - recon_agent - INFO - Running thread for topic: weblogic
+2025-11-15 22:51:36,347 - recon_agent - INFO - Invoking LLM (attempt 1/3)
+2025-11-15 22:51:40,946 - recon_agent - INFO - LLM response appended to memory
+2025-11-15 22:51:58,179 - recon_agent - INFO - Command executed; output length=494
+2025-11-15 22:51:58,180 - recon_agent - INFO - Running thread for topic: weblogic
+2025-11-15 22:51:58,180 - recon_agent - INFO - Invoking LLM (attempt 1/3)
+2025-11-15 22:52:03,925 - recon_agent - INFO - LLM response appended to memory
+2025-11-15 22:52:05,023 - recon_agent - INFO - Command executed; output length=658
+2025-11-15 22:52:05,027 - recon_agent - INFO - Running thread for topic: weblogic
+2025-11-15 22:52:05,027 - recon_agent - INFO - Invoking LLM (attempt 1/3)
+2025-11-15 22:52:07,067 - recon_agent - INFO - LLM response appended to memory
+2025-11-15 22:52:07,081 - recon_agent - INFO - Command executed; output length=10671
+2025-11-15 22:52:07,082 - recon_agent - INFO - Running thread for topic: weblogic
+2025-11-15 22:52:07,082 - recon_agent - INFO - Invoking LLM (attempt 1/3)
+2025-11-15 22:52:12,766 - recon_agent - INFO - LLM response appended to memory
+2025-11-15 22:52:12,871 - recon_agent - INFO - Command executed; output length=244
+2025-11-15 22:52:12,872 - recon_agent - INFO - Running thread for topic: weblogic
+2025-11-15 22:52:12,872 - recon_agent - INFO - Invoking LLM (attempt 1/3)
+2025-11-15 22:52:16,719 - recon_agent - INFO - LLM response appended to memory
+2025-11-15 22:52:16,733 - recon_agent - INFO - Command executed; output length=1164
+2025-11-15 22:52:16,734 - recon_agent - INFO - Running thread for topic: weblogic
+2025-11-15 22:52:16,735 - recon_agent - INFO - Invoking LLM (attempt 1/3)
+2025-11-15 22:52:19,127 - recon_agent - INFO - LLM response appended to memory
+2025-11-15 22:52:19,227 - recon_agent - INFO - Command executed; output length=244
+2025-11-15 22:52:19,227 - recon_agent - INFO - Running thread for topic: weblogic
+2025-11-15 22:52:19,227 - recon_agent - INFO - Invoking LLM (attempt 1/3)
+2025-11-15 22:52:21,577 - recon_agent - INFO - LLM response appended to memory
+2025-11-15 22:52:21,599 - recon_agent - INFO - Command executed; output length=416
+2025-11-15 22:52:21,599 - recon_agent - INFO - Running thread for topic: weblogic
+2025-11-15 22:52:21,599 - recon_agent - INFO - Invoking LLM (attempt 1/3)
+2025-11-15 22:52:23,936 - recon_agent - INFO - LLM response appended to memory
+2025-11-15 22:52:23,991 - recon_agent - INFO - Command executed; output length=417
+2025-11-15 22:52:23,992 - recon_agent - INFO - Running thread for topic: weblogic
+2025-11-15 22:52:23,992 - recon_agent - INFO - Invoking LLM (attempt 1/3)
+2025-11-15 22:52:26,207 - recon_agent - INFO - LLM response appended to memory
+2025-11-15 22:52:26,341 - recon_agent - INFO - Command executed; output length=0
+2025-11-15 22:52:26,342 - recon_agent - INFO - Running thread for topic: weblogic
+2025-11-15 22:52:26,342 - recon_agent - INFO - Invoking LLM (attempt 1/3)
+2025-11-15 22:52:28,478 - recon_agent - INFO - LLM response appended to memory
+2025-11-15 22:52:28,479 - recon_agent - INFO - Requesting final RECON_SUMMARY
+2025-11-15 22:52:28,479 - recon_agent - INFO - Running thread for final summary
+2025-11-15 22:52:28,479 - recon_agent - INFO - Running thread for topic: weblogic
+2025-11-15 22:52:28,480 - recon_agent - INFO - Invoking LLM (attempt 1/3)
+2025-11-15 22:52:39,766 - recon_agent - INFO - LLM response appended to memory
+2025-11-15 22:52:39,767 - recon_agent - INFO - Wrote RECON_SUMMARY to: output/weblogic/recon/recon_summary.json
+2025-11-15 22:52:39,767 - recon_agent - INFO - Saving memory to file
+2025-11-15 22:52:39,781 - recon_agent - INFO - Saved 22 messages to output/weblogic/logs/recon_memory/weblogic.json
+2025-11-15 22:52:39,781 - recon_agent - INFO - Reconnaissance agent execution completed in 63.45 seconds

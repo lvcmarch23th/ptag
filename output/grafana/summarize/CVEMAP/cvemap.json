@@ -1,0 +1,2267 @@
+[
+  {
+    "cve_id": "CVE-2021-43815",
+    "cve_description": "Grafana is an open-source platform for monitoring and observability. Grafana prior to versions 8.3.2 and 7.5.12 has a directory traversal for arbitrary .csv files. It only affects instances that have the developer testing tool called TestData DB data source enabled and configured. The vulnerability is limited in scope, and only allows access to files with the extension .csv to authenticated users only. Grafana Cloud instances have not been affected by the vulnerability. Versions 8.3.2 and 7.5.12 contain a patch for this issue. There is a workaround available for users who cannot upgrade. Running a reverse proxy in front of Grafana that normalizes the PATH of the request will mitigate the vulnerability. The proxy will have to also be able to handle url encoded paths.",
+    "severity": "medium",
+    "cvss_score": 4.3,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 3.5,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:S/C:P/I:N/A:N",
+        "severity": "low"
+      },
+      "cvss31": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-22",
+        "cwe_name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00505,
+      "epss_percentile": 0.65182
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:grafana:grafana:*:*:*:*:*:*:*:*",
+      "vendor": "grafana",
+      "product": "grafana"
+    },
+    "reference": [
+      "https://github.com/grafana/grafana/releases/tag/v8.3.2",
+      "https://security.netapp.com/advisory/ntap-20220107-0006/",
+      "https://github.com/SummerSec/learning-codeql",
+      "https://github.com/ARPSyndicate/cvemon"
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "http://www.openwall.com/lists/oss-security/2021/12/10/4",
+      "https://github.com/grafana/grafana/commit/d6ec6f8ad28f0212e584406730f939105ff6c6d3",
+      "https://github.com/grafana/grafana/commit/fd48aee61e4328aae8d5303a9efd045fa0ca308d",
+      "https://github.com/grafana/grafana/security/advisories/GHSA-7533-c8qv-jm9m",
+      "https://grafana.com/blog/2021/12/10/grafana-8.3.2-and-7.5.12-released-with-moderate-severity-security-fix/",
+      "http://www.openwall.com/lists/oss-security/2021/12/10/4",
+      "https://github.com/grafana/grafana/commit/d6ec6f8ad28f0212e584406730f939105ff6c6d3",
+      "https://github.com/grafana/grafana/commit/fd48aee61e4328aae8d5303a9efd045fa0ca308d",
+      "https://github.com/grafana/grafana/security/advisories/GHSA-7533-c8qv-jm9m",
+      "https://grafana.com/blog/2021/12/10/grafana-8.3.2-and-7.5.12-released-with-moderate-severity-security-fix/"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2021-12-10T21:15:09.497",
+    "updated_at": "2024-11-21T06:29:51.050",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1290,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:grafana:grafana:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 130445,
+      "query": [
+        "cpe:\"cpe:2.3:a:grafana:grafana\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2021-43813",
+    "cve_description": "Grafana is an open-source platform for monitoring and observability. Grafana prior to versions 8.3.2 and 7.5.12 contains a directory traversal vulnerability for fully lowercase or fully uppercase .md files. The vulnerability is limited in scope, and only allows access to files with the extension .md to authenticated users only. Grafana Cloud instances have not been affected by the vulnerability. Users should upgrade to patched versions 8.3.2 or 7.5.12. For users who cannot upgrade, running a reverse proxy in front of Grafana that normalizes the PATH of the request will mitigate the vulnerability. The proxy will have to also be able to handle url encoded paths. Alternatively, for fully lowercase or fully uppercase .md files, users can block /api/plugins/.*/markdown/.* without losing any functionality beyond inlined plugin help text.",
+    "severity": "medium",
+    "cvss_score": 4.3,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 4,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:S/C:P/I:N/A:N",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-22",
+        "cwe_name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.09632,
+      "epss_percentile": 0.92504
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:grafana:grafana:*:*:*:*:*:*:*:*",
+      "vendor": "grafana",
+      "product": "grafana"
+    },
+    "reference": [
+      "https://github.com/github/securitylab-vulnerabilities/commit/689fc5d9fd665be4d5bba200a6a433b532172d0f",
+      "https://security.netapp.com/advisory/ntap-20220107-0006/"
+    ],
+    "vendor_advisory": "https://grafana.com/docs/grafana/latest/release-notes/release-notes-8-3-2/",
+    "patch_url": [
+      "http://www.openwall.com/lists/oss-security/2021/12/10/4",
+      "https://github.com/grafana/grafana/commit/fd48aee61e4328aae8d5303a9efd045fa0ca308d",
+      "https://github.com/grafana/grafana/security/advisories/GHSA-c3q8-26ph-9g2q",
+      "https://grafana.com/blog/2021/12/10/grafana-8.3.2-and-7.5.12-released-with-moderate-severity-security-fix/",
+      "http://www.openwall.com/lists/oss-security/2021/12/10/4",
+      "https://github.com/grafana/grafana/commit/fd48aee61e4328aae8d5303a9efd045fa0ca308d",
+      "https://github.com/grafana/grafana/security/advisories/GHSA-c3q8-26ph-9g2q",
+      "https://grafana.com/blog/2021/12/10/grafana-8.3.2-and-7.5.12-released-with-moderate-severity-security-fix/"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2021-12-10T18:15:08.260",
+    "updated_at": "2024-11-21T06:29:50.773",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1290,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:grafana:grafana:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 130445,
+      "query": [
+        "cpe:\"cpe:2.3:a:grafana:grafana\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2021-43798",
+    "cve_description": "Grafana is an open-source platform for monitoring and observability. Grafana versions 8.0.0-beta1 through 8.3.0 (except for patched versions) iss vulnerable to directory traversal, allowing access to local files. The vulnerable URL path is: `<grafana_host_url>/public/plugins//`, where is the plugin ID for any installed plugin. At no time has Grafana Cloud been vulnerable. Users are advised to upgrade to patched versions 8.0.7, 8.1.8, 8.2.7, or 8.3.1. The GitHub Security Advisory contains more information about vulnerable URL paths, mitigation, and the disclosure timeline.",
+    "severity": "high",
+    "cvss_score": 7.5,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 5,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:N/C:P/I:N/A:N",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-22",
+        "cwe_name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.94334,
+      "epss_percentile": 0.99942
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:grafana:grafana:*:*:*:*:*:*:*:*",
+      "vendor": "grafana",
+      "product": "grafana"
+    },
+    "reference": [
+      "http://packetstormsecurity.com/files/165198/Grafana-Arbitrary-File-Reading.html",
+      "https://security.netapp.com/advisory/ntap-20211229-0004/",
+      "https://github.com/ARPSyndicate/kenzer-templates",
+      "https://github.com/CVEDB/awesome-cve-repo",
+      "https://github.com/g1san/Agents-for-Vulnerable-Dockers-and-related-Benchmarks",
+      "https://github.com/20142995/sectool",
+      "https://github.com/openx-org/BLEN",
+      "https://github.com/ticofookfook/CVE-2021-43798",
+      "https://github.com/HimmelAward/Goby_POC",
+      "https://github.com/KayCHENvip/vulnerability-poc"
+    ],
+    "poc": [
+      {
+        "url": "http://packetstormsecurity.com/files/165221/Grafana-8.3.0-Directory-Traversal-Arbitrary-File-Read.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "http://packetstormsecurity.com/files/165221/Grafana-8.3.0-Directory-Traversal-Arbitrary-File-Read.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/abuyazeen/CVE-2021-43798-Grafana-path-traversal-tester",
+        "source": "gh-nomi-sec",
+        "added_at": "2025-05-19T08:19:30Z"
+      },
+      {
+        "url": "https://github.com/suljov/Grafana-LFI-exploit",
+        "source": "gh-nomi-sec",
+        "added_at": "2025-04-27T19:39:52Z"
+      },
+      {
+        "url": "https://github.com/monke443/CVE-2021-43798",
+        "source": "gh-nomi-sec",
+        "added_at": "2025-03-06T17:31:27Z"
+      },
+      {
+        "url": "https://github.com/ravi5hanka/CVE-2021-43798-Exploit-for-Windows-and-Linux",
+        "source": "gh-nomi-sec",
+        "added_at": "2025-02-12T09:02:15Z"
+      },
+      {
+        "url": "https://github.com/davidr-io/Grafana-8.3-Directory-Traversal",
+        "source": "gh-nomi-sec",
+        "added_at": "2025-01-26T18:32:08Z"
+      },
+      {
+        "url": "https://github.com/wezoomagency/GrafXploit",
+        "source": "gh-nomi-sec",
+        "added_at": "2024-12-14T14:06:59Z"
+      },
+      {
+        "url": "https://github.com/0xSAZZAD/Grafana-CVE-2021-43798",
+        "source": "gh-nomi-sec",
+        "added_at": "2024-10-05T18:51:12Z"
+      },
+      {
+        "url": "https://github.com/hxlxmj/Grafxploit",
+        "source": "gh-nomi-sec",
+        "added_at": "2024-07-22T14:28:08Z"
+      }
+    ],
+    "vendor_advisory": "https://grafana.com/blog/2021/12/08/an-update-on-0day-cve-2021-43798-grafana-directory-traversal/",
+    "patch_url": [
+      "http://www.openwall.com/lists/oss-security/2021/12/09/2",
+      "http://www.openwall.com/lists/oss-security/2021/12/10/4",
+      "https://github.com/grafana/grafana/commit/c798c0e958d15d9cc7f27c72113d572fa58545ce",
+      "https://github.com/grafana/grafana/security/advisories/GHSA-8pjx-jj86-j47p",
+      "http://www.openwall.com/lists/oss-security/2021/12/09/2",
+      "http://www.openwall.com/lists/oss-security/2021/12/10/4",
+      "https://github.com/grafana/grafana/commit/c798c0e958d15d9cc7f27c72113d572fa58545ce",
+      "https://github.com/grafana/grafana/security/advisories/GHSA-8pjx-jj86-j47p"
+    ],
+    "is_template": true,
+    "nuclei_templates": {
+      "template_path": "http/cves/2021/CVE-2021-43798.yaml",
+      "template_url": "https://cloud.projectdiscovery.io/public/CVE-2021-43798",
+      "created_at": "2021-12-08T16:46:47+05:30",
+      "updated_at": "2025-05-27T10:39:47+08:00"
+    },
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2021-12-07T19:15:07.633",
+    "updated_at": "2024-11-21T06:29:48.737",
+    "hackerone": {
+      "rank": 332,
+      "count": 47
+    },
+    "age_in_days": 1293,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:grafana:grafana:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:grafana:grafana:8.0.0:beta1:*:*:*:*:*:*",
+      "cpe:2.3:a:grafana:grafana:8.0.0:beta2:*:*:*:*:*:*",
+      "cpe:2.3:a:grafana:grafana:8.0.0:beta3:*:*:*:*:*:*",
+      "cpe:2.3:a:grafana:grafana:8.3.0:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 130445,
+      "query": [
+        "cpe:\"cpe:2.3:a:grafana:grafana\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2021-41244",
+    "cve_description": "Grafana is an open-source platform for monitoring and observability. In affected versions when the fine-grained access control beta feature is enabled and there is more than one organization in the Grafana instance admins are able to access users from other organizations. Grafana 8.0 introduced a mechanism which allowed users with the Organization Admin role to list, add, remove, and update users’ roles in other organizations in which they are not an admin. With fine-grained access control enabled, organization admins can list, add, remove and update users' roles in another organization, where they do not have organization admin role. All installations between v8.0 and v8.2.3 that have fine-grained access control beta enabled and more than one organization should be upgraded as soon as possible. If you cannot upgrade, you should turn off the fine-grained access control using a feature flag.",
+    "severity": "critical",
+    "cvss_score": 9.1,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 6.5,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:S/C:P/I:P/A:P",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 9.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+        "severity": "critical"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-610",
+        "cwe_name": "Externally Controlled Reference to a Resource in Another Sphere"
+      },
+      {
+        "cwe_id": "CWE-863",
+        "cwe_name": "Incorrect Authorization"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00527,
+      "epss_percentile": 0.6607
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:grafana:grafana:*:*:*:*:*:*:*:*",
+      "vendor": "grafana",
+      "product": "grafana"
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2021/11/15/1",
+      "https://github.com/grafana/grafana/security/advisories/GHSA-mpwp-42x6-4wmx",
+      "https://security.netapp.com/advisory/ntap-20211223-0001/"
+    ],
+    "vendor_advisory": "https://grafana.com/blog/2021/11/15/grafana-8.2.4-released-with-security-fixes/",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2021-11-15T20:15:19.970",
+    "updated_at": "2024-11-21T06:25:51.997",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1315,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": false,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:grafana:grafana:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 130445,
+      "query": [
+        "cpe:\"cpe:2.3:a:grafana:grafana\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2021-41174",
+    "cve_description": "Grafana is an open-source platform for monitoring and observability. In affected versions if an attacker is able to convince a victim to visit a URL referencing a vulnerable page, arbitrary JavaScript content may be executed within the context of the victim's browser. The user visiting the malicious link must be unauthenticated and the link must be for a page that contains the login button in the menu bar. The url has to be crafted to exploit AngularJS rendering and contain the interpolation binding for AngularJS expressions. AngularJS uses double curly braces for interpolation binding: {{ }} ex: {{constructor.constructor(‘alert(1)’)()}}. When the user follows the link and the page renders, the login button will contain the original link with a query parameter to force a redirect to the login page. The URL is not validated and the AngularJS rendering engine will execute the JavaScript expression contained in the URL. Users are advised to upgrade as soon as possible. If for some reason you cannot upgrade, you can use a reverse proxy or similar to block access to block the literal string {{ in the path.",
+    "severity": "medium",
+    "cvss_score": 6.9,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 4.3,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:N/C:N/I:P/A:N",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 6.9,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:H/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.76015,
+      "epss_percentile": 0.9885
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:grafana:grafana:*:*:*:*:*:*:*:*",
+      "vendor": "grafana",
+      "product": "grafana"
+    },
+    "reference": [
+      "https://github.com/grafana/grafana/security/advisories/GHSA-3j9m-hcv9-rpj8",
+      "https://security.netapp.com/advisory/ntap-20211125-0003/",
+      "https://github.com/Z0fhack/Goby_POC",
+      "https://github.com/kh4sh3i/Grafana-CVE",
+      "https://github.com/we45/nuclei-appsec-workflows",
+      "https://github.com/20142995/Goby",
+      "https://github.com/ARPSyndicate/cvemon",
+      "https://github.com/ARPSyndicate/kenzer-templates",
+      "https://github.com/HimmelAward/Goby_POC",
+      "https://github.com/NyxAzrael/Goby_POC"
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/grafana/grafana/commit/31b78d51c693d828720a5b285107a50e6024c912",
+      "https://github.com/grafana/grafana/commit/3cb5214fa45eb5a571fd70d6c6edf0d729983f82",
+      "https://github.com/grafana/grafana/commit/fb85ed691290d211a5baa44d9a641ab137f0de88",
+      "https://github.com/grafana/grafana/commit/31b78d51c693d828720a5b285107a50e6024c912",
+      "https://github.com/grafana/grafana/commit/3cb5214fa45eb5a571fd70d6c6edf0d729983f82",
+      "https://github.com/grafana/grafana/commit/fb85ed691290d211a5baa44d9a641ab137f0de88"
+    ],
+    "is_template": true,
+    "nuclei_templates": {
+      "template_path": "http/cves/2021/CVE-2021-41174.yaml",
+      "template_url": "https://cloud.projectdiscovery.io/public/CVE-2021-41174",
+      "created_at": "2021-11-07T04:08:43+05:30",
+      "updated_at": "2025-05-27T10:39:47+08:00"
+    },
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2021-11-03T18:15:08.413",
+    "updated_at": "2024-11-21T06:25:40.410",
+    "hackerone": {
+      "rank": 211,
+      "count": 108
+    },
+    "age_in_days": 1327,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:grafana:grafana:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 130445,
+      "query": [
+        "cpe:\"cpe:2.3:a:grafana:grafana\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2021-41090",
+    "cve_description": "Grafana Agent is a telemetry collector for sending metrics, logs, and trace data to the opinionated Grafana observability stack. Prior to versions 0.20.1 and 0.21.2, inline secrets defined within a metrics instance config are exposed in plaintext over two endpoints: metrics instance configs defined in the base YAML file are exposed at `/-/config` and metrics instance configs defined for the scraping service are exposed at `/agent/api/v1/configs/:key`. Inline secrets will be exposed to anyone being able to reach these endpoints. If HTTPS with client authentication is not configured, these endpoints are accessible to unauthenticated users. Secrets found in these sections are used for delivering metrics to a Prometheus Remote Write system, authenticating against a system for discovering Prometheus targets, and authenticating against a system for collecting metrics. This does not apply for non-inlined secrets, such as `*_file` based secrets. This issue is patched in Grafana Agent versions 0.20.1 and 0.21.2. A few workarounds are available. Users who cannot upgrade should use non-inline secrets where possible. Users may also desire to restrict API access to Grafana Agent with some combination of restricting the network interfaces Grafana Agent listens on through `http_listen_address` in the `server` block, configuring Grafana Agent to use HTTPS with client authentication, and/or using firewall rules to restrict external access to Grafana Agent's API.",
+    "severity": "medium",
+    "cvss_score": 6.5,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 4.3,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:N/C:P/I:N/A:N",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-200",
+        "cwe_name": "Exposure of Sensitive Information to an Unauthorized Actor"
+      },
+      {
+        "cwe_id": "CWE-312",
+        "cwe_name": "Cleartext Storage of Sensitive Information"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00742,
+      "epss_percentile": 0.71933
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:grafana:agent:*:*:*:*:*:*:*:*",
+      "vendor": "grafana",
+      "product": "agent"
+    },
+    "reference": [
+      "https://github.com/grafana/agent/releases/tag/v0.20.1",
+      "https://github.com/grafana/agent/releases/tag/v0.21.2",
+      "https://github.com/grafana/agent/security/advisories/GHSA-9c4x-5hgq-q3wh",
+      "https://security.netapp.com/advisory/ntap-20211229-0004/"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/grafana/agent/pull/1152",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/grafana/agent/commit/af7fb01e31fe2d389e5f1c36b399ddc46b412b21",
+      "https://github.com/grafana/agent/pull/1152",
+      "https://github.com/grafana/agent/commit/af7fb01e31fe2d389e5f1c36b399ddc46b412b21",
+      "https://github.com/grafana/agent/pull/1152"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security-advisories@github.com",
+    "published_at": "2021-12-08T17:15:11.093",
+    "updated_at": "2024-11-21T06:25:26.367",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1292,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:grafana:agent:*:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2021-39226",
+    "cve_description": "Grafana is an open source data visualization platform. In affected versions unauthenticated and authenticated users are able to view the snapshot with the lowest database key by accessing the literal paths: /dashboard/snapshot/:key, or /api/snapshots/:key. If the snapshot \"public_mode\" configuration setting is set to true (vs default of false), unauthenticated users are able to delete the snapshot with the lowest database key by accessing the literal path: /api/snapshots-delete/:deleteKey. Regardless of the snapshot \"public_mode\" setting, authenticated users are able to delete the snapshot with the lowest database key by accessing the literal paths: /api/snapshots/:key, or /api/snapshots-delete/:deleteKey. The combination of deletion and viewing enables a complete walk through all snapshot data while resulting in complete snapshot data loss. This issue has been resolved in versions 8.1.6 and 7.5.11. If for some reason you cannot upgrade you can use a reverse proxy or similar to block access to the literal paths: /api/snapshots/:key, /api/snapshots-delete/:deleteKey, /dashboard/snapshot/:key, and /api/snapshots/:key. They have no normal function and can be disabled without side effects.",
+    "severity": "critical",
+    "cvss_score": 9.8,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 6.8,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:N/C:P/I:P/A:P",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "critical"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-287",
+        "cwe_name": "Improper Authentication"
+      },
+      {
+        "cwe_id": "CWE-862",
+        "cwe_name": "Missing Authorization"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.9435,
+      "epss_percentile": 0.99949
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:grafana:grafana:*:*:*:*:*:*:*:*",
+      "vendor": "grafana",
+      "product": "grafana"
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2021/10/05/4",
+      "https://grafana.com/docs/grafana/latest/release-notes/release-notes-7-5-11/",
+      "https://grafana.com/docs/grafana/latest/release-notes/release-notes-8-1-6/",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/DCKBFUSY6V4VU5AQUYWKISREZX5NLQJT/",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/E6ANHRDBXQT6TURLP2THM26ZPDINFBEG/",
+      "https://security.netapp.com/advisory/ntap-20211029-0008/",
+      "https://github.com/20142995/nuclei-templates",
+      "https://github.com/ARPSyndicate/cvemon",
+      "https://github.com/apif-review/APIF_tool_2024",
+      "https://github.com/apit-review-account/apit-tool"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/grafana/grafana/security/advisories/GHSA-69j6-29vr-p3j9",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/grafana/grafana/security/advisories/GHSA-69j6-29vr-p3j9",
+        "source": "NVD",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "https://github.com/grafana/grafana/security/advisories/GHSA-69j6-29vr-p3j9",
+    "patch_url": [
+      "https://github.com/grafana/grafana/commit/2d456a6375855364d098ede379438bf7f0667269",
+      "https://github.com/grafana/grafana/commit/2d456a6375855364d098ede379438bf7f0667269"
+    ],
+    "is_template": true,
+    "nuclei_templates": {
+      "template_path": "http/cves/2021/CVE-2021-39226.yaml",
+      "template_url": "https://cloud.projectdiscovery.io/public/CVE-2021-39226",
+      "created_at": "2021-11-30T14:37:55-05:00",
+      "updated_at": "2025-05-27T10:39:47+08:00"
+    },
+    "is_exploited": true,
+    "kev": {
+      "added_date": "2022-08-25",
+      "due_date": "2022-09-15",
+      "known_ransomware_campaign_use": false
+    },
+    "assignee": "security-advisories@github.com",
+    "published_at": "2021-10-05T18:15:07.947",
+    "updated_at": "2025-02-18T14:53:42.247",
+    "hackerone": {
+      "rank": 128,
+      "count": 182
+    },
+    "age_in_days": 1356,
+    "vuln_status": "confirmed",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:grafana:grafana:*:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:34:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:35:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 130445,
+      "query": [
+        "cpe:\"cpe:2.3:a:grafana:grafana\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2021-36157",
+    "cve_description": "An issue was discovered in Grafana Cortex through 1.9.0. The header value X-Scope-OrgID is used to construct file paths for rules files, and if crafted to conduct directory traversal such as ae ../../sensitive/path/in/deployment pathname, then Cortex will attempt to parse a rules file at that location and include some of the contents in the error message. (Other Cortex API requests can also be sent a malicious OrgID header, e.g., tricking the ingester into writing metrics to a different location, but the effect is nuisance rather than information disclosure.)",
+    "severity": "medium",
+    "cvss_score": 5.3,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 5,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:N/C:P/I:N/A:N",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-22",
+        "cwe_name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00318,
+      "epss_percentile": 0.54166
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:linuxfoundation:cortex:*:*:*:*:*:*:*:*",
+      "vendor": "linuxfoundation",
+      "product": "cortex"
+    },
+    "vendor_advisory": "https://grafana.com/docs/grafana/latest/release-notes/",
+    "patch_url": [
+      "https://github.com/cortexproject/cortex/pull/4375",
+      "https://github.com/cortexproject/cortex/pull/4375"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2021-08-03T15:15:08.667",
+    "updated_at": "2024-11-21T06:13:13.227",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1419,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:linuxfoundation:cortex:*:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2021-36156",
+    "cve_description": "An issue was discovered in Grafana Loki through 2.2.1. The header value X-Scope-OrgID is used to construct file paths for rules files, and if crafted to conduct directory traversal such as ae ../../sensitive/path/in/deployment pathname, then Loki will attempt to parse a rules file at that location and include some of the contents in the error message.",
+    "severity": "medium",
+    "cvss_score": 5.3,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 5,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:N/C:P/I:N/A:N",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-22",
+        "cwe_name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00395,
+      "epss_percentile": 0.59505
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:grafana:loki:*:*:*:*:*:*:*:*",
+      "vendor": "grafana",
+      "product": "loki"
+    },
+    "reference": [
+      "https://github.com/grafana/loki/pull/4020#issue-694377133"
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/grafana/loki/releases/tag/v2.3.0",
+      "https://github.com/grafana/loki/releases/tag/v2.3.0"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2021-08-03T15:15:08.623",
+    "updated_at": "2024-11-21T06:13:13.087",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1419,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:grafana:loki:*:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2021-31231",
+    "cve_description": "The Alertmanager in Grafana Enterprise Metrics before 1.2.1 and Metrics Enterprise 1.2.1 has a local file disclosure vulnerability when experimental.alertmanager.enable-api is used. The HTTP basic auth password_file can be used as an attack vector to send any file content via a webhook. The alertmanager templates can be used as an attack vector to send any file content because the alertmanager can load any text file specified in the templates list.",
+    "severity": "medium",
+    "cvss_score": 5.5,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 2.1,
+        "vector": "CVSS:2.0/AV:L/AC:L/Au:N/C:P/I:N/A:N",
+        "severity": "low"
+      },
+      "cvss31": {
+        "score": 5.5,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "NVD-CWE-noinfo"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.0007,
+      "epss_percentile": 0.2228
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:grafana:enterprise_metrics:*:*:*:*:*:*:*:*",
+      "vendor": "grafana",
+      "product": "enterprise_metrics"
+    },
+    "reference": [
+      "https://security.netapp.com/advisory/ntap-20210611-0001/"
+    ],
+    "vendor_advisory": "https://grafana.com/docs/metrics-enterprise/latest/downloads/#v121----april-27-2021",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2021-04-30T13:15:07.547",
+    "updated_at": "2024-11-21T06:05:20.887",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1514,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": false,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:grafana:enterprise_metrics:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:grafana:enterprise_metrics:*:*:*:*:enterprise:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2021-28148",
+    "cve_description": "One of the usage insights HTTP API endpoints in Grafana Enterprise 6.x before 6.7.6, 7.x before 7.3.10, and 7.4.x before 7.4.5 is accessible without any authentication. This allows any unauthenticated user to send an unlimited number of requests to the endpoint, leading to a denial of service (DoS) attack against a Grafana Enterprise instance.",
+    "severity": "high",
+    "cvss_score": 7.5,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 5,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:N/C:N/I:N/A:P",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-306",
+        "cwe_name": "Missing Authentication for Critical Function"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.04284,
+      "epss_percentile": 0.88325
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:grafana:grafana:*:*:*:*:enterprise:*:*:*",
+      "vendor": "grafana",
+      "product": "grafana"
+    },
+    "reference": [
+      "https://security.netapp.com/advisory/ntap-20210430-0005/",
+      "https://www.openwall.com/lists/oss-security/2021/03/19/5",
+      "https://github.com/20142995/nuclei-templates",
+      "https://github.com/cyb3r-w0lf/nuclei-template-collection"
+    ],
+    "poc": [
+      {
+        "url": "https://community.grafana.com/t/grafana-enterprise-6-7-6-7-3-10-and-7-4-5-security-update/44724",
+        "source": "trickest",
+        "added_at": ""
+      },
+      {
+        "url": "https://community.grafana.com/t/release-notes-v6-7-x/27119",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "https://grafana.com/products/enterprise/",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2021-03-22T15:15:14.597",
+    "updated_at": "2024-11-21T05:59:11.060",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1553,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:grafana:grafana:*:*:*:*:enterprise:*:*:*"
+    ],
+    "shodan": {
+      "count": 130445,
+      "query": [
+        "cpe:\"cpe:2.3:a:grafana:grafana\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2021-28147",
+    "cve_description": "The team sync HTTP API in Grafana Enterprise 6.x before 6.7.6, 7.x before 7.3.10, and 7.4.x before 7.4.5 has an Incorrect Access Control issue. On Grafana instances using an external authentication service and having the EditorsCanAdmin feature enabled, this vulnerability allows any authenticated user to add external groups to any existing team. This can be used to grant a user team permissions that the user isn't supposed to have.",
+    "severity": "medium",
+    "cvss_score": 6.5,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 3.5,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:S/C:N/I:P/A:N",
+        "severity": "low"
+      },
+      "cvss31": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "NVD-CWE-Other"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00509,
+      "epss_percentile": 0.65309
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:grafana:grafana:*:*:*:*:enterprise:*:*:*",
+      "vendor": "grafana",
+      "product": "grafana"
+    },
+    "reference": [
+      "https://security.netapp.com/advisory/ntap-20210430-0005/",
+      "https://www.openwall.com/lists/oss-security/2021/03/19/5"
+    ],
+    "poc": [
+      {
+        "url": "https://community.grafana.com/t/grafana-enterprise-6-7-6-7-3-10-and-7-4-5-security-update/44724",
+        "source": "trickest",
+        "added_at": ""
+      },
+      {
+        "url": "https://community.grafana.com/t/release-notes-v6-7-x/27119",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "https://grafana.com/products/enterprise/",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2021-03-22T15:15:14.537",
+    "updated_at": "2024-11-21T05:59:10.893",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1553,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:grafana:grafana:*:*:*:*:enterprise:*:*:*"
+    ],
+    "shodan": {
+      "count": 130445,
+      "query": [
+        "cpe:\"cpe:2.3:a:grafana:grafana\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2021-28146",
+    "cve_description": "The team sync HTTP API in Grafana Enterprise 7.4.x before 7.4.5 has an Incorrect Access Control issue. On Grafana instances using an external authentication service, this vulnerability allows any authenticated user to add external groups to existing teams. This can be used to grant a user team permissions that the user isn't supposed to have.",
+    "severity": "medium",
+    "cvss_score": 6.5,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 4,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:S/C:N/I:P/A:N",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-863",
+        "cwe_name": "Incorrect Authorization"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00265,
+      "epss_percentile": 0.49804
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:grafana:grafana:*:*:*:*:enterprise:*:*:*",
+      "vendor": "grafana",
+      "product": "grafana"
+    },
+    "reference": [
+      "https://www.openwall.com/lists/oss-security/2021/03/19/5"
+    ],
+    "poc": [
+      {
+        "url": "https://community.grafana.com/t/grafana-enterprise-6-7-6-7-3-10-and-7-4-5-security-update/44724",
+        "source": "trickest",
+        "added_at": ""
+      },
+      {
+        "url": "https://community.grafana.com/t/release-notes-v6-7-x/27119",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "https://grafana.com/products/enterprise/",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2021-03-22T14:15:14.100",
+    "updated_at": "2024-11-21T05:59:10.723",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1553,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:grafana:grafana:*:*:*:*:enterprise:*:*:*"
+    ],
+    "shodan": {
+      "count": 130445,
+      "query": [
+        "cpe:\"cpe:2.3:a:grafana:grafana\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2021-27962",
+    "cve_description": "Grafana Enterprise 7.2.x and 7.3.x before 7.3.10 and 7.4.x before 7.4.5 allows a dashboard editor to bypass a permission check concerning a data source they should not be able to access.",
+    "severity": "high",
+    "cvss_score": 7.1,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 4.9,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:S/C:P/I:P/A:N",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 7.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "NVD-CWE-noinfo"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00278,
+      "epss_percentile": 0.50787
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:grafana:grafana:*:*:*:*:enterprise:*:*:*",
+      "vendor": "grafana",
+      "product": "grafana"
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2021/03/19/5"
+    ],
+    "poc": [
+      {
+        "url": "https://community.grafana.com/t/grafana-enterprise-6-7-6-7-3-10-and-7-4-5-security-update/44724",
+        "source": "trickest",
+        "added_at": ""
+      },
+      {
+        "url": "https://community.grafana.com/t/release-notes-v6-7-x/27119",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "https://grafana.com/docs/grafana/latest/release-notes/release-notes-7-4-5/",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2021-03-22T14:15:14.023",
+    "updated_at": "2024-11-21T05:58:55.183",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1553,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:grafana:grafana:*:*:*:*:enterprise:*:*:*"
+    ],
+    "shodan": {
+      "count": 130445,
+      "query": [
+        "cpe:\"cpe:2.3:a:grafana:grafana\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2021-27437",
+    "cve_description": "The affected product allows attackers to obtain sensitive information from the WISE-PaaS dashboard. The system contains a hard-coded administrator username and password that can be used to query Grafana APIs. Authentication is not required for exploitation on the WISE-PaaS/RMM (versions prior to 9.0.1).",
+    "severity": "critical",
+    "cvss_score": 9.1,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 6.4,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:N/C:P/I:P/A:N",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 9.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+        "severity": "critical"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-798",
+        "cwe_name": "Use of Hard-coded Credentials"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00174,
+      "epss_percentile": 0.39593
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:advantech:wise-paas\\/rmm:*:*:*:*:*:*:*:*",
+      "vendor": "advantech",
+      "product": "wise-paas\\/rmm"
+    },
+    "reference": [
+      "https://us-cert.cisa.gov/ics/advisories/icsa-21-124-01"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "ics-cert@hq.dhs.gov",
+    "published_at": "2021-05-07T15:15:07.460",
+    "updated_at": "2024-11-21T05:57:59.357",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1507,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:advantech:wise-paas\\/rmm:*:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2021-27358",
+    "cve_description": "The snapshot feature in Grafana 6.7.3 through 7.4.1 can allow an unauthenticated remote attackers to trigger a Denial of Service via a remote API call if a commonly used configuration is set.",
+    "severity": "high",
+    "cvss_score": 7.5,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 5,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:N/C:N/I:N/A:P",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "NVD-CWE-noinfo"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.72805,
+      "epss_percentile": 0.9869
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:grafana:grafana:*:*:*:*:*:*:*:*",
+      "vendor": "grafana",
+      "product": "grafana"
+    },
+    "reference": [
+      "https://github.com/grafana/grafana/blob/master/CHANGELOG.md",
+      "https://github.com/grafana/grafana/blob/master/CHANGELOG.md#742-2021-02-17",
+      "https://security.netapp.com/advisory/ntap-20210513-0007/",
+      "https://github.com/kh4sh3i/Grafana-CVE",
+      "https://github.com/20142995/nuclei-templates",
+      "https://github.com/ARPSyndicate/cve-scores",
+      "https://github.com/ARPSyndicate/cvemon",
+      "https://github.com/ARPSyndicate/kenzer-templates"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/grafana/grafana/blob/master/CHANGELOG.md",
+        "source": "trickest",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/grafana/grafana/blob/master/CHANGELOG.md#742-2021-02-17",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "https://grafana.com/docs/grafana/latest/release-notes/release-notes-7-4-2/",
+    "is_template": true,
+    "nuclei_templates": {
+      "template_path": "http/cves/2021/CVE-2021-27358.yaml",
+      "template_url": "https://cloud.projectdiscovery.io/public/CVE-2021-27358",
+      "created_at": "2021-12-24T17:47:55+05:30",
+      "updated_at": "2025-05-27T10:39:47+08:00"
+    },
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2021-03-18T20:15:13.253",
+    "updated_at": "2024-11-21T05:57:50.223",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1557,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:grafana:grafana:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:netapp:e-series_performance_analyzer:-:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 130445,
+      "query": [
+        "cpe:\"cpe:2.3:a:grafana:grafana\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2020-5944",
+    "cve_description": "In BIG-IQ 7.1.0, accessing the DoS Summary events and DNS Overview pages in the BIG-IQ system interface returns an error message due to disabled Grafana reverse proxy in web service configuration. F5 has done further review of this vulnerability and has re-classified it as a defect. CVE-2020-5944 will continue to be referenced in F5 Security Advisory K57274211 and will not be assigned to other F5 vulnerabilities.",
+    "severity": "medium",
+    "cvss_score": 4.3,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 4,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:S/C:N/I:N/A:P",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "NVD-CWE-noinfo"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00295,
+      "epss_percentile": 0.52358
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:f5:big-iq_centralized_management:*:*:*:*:*:*:*:*",
+      "vendor": "f5",
+      "product": "big-iq_centralized_management"
+    },
+    "vendor_advisory": "https://support.f5.com/csp/article/K57274211",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "f5sirt@f5.com",
+    "published_at": "2020-11-05T20:15:17.817",
+    "updated_at": "2024-11-21T05:34:52.697",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1690,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:f5:big-iq_centralized_management:*:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2020-27846",
+    "cve_description": "A signature verification vulnerability exists in crewjam/saml. This flaw allows an attacker to bypass SAML Authentication. The highest threat from this vulnerability is to confidentiality, integrity, as well as system availability.",
+    "severity": "critical",
+    "cvss_score": 9.8,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 10,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:N/C:C/I:C/A:C",
+        "severity": "critical"
+      },
+      "cvss31": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "critical"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-115",
+        "cwe_name": "Misinterpretation of Input"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.15345,
+      "epss_percentile": 0.94284
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:grafana:grafana:*:*:*:*:enterprise:*:*:*",
+      "vendor": "grafana",
+      "product": "grafana"
+    },
+    "reference": [
+      "https://github.com/crewjam/saml/security/advisories/GHSA-4hq8-gmxx-h6w9",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/3YUTKIRWT6TWU7DS6GF3EOANVQBFQZYI/",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/ICP3YRY2VUCNCF2VFUSK77ZMRIC77FEM/",
+      "https://security.netapp.com/advisory/ntap-20210205-0002/",
+      "https://github.com/20142995/nuclei-templates",
+      "https://github.com/cyb3r-w0lf/nuclei-template-collection"
+    ],
+    "poc": [
+      {
+        "url": "https://mattermost.com/blog/coordinated-disclosure-go-xml-vulnerabilities/",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://mattermost.com/blog/coordinated-disclosure-go-xml-vulnerabilities/",
+        "source": "NVD",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "https://grafana.com/blog/2020/12/17/grafana-6.7.5-7.2.3-and-7.3.6-released-with-important-security-fix-for-grafana-enterprise/",
+    "patch_url": [
+      "https://bugzilla.redhat.com/show_bug.cgi?id=1907670",
+      "https://bugzilla.redhat.com/show_bug.cgi?id=1907670"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "secalert@redhat.com",
+    "published_at": "2020-12-21T16:15:13.067",
+    "updated_at": "2024-11-21T05:21:55.503",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1644,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:grafana:grafana:*:*:*:*:enterprise:*:*:*",
+      "cpe:2.3:a:saml_project:saml:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:redhat:openshift_container_platform:3.11:*:*:*:*:*:*:*",
+      "cpe:2.3:a:redhat:openshift_container_platform:4.0:*:*:*:*:*:*:*",
+      "cpe:2.3:a:redhat:openshift_service_mesh:2.0:*:*:*:*:*:*:*",
+      "cpe:2.3:o:redhat:enterprise_linux:8.0:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:32:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:33:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 130445,
+      "query": [
+        "cpe:\"cpe:2.3:a:grafana:grafana\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2020-25678",
+    "cve_description": "A flaw was found in ceph in versions prior to 16.y.z where ceph stores mgr module passwords in clear text. This can be found by searching the mgr logs for grafana and dashboard, with passwords visible.",
+    "severity": "medium",
+    "cvss_score": 4.4,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 2.1,
+        "vector": "CVSS:2.0/AV:L/AC:L/Au:N/C:P/I:N/A:N",
+        "severity": "low"
+      },
+      "cvss31": {
+        "score": 4.4,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-312",
+        "cwe_name": "Cleartext Storage of Sensitive Information"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00022,
+      "epss_percentile": 0.04214
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:redhat:ceph:*:*:*:*:*:*:*:*",
+      "vendor": "redhat",
+      "product": "ceph"
+    },
+    "reference": [
+      "https://lists.debian.org/debian-lts-announce/2023/10/msg00034.html",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/OQTBKVXVYP7GPQNZ5VASOIJHMLK7727M/",
+      "https://security.gentoo.org/glsa/202105-39",
+      "https://github.com/ARPSyndicate/cvemon"
+    ],
+    "vendor_advisory": "https://tracker.ceph.com/issues/37503",
+    "patch_url": [
+      "https://bugzilla.redhat.com/show_bug.cgi?id=1892109",
+      "https://tracker.ceph.com/issues/37503",
+      "https://bugzilla.redhat.com/show_bug.cgi?id=1892109",
+      "https://tracker.ceph.com/issues/37503"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "secalert@redhat.com",
+    "published_at": "2021-01-08T18:15:13.293",
+    "updated_at": "2024-11-21T05:18:26.617",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1626,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": false,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:redhat:ceph:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:redhat:ceph_storage:4.0:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:33:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2020-24303",
+    "cve_description": "Grafana before 7.1.0-beta 1 allows XSS via a query alias for the ElasticSearch datasource.",
+    "severity": "medium",
+    "cvss_score": 6.1,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 4.3,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:N/C:N/I:P/A:N",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00816,
+      "epss_percentile": 0.7326
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:grafana:grafana:*:*:*:*:*:*:*:*",
+      "vendor": "grafana",
+      "product": "grafana"
+    },
+    "reference": [
+      "https://github.com/grafana/grafana/blob/master/CHANGELOG.md#710-beta-1-2020-07-01",
+      "https://security.netapp.com/advisory/ntap-20201123-0002/",
+      "https://github.com/cyb3r-w0lf/nuclei-template-collection",
+      "https://github.com/20142995/nuclei-templates"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/grafana/grafana/blob/master/CHANGELOG.md#710-beta-1-2020-07-01",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/grafana/grafana/pull/25401",
+      "https://github.com/grafana/grafana/pull/25401"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2020-10-28T14:15:12.330",
+    "updated_at": "2024-11-21T05:14:34.773",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1698,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:grafana:grafana:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 130445,
+      "query": [
+        "cpe:\"cpe:2.3:a:grafana:grafana\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2020-13430",
+    "cve_description": "Grafana before 7.0.0 allows tag value XSS via the OpenTSDB datasource.",
+    "severity": "medium",
+    "cvss_score": 6.1,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 4.3,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:N/C:N/I:P/A:N",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00324,
+      "epss_percentile": 0.54767
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:grafana:grafana:*:*:*:*:*:*:*:*",
+      "vendor": "grafana",
+      "product": "grafana"
+    },
+    "reference": [
+      "https://github.com/grafana/grafana/releases/tag/v7.0.0",
+      "https://security.netapp.com/advisory/ntap-20200528-0003/"
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/grafana/grafana/pull/24539",
+      "https://github.com/grafana/grafana/pull/24539"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2020-05-24T18:15:10.097",
+    "updated_at": "2024-11-21T05:01:14.780",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1855,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:grafana:grafana:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 130445,
+      "query": [
+        "cpe:\"cpe:2.3:a:grafana:grafana\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2020-13429",
+    "cve_description": "legend.ts in the piechart-panel (aka Pie Chart Panel) plugin before 1.5.0 for Grafana allows XSS via the Values Header (aka legend header) option.",
+    "severity": "medium",
+    "cvss_score": 5.4,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 3.5,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:S/C:N/I:P/A:N",
+        "severity": "low"
+      },
+      "cvss31": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00191,
+      "epss_percentile": 0.41517
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:grafana:piechart-panel:*:*:*:*:*:grafana:*:*",
+      "vendor": "grafana",
+      "product": "piechart-panel",
+      "framework": "grafana"
+    },
+    "reference": [
+      "https://github.com/grafana/piechart-panel/issues/218",
+      "https://github.com/grafana/piechart-panel/releases/tag/v1.5.0"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2020-05-24T18:15:10.003",
+    "updated_at": "2024-11-21T05:01:14.627",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1855,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:grafana:piechart-panel:*:*:*:*:*:grafana:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2020-13379",
+    "cve_description": "The avatar feature in Grafana 3.0.1 through 7.0.1 has an SSRF Incorrect Access Control issue. This vulnerability allows any unauthenticated user/client to make Grafana send HTTP requests to any URL and return its result to the user/client. This can be used to gain information about the network that Grafana is running on. Furthermore, passing invalid URL objects could be used for DOS'ing Grafana via SegFault.",
+    "severity": "high",
+    "cvss_score": 8.2,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 6.4,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:N/C:P/I:N/A:P",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 8.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-918",
+        "cwe_name": "Server-Side Request Forgery (SSRF)"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.9295,
+      "epss_percentile": 0.99762
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:grafana:grafana:*:*:*:*:*:*:*:*",
+      "vendor": "grafana",
+      "product": "grafana"
+    },
+    "reference": [
+      "http://lists.opensuse.org/opensuse-security-announce/2020-06/msg00060.html",
+      "http://lists.opensuse.org/opensuse-security-announce/2020-07/msg00083.html",
+      "http://lists.opensuse.org/opensuse-security-announce/2020-10/msg00009.html",
+      "http://lists.opensuse.org/opensuse-security-announce/2020-10/msg00017.html",
+      "http://www.openwall.com/lists/oss-security/2020/06/03/4",
+      "http://www.openwall.com/lists/oss-security/2020/06/09/2",
+      "https://lists.apache.org/thread.html/r0928ee574281f8b6156e0a6d0291bfc27100a9dd3f9b0177ece24ae4%40%3Cdev.ambari.apache.org%3E",
+      "https://lists.apache.org/thread.html/r093b405a49fd31efa0d949ac1a887101af1ca95652a66094194ed933%40%3Cdev.ambari.apache.org%3E",
+      "https://lists.apache.org/thread.html/r40f0a97b6765de6b8938bc212ee9dfb5101e9efa48bcbbdec02b2a60%40%3Cissues.ambari.apache.org%3E",
+      "https://lists.apache.org/thread.html/r6670a6c29044bcb77d4e5d165b5bd13fffe37b84caa5d6471b13b3a2%40%3Cdev.ambari.apache.org%3E"
+    ],
+    "poc": [
+      {
+        "url": "http://packetstormsecurity.com/files/158320/Grafana-7.0.1-Denial-Of-Service.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://mostwanted002.cf/post/grafanados/",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://rhynorater.github.io/CVE-2020-13379-Write-Up",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "http://packetstormsecurity.com/files/158320/Grafana-7.0.1-Denial-Of-Service.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://mostwanted002.cf/post/grafanados/",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://rhynorater.github.io/CVE-2020-13379-Write-Up",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "http://packetstormsecurity.com/files/158320/Grafana-7.0.1-Denial-Of-Service.html",
+        "source": "trickest",
+        "added_at": ""
+      },
+      {
+        "url": "https://community.grafana.com/t/release-notes-v6-7-x/27119",
+        "source": "trickest",
+        "added_at": ""
+      },
+      {
+        "url": "https://community.grafana.com/t/release-notes-v7-0-x/29381",
+        "source": "trickest",
+        "added_at": ""
+      },
+      {
+        "url": "https://mostwanted002.cf/post/grafanados/",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "https://grafana.com/blog/2020/06/03/grafana-6.7.4-and-7.0.2-released-with-important-security-fix/",
+    "is_template": true,
+    "nuclei_templates": {
+      "template_path": "http/cves/2020/CVE-2020-13379.yaml",
+      "template_url": "https://cloud.projectdiscovery.io/public/CVE-2020-13379",
+      "created_at": "2022-12-08T11:39:09+11:00",
+      "updated_at": "2025-05-27T10:39:47+08:00"
+    },
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2020-06-03T19:15:10.737",
+    "updated_at": "2024-11-21T05:01:08.160",
+    "hackerone": {
+      "rank": 272,
+      "count": 88
+    },
+    "age_in_days": 1845,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:grafana:grafana:*:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:31:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:32:*:*:*:*:*:*:*",
+      "cpe:2.3:a:netapp:e-series_performance_analyzer:-:*:*:*:*:*:*:*",
+      "cpe:2.3:o:opensuse:leap:15.2:*:*:*:*:*:*:*",
+      "cpe:2.3:a:opensuse:backports_sle:15.0:sp1:*:*:*:*:*:*",
+      "cpe:2.3:a:opensuse:backports_sle:15.0:sp2:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 130445,
+      "query": [
+        "cpe:\"cpe:2.3:a:grafana:grafana\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2020-12459",
+    "cve_description": "In certain Red Hat packages for Grafana 6.x through 6.3.6, the configuration files /etc/grafana/grafana.ini and /etc/grafana/ldap.toml (which contain a secret_key and a bind_password) are world readable.",
+    "severity": "medium",
+    "cvss_score": 5.5,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 2.1,
+        "vector": "CVSS:2.0/AV:L/AC:L/Au:N/C:P/I:N/A:N",
+        "severity": "low"
+      },
+      "cvss31": {
+        "score": 5.5,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-732",
+        "cwe_name": "Incorrect Permission Assignment for Critical Resource"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00051,
+      "epss_percentile": 0.15981
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:grafana:grafana:*:*:*:*:*:*:*:*",
+      "vendor": "grafana",
+      "product": "grafana"
+    },
+    "reference": [
+      "https://access.redhat.com/security/cve/CVE-2020-12459",
+      "https://bugzilla.redhat.com/show_bug.cgi?id=1829724",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/CTQCKJZZYXMCSHJFZZ3YXEO5NUBANGZS/",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/WEBCIEVSYIDDCA7FTRS2IFUOYLIQU34A/",
+      "https://security.netapp.com/advisory/ntap-20200518-0004/"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/grafana/grafana/issues/8283",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "https://github.com/grafana/grafana/issues/8283",
+    "patch_url": [
+      "https://src.fedoraproject.org/rpms/grafana/c/fab93d67363eb0a9678d9faf160cc88237f26277",
+      "https://src.fedoraproject.org/rpms/grafana/c/fab93d67363eb0a9678d9faf160cc88237f26277"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2020-04-29T16:15:11.823",
+    "updated_at": "2024-11-21T04:59:44.660",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1880,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": false,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:grafana:grafana:*:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:31:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:32:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 130445,
+      "query": [
+        "cpe:\"cpe:2.3:a:grafana:grafana\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2020-12458",
+    "cve_description": "An information-disclosure flaw was found in Grafana through 6.7.3. The database directory /var/lib/grafana and database file /var/lib/grafana/grafana.db are world readable. This can result in exposure of sensitive information (e.g., cleartext or encrypted datasource passwords).",
+    "severity": "medium",
+    "cvss_score": 5.5,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 2.1,
+        "vector": "CVSS:2.0/AV:L/AC:L/Au:N/C:P/I:N/A:N",
+        "severity": "low"
+      },
+      "cvss31": {
+        "score": 5.5,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-732",
+        "cwe_name": "Incorrect Permission Assignment for Critical Resource"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00052,
+      "epss_percentile": 0.16056
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:grafana:grafana:*:*:*:*:*:*:*:*",
+      "vendor": "grafana",
+      "product": "grafana"
+    },
+    "reference": [
+      "https://access.redhat.com/security/cve/CVE-2020-12458",
+      "https://bugzilla.redhat.com/show_bug.cgi?id=1827765",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/CTQCKJZZYXMCSHJFZZ3YXEO5NUBANGZS/",
+      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/WEBCIEVSYIDDCA7FTRS2IFUOYLIQU34A/",
+      "https://security.netapp.com/advisory/ntap-20200518-0001/"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/grafana/grafana/issues/8283",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/grafana/grafana/issues/8283",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1827765",
+        "source": "trickest",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/grafana/grafana/issues/8283",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2020-04-29T16:15:11.760",
+    "updated_at": "2024-11-21T04:59:44.517",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1880,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": false,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:grafana:grafana:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:redhat:ceph_storage:3.0:*:*:*:*:*:*:*",
+      "cpe:2.3:a:redhat:ceph_storage:4.0:*:*:*:*:*:*:*",
+      "cpe:2.3:o:redhat:enterprise_linux:8.0:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:31:*:*:*:*:*:*:*",
+      "cpe:2.3:o:fedoraproject:fedora:32:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 130445,
+      "query": [
+        "cpe:\"cpe:2.3:a:grafana:grafana\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2020-12245",
+    "cve_description": "Grafana before 6.7.3 allows table-panel XSS via column.title or cellLinkTooltip.",
+    "severity": "medium",
+    "cvss_score": 6.1,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 4.3,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:N/C:N/I:P/A:N",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.03189,
+      "epss_percentile": 0.86417
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:grafana:grafana:*:*:*:*:*:*:*:*",
+      "vendor": "grafana",
+      "product": "grafana"
+    },
+    "reference": [
+      "http://lists.opensuse.org/opensuse-security-announce/2020-06/msg00060.html",
+      "http://lists.opensuse.org/opensuse-security-announce/2020-07/msg00083.html",
+      "http://lists.opensuse.org/opensuse-security-announce/2020-10/msg00009.html",
+      "http://lists.opensuse.org/opensuse-security-announce/2020-10/msg00017.html",
+      "https://github.com/grafana/grafana/blob/master/CHANGELOG.md#673-2020-04-23",
+      "https://security.netapp.com/advisory/ntap-20200511-0001/",
+      "https://github.com/20142995/nuclei-templates",
+      "https://github.com/cyb3r-w0lf/nuclei-template-collection"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/grafana/grafana/blob/master/CHANGELOG.md#673-2020-04-23",
+        "source": "trickest",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/grafana/grafana/pull/23816",
+        "source": "trickest",
+        "added_at": ""
+      },
+      {
+        "url": "https://community.grafana.com/t/release-notes-v6-7-x/27119",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "https://community.grafana.com/t/release-notes-v6-7-x/27119",
+    "patch_url": [
+      "https://github.com/grafana/grafana/pull/23816",
+      "https://github.com/grafana/grafana/pull/23816"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2020-04-24T21:15:13.920",
+    "updated_at": "2024-11-21T04:59:22.397",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1885,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:grafana:grafana:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 130445,
+      "query": [
+        "cpe:\"cpe:2.3:a:grafana:grafana\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2020-12052",
+    "cve_description": "Grafana version < 6.7.3 is vulnerable for annotation popup XSS.",
+    "severity": "medium",
+    "cvss_score": 6.1,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 4.3,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:N/C:N/I:P/A:N",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.01214,
+      "epss_percentile": 0.7807
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:grafana:grafana:*:*:*:*:*:*:*:*",
+      "vendor": "grafana",
+      "product": "grafana"
+    },
+    "reference": [
+      "https://security.netapp.com/advisory/ntap-20200511-0001/",
+      "https://github.com/20142995/nuclei-templates",
+      "https://github.com/cyb3r-w0lf/nuclei-template-collection"
+    ],
+    "poc": [
+      {
+        "url": "https://community.grafana.com/t/release-notes-v6-7-x/27119",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "https://community.grafana.com/t/release-notes-v6-7-x/27119",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2020-04-27T13:15:12.443",
+    "updated_at": "2024-11-21T04:59:11.260",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1882,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:grafana:grafana:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 130445,
+      "query": [
+        "cpe:\"cpe:2.3:a:grafana:grafana\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2020-11110",
+    "cve_description": "Grafana through 6.7.1 allows stored XSS due to insufficient input protection in the originalUrl field, which allows an attacker to inject JavaScript code that will be executed after clicking on Open Original Dashboard after visiting the snapshot.",
+    "severity": "medium",
+    "cvss_score": 5.4,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 3.5,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:S/C:N/I:P/A:N",
+        "severity": "low"
+      },
+      "cvss31": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.67637,
+      "epss_percentile": 0.98462
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:grafana:grafana:*:*:*:*:*:*:*:*",
+      "vendor": "grafana",
+      "product": "grafana"
+    },
+    "reference": [
+      "https://github.com/grafana/grafana/blob/master/CHANGELOG.md",
+      "https://security.netapp.com/advisory/ntap-20200810-0002/",
+      "https://github.com/20142995/nuclei-templates",
+      "https://github.com/ARPSyndicate/cvemon",
+      "https://github.com/ARPSyndicate/kenzer-templates",
+      "https://github.com/AVE-Stoik/CVE-2020-11110-Proof-of-Concept",
+      "https://github.com/NarbehJackson/Java-Xss-minitwit16",
+      "https://github.com/NarbehJackson/XSS-Python-Lab",
+      "https://github.com/kh4sh3i/Grafana-CVE",
+      "https://github.com/nomi-sec/PoC-in-GitHub"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/AVE-Stoik/CVE-2020-11110-Proof-of-Concept",
+        "source": "gh-nomi-sec",
+        "added_at": "2024-01-05T09:51:21Z"
+      },
+      {
+        "url": "https://github.com/grafana/grafana/blob/master/CHANGELOG.md",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": true,
+    "nuclei_templates": {
+      "template_path": "http/cves/2020/CVE-2020-11110.yaml",
+      "template_url": "https://cloud.projectdiscovery.io/public/CVE-2020-11110",
+      "created_at": "2021-06-20T20:00:19+05:30",
+      "updated_at": "2025-05-27T10:39:47+08:00"
+    },
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2020-07-27T13:15:11.293",
+    "updated_at": "2024-11-21T04:56:48.550",
+    "hackerone": {
+      "rank": 471,
+      "count": 18
+    },
+    "age_in_days": 1791,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:grafana:grafana:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:netapp:e-series_performance_analyzer:-:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 130445,
+      "query": [
+        "cpe:\"cpe:2.3:a:grafana:grafana\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2020-10791",
+    "cve_description": "app/Plugin/GrafanaModule/Controller/GrafanaConfigurationController.php in openITCOCKPIT before 3.7.3 allows remote authenticated users to trigger outbound TCP requests (aka SSRF) via the Test Connection feature (aka testGrafanaConnection) of the Grafana Module.",
+    "severity": "medium",
+    "cvss_score": 6.5,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 4,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:S/C:N/I:P/A:N",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-918",
+        "cwe_name": "Server-Side Request Forgery (SSRF)"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00139,
+      "epss_percentile": 0.34858
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:it-novum:openitcockpit:*:*:*:*:*:*:*:*",
+      "vendor": "it-novum",
+      "product": "openitcockpit"
+    },
+    "vendor_advisory": "https://openitcockpit.io/2020/2020/03/23/openitcockpit-3-7-3-released/",
+    "patch_url": [
+      "https://github.com/it-novum/openITCOCKPIT/commit/50722befae4cfedd0103f9b0ec2a7e22530b2385",
+      "https://github.com/it-novum/openITCOCKPIT/commit/50722befae4cfedd0103f9b0ec2a7e22530b2385"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2020-03-25T14:15:12.447",
+    "updated_at": "2024-11-21T04:56:04.867",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1915,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:it-novum:openitcockpit:*:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2020-10092",
+    "cve_description": "GitLab 12.1 through 12.8.1 allows XSS. A cross-site scripting vulnerability was present in a particular view relating to the Grafana integration.",
+    "severity": "medium",
+    "cvss_score": 6.1,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 4.3,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:N/C:N/I:P/A:N",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.001,
+      "epss_percentile": 0.28766
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:gitlab:gitlab:*:*:*:*:community:*:*:*",
+      "vendor": "gitlab",
+      "product": "gitlab"
+    },
+    "vendor_advisory": "https://about.gitlab.com/releases/2020/03/04/gitlab-12-dot-8-dot-2-released/index.html",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2020-03-13T17:15:13.047",
+    "updated_at": "2024-11-21T04:54:47.620",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1927,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:gitlab:gitlab:*:*:*:*:community:*:*:*",
+      "cpe:2.3:a:gitlab:gitlab:*:*:*:*:enterprise:*:*:*"
+    ],
+    "shodan": {
+      "count": 53867,
+      "query": [
+        "http.title:\"gitlab\""
+      ]
+    }
+  }
+]

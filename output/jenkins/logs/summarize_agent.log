@@ -1,0 +1,82 @@
+2025-11-15 20:38:05 INFO     Logging to output/jenkins/logs/summarize_agent.log
+2025-11-15 20:38:05 INFO     Model loaded successfully (optional).
+2025-11-15 20:38:05 INFO     Preparing CVE list for target 'jenkins' (keyword 'Jenkins') at base output/jenkins
+2025-11-15 20:38:15 INFO     Version constraint has been set, will use this to save tokens. This MAY NOT ACCURATE, please double check!
+2025-11-15 20:39:09 INFO     The following CVEs will be searched:
+[{'cve_id': 'CVE-2025-32755', 'min_version': 'N/min', 'max_version': 'N/max'}, {'cve_id': 'CVE-2025-32754', 'min_version': 'N/min', 'max_version': '6.11.1'}, {'cve_id': 'CVE-2025-31721', 'min_version': 'N/min', 'max_version': '2.503'}, {'cve_id': 'CVE-2025-31720', 'min_version': 'N/min', 'max_version': '2.503'}, {'cve_id': 'CVE-2025-27625', 'min_version': 'N/min', 'max_version': '2.499'}, {'cve_id': 'CVE-2025-27624', 'min_version': 'N/min', 'max_version': '2.499'}, {'cve_id': 'CVE-2025-27623', 'min_version': 'N/min', 'max_version': '2.499'}, {'cve_id': 'CVE-2025-27622', 'min_version': 'N/min', 'max_version': '2.499'}, {'cve_id': 'CVE-2025-24398', 'min_version': '2.1.0', 'max_version': '4.1.3'}, {'cve_id': 'CVE-2024-47804', 'min_version': 'N/min', 'max_version': '2.478'}, {'cve_id': 'CVE-2024-47803', 'min_version': 'N/min', 'max_version': '2.478'}, {'cve_id': 'CVE-2024-4692', 'min_version': 'N/min', 'max_version': '24.1.0'}, {'cve_id': 'CVE-2024-4690', 'min_version': 'N/min', 'max_version': '24.1.0'}, {'cve_id': 'CVE-2024-43045', 'min_version': 'N/min', 'max_version': '2.470'}, {'cve_id': 'CVE-2024-43044', 'min_version': 'N/min', 'max_version': '2.470'}, {'cve_id': 'CVE-2024-4211', 'min_version': 'N/min', 'max_version': '24.1.0'}, {'cve_id': 'CVE-2024-4189', 'min_version': 'N/min', 'max_version': '24.1.0'}, {'cve_id': 'CVE-2024-4184', 'min_version': 'N/min', 'max_version': '24.1.0'}, {'cve_id': 'CVE-2024-3825', 'min_version': 'N/min', 'max_version': '4.22'}]
+2025-11-15 20:39:09 INFO     Saved 19 CVEs to output/jenkins/summarize/cve_list.json
+2025-11-15 20:39:09 INFO     Completed. Outputs under: output/jenkins/summarize (logs in output/jenkins/logs)
+2025-11-15 20:43:30 INFO     Logging to output/jenkins/logs/summarize_agent.log
+2025-11-15 20:43:30 INFO     Model loaded successfully (optional).
+2025-11-15 20:43:30 INFO     Preparing CVE list for target 'jenkins' (keyword 'Jenkins') at base output/jenkins
+2025-11-15 20:43:35 INFO     Version constraint has been set, will use this to save tokens. This MAY NOT ACCURATE, please double check!
+2025-11-15 20:44:21 INFO     The following CVEs will be searched:
+[{'cve_id': 'CVE-2024-47804', 'min_version': 'N/min', 'max_version': '2.478'}, {'cve_id': 'CVE-2024-47803', 'min_version': 'N/min', 'max_version': '2.478'}, {'cve_id': 'CVE-2024-4692', 'min_version': 'N/min', 'max_version': '24.1.0'}, {'cve_id': 'CVE-2024-4690', 'min_version': 'N/min', 'max_version': '24.1.0'}, {'cve_id': 'CVE-2024-43045', 'min_version': 'N/min', 'max_version': '2.470'}, {'cve_id': 'CVE-2024-43044', 'min_version': 'N/min', 'max_version': '2.470'}, {'cve_id': 'CVE-2024-4211', 'min_version': 'N/min', 'max_version': '24.1.0'}, {'cve_id': 'CVE-2024-4189', 'min_version': 'N/min', 'max_version': '24.1.0'}, {'cve_id': 'CVE-2024-4184', 'min_version': 'N/min', 'max_version': '24.1.0'}, {'cve_id': 'CVE-2024-3825', 'min_version': 'N/min', 'max_version': '4.22'}, {'cve_id': 'CVE-2024-28153', 'min_version': 'N/min', 'max_version': '5.4.5'}, {'cve_id': 'CVE-2024-23898', 'min_version': '2.217', 'max_version': '2.441'}, {'cve_id': 'CVE-2024-23897', 'min_version': 'N/min', 'max_version': '2.441'}]
+2025-11-15 20:44:21 INFO     Saved 13 CVEs to output/jenkins/summarize/cve_list.json
+2025-11-15 20:44:21 INFO     Completed. Outputs under: output/jenkins/summarize (logs in output/jenkins/logs)
+2025-11-16 15:56:12 INFO     Logging to output/jenkins/logs/summarize_agent.log
+2025-11-16 15:56:12 INFO     Model loaded successfully (optional).
+2025-11-16 15:56:12 INFO     Preparing CVE list for target='jenkins' keyword='Jenkins' version='2.441'
+2025-11-16 15:56:54 INFO     Logging to output/jenkins/logs/summarize_agent.log
+2025-11-16 15:56:54 INFO     Model loaded successfully (optional).
+2025-11-16 15:56:54 INFO     Preparing CVE list for target='jenkins' keyword='Jenkins' version='2.441'
+2025-11-16 15:58:14 INFO     Version filter (CVEMAP) reduced: 60 -> 19
+2025-11-16 15:58:14 INFO     Exploit-DB found 20 CVEs (keyword/version based)
+2025-11-16 15:58:14 INFO     Combine mode=intersect -> 0 CVEs
+2025-11-16 15:58:14 WARNING  No CVE found after all filters. Consider relaxing year range, switching exploitdb.mode to 'union', or removing version.
+2025-11-16 15:58:14 INFO     Saved 0 CVEs to output/jenkins/summarize/cve_list.json
+2025-11-16 15:58:14 INFO     Completed. Outputs under: output/jenkins/summarize (logs in output/jenkins/logs/summarize_agent.log)
+2025-11-16 16:00:08 INFO     Logging to output/jenkins/logs/summarize_agent.log
+2025-11-16 16:00:08 INFO     Model loaded (warm, optional).
+2025-11-16 16:00:08 INFO     Start summarize for target='jenkins' keyword='Jenkins' version='2.441'
+2025-11-16 16:01:36 INFO     Version filter: 60 -> 19
+2025-11-16 16:01:37 INFO     Exploit-DB combine (intersect): 19 -> 0
+2025-11-16 16:01:37 WARNING  No CVE after all filters. Consider relaxing config.
+2025-11-16 16:01:37 INFO     Saved 0 CVEs -> output/jenkins/summarize/cve_list.json
+2025-11-16 16:01:37 INFO     Done. Outputs under summarize/. Logs: output/jenkins/logs/summarize_agent.log
+2025-11-16 16:08:31 INFO     Logging to output/jenkins/logs/summarize_agent.log
+2025-11-16 16:08:31 INFO     Model loaded (warm, optional).
+2025-11-16 16:08:31 INFO     Start summarize for target='jenkins' keyword='Jenkins' version='2.441'
+2025-11-16 16:09:55 INFO     Version filter: 60 -> 19
+2025-11-16 16:09:56 INFO     Exploit-DB combine (union): 19 -> 19
+2025-11-16 16:09:56 INFO     Saved 19 CVEs -> output/jenkins/summarize/cve_list.json
+2025-11-16 16:09:56 INFO     Done. Outputs under summarize/. Logs: output/jenkins/logs/summarize_agent.log
+2025-11-16 16:17:10 INFO     Logging to output/jenkins/logs/summarize_agent.log
+2025-11-16 16:17:10 INFO     Model loaded (warm, optional).
+2025-11-16 16:17:10 INFO     Start summarize for target='jenkins' keyword='Jenkins' version='2.441'
+2025-11-16 16:18:04 INFO     Logging to output/jenkins/logs/summarize_agent.log
+2025-11-16 16:18:04 INFO     Model loaded (warm, optional).
+2025-11-16 16:18:04 INFO     Start summarize for target='jenkins' keyword='Jenkins' version='2.441'
+2025-11-16 16:19:31 INFO     Version filter: 60 -> 19
+2025-11-16 16:19:32 INFO     Exploit-DB combine (union): 19 -> 19
+2025-11-16 16:19:32 INFO     Saved 19 CVEs -> output/jenkins/summarize/cve_list.json
+2025-11-16 16:19:32 INFO     Done. Outputs under summarize/. Logs: output/jenkins/logs/summarize_agent.log
+2025-11-16 16:20:27 INFO     Logging to output/jenkins/logs/summarize_agent.log
+2025-11-16 16:20:27 INFO     Model loaded (warm, optional).
+2025-11-16 16:20:27 INFO     Start summarize for target='jenkins' keyword='Jenkins' version='2.441'
+2025-11-16 16:21:50 INFO     Version filter: 60 -> 19
+2025-11-16 16:21:51 INFO     Exploit-DB combine (union): 19 -> 19
+2025-11-16 16:21:51 INFO     Saved 19 CVEs -> output/jenkins/summarize/cve_list.json
+2025-11-16 16:21:51 INFO     Done. Outputs under summarize/. Logs: output/jenkins/logs/summarize_agent.log
+2025-11-16 16:22:17 INFO     Logging to output/jenkins/logs/summarize_agent.log
+2025-11-16 16:22:17 INFO     Model loaded (warm, optional).
+2025-11-16 16:22:17 INFO     Start summarize for target='jenkins' keyword='Jenkins' version='2.441'
+2025-11-16 16:23:03 INFO     Version filter: 60 -> 13
+2025-11-16 16:23:04 INFO     Exploit-DB combine (union): 13 -> 13
+2025-11-16 16:23:04 INFO     Saved 13 CVEs -> output/jenkins/summarize/cve_list.json
+2025-11-16 16:23:04 INFO     Done. Outputs under summarize/. Logs: output/jenkins/logs/summarize_agent.log
+2025-11-16 16:23:41 INFO     Logging to output/jenkins/logs/summarize_agent.log
+2025-11-16 16:23:41 INFO     Model loaded successfully (optional).
+2025-11-16 16:23:41 INFO     Preparing CVE list for target='jenkins' keyword='Jenkins' version='2.441'
+2025-11-16 16:24:27 INFO     Version filter (CVEMAP) reduced: 60 -> 13
+2025-11-16 16:24:28 INFO     Exploit-DB found 20 CVEs (keyword/version based)
+2025-11-16 16:24:28 INFO     Combine mode=union -> 32 CVEs
+2025-11-16 16:24:28 INFO     Saved 32 CVEs to output/jenkins/summarize/cve_list.json
+2025-11-16 16:24:28 INFO     Completed. Outputs under: output/jenkins/summarize (logs in output/jenkins/logs/summarize_agent.log)
+2025-11-16 16:30:54 INFO     Logging to output/jenkins/logs/summarize_agent.log
+2025-11-16 16:30:54 INFO     Model loaded (warm, optional).
+2025-11-16 16:30:54 INFO     Start summarize for target='jenkins' keyword='Jenkins' version='2.441'
+2025-11-16 16:31:47 INFO     Version filter: 60 -> 13
+2025-11-16 16:31:48 INFO     Exploit-DB combine (union): 13 -> 13
+2025-11-16 16:31:48 INFO     Saved 13 CVEs -> output/jenkins/summarize/cve_list.json
+2025-11-16 16:31:48 INFO     Done. Outputs under summarize/. Logs: output/jenkins/logs/summarize_agent.log

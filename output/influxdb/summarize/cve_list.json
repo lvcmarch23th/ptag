@@ -1,0 +1,9 @@
+{
+  "keyword": "InfluxDB",
+  "version_filter": "1.6.6",
+  "count": 2,
+  "cves": [
+    "CVE-2019-20933",
+    "CVE-2019-10329"
+  ]
+}

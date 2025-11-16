@@ -1,0 +1,120 @@
+# PentestAgent Configuration File
+models:
+  openai:
+    provider: openai
+    model: gpt-4o-mini
+    temperature: 0
+    timeout: 180
+    api_key: ""
+
+  google:
+    provider: google
+    model: gemini-2.5-flash
+    temperature: 0
+    timeout: 180
+    api_key: ""
+  
+    # max_tokens: 10000
+
+cve_scoring:
+  weights:
+    lang_class:
+      "c1": 1.1
+      "c2": 1.0
+      "c3": 0.8
+
+    vul_type:
+      "Code Execution": 10
+      "Privilege Escalation": 8
+      "Information Leak": 6
+      "Bypass": 6
+      "Denial of Service": 2
+
+    exp_maturity:
+      "Exploit": 1
+      "PoC": 0.5
+      "None": 0
+
+    isRemote:
+      "True": 20
+      "False": 0
+
+    attack_complexity:
+      code_attack_evasion:
+        "True": 0
+        "False": 5
+      code_info_dependency:
+        "True": 0
+        "False": 5
+      code_attack_condition:
+        "True": 0
+        "False": 5
+      code_attack_probability:
+        "True": 0
+        "False": 5
+      code_privilege_required:
+        "True": 0
+        "False": 5
+      code_user_interaction:
+        "True": 0
+        "False": 5
+      doc_attack_evasion:
+        "True": 0
+        "False": 5
+      doc_info_dependency:
+        "True": 0
+        "False": 5
+      doc_attack_condition:
+        "True": 0
+        "False": 5
+      doc_attack_probability:
+        "True": 0
+        "False": 5
+      doc_privilege_required:
+        "True": 0
+        "False": 5
+      doc_user_interaction:
+        "True": 0
+        "False": 5
+
+    source_weights:
+      expdb: 1.1
+      gthb: 1
+      gg: 0.85
+
+    trending_score: 0.2
+
+    expdb_default_score: 20
+
+# Runtime configuration
+runtime:
+  recon:
+    target_ip: "10.20.6.214"
+    model: "google"
+    target_name: "abc"
+    output_root: "output"
+
+  summarize:
+    model: "google"
+    keyword: "Apache"
+    version: "2.4.50"
+    target_name: "abc"
+    output_root: "output"
+    cvemap:
+      fuzzy_search: True
+      max_year: 2021 # year > max_year will be filtered
+      min_year: 2020 # year < min_year will be filtered
+      max_entry: 60
+    exploitdb:
+      enabled: true
+      mode: "union"     
+      timeout: 25
+      extra_queries:
+        - "Apache 2.4.50"
+  
+  detect:
+    model: "google"
+    max_llm_retries: 4
+    target_name: "htabtpd"
+    output_root: "output"
+    target: "10.20.6.214:8080"  

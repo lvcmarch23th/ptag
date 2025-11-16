@@ -1,0 +1,20 @@
+{
+  "analysis": {
+    "ports": {
+      "80": {
+        "accessibility": "open",
+        "name": "Apache",
+        "version": "2.4.58"
+      },
+      "3000": {
+        "accessibility": "open",
+        "name": "Grafana",
+        "version": "8.2.6"
+      }
+    },
+    "OS": "Linux",
+    "IP": "10.20.6.214"
+  },
+  "next_step": "Reconnaissance is complete for the identified open ports. Further investigation could involve looking for known vulnerabilities in Apache 2.4.58 and Grafana 8.2.6, attempting to access the Grafana login page, or exploring the Apache web server for exposed directories or files.",
+  "executable": "None"
+}

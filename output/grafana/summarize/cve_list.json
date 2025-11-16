@@ -1,0 +1,8 @@
+{
+  "keyword": "Grafana",
+  "version_filter": "8.2.6",
+  "count": 1,
+  "cves": [
+    "CVE-2021-43798"
+  ]
+}

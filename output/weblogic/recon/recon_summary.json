@@ -1,0 +1,20 @@
+{
+  "analysis": {
+    "ports": {
+      "80": {
+        "accessibility": "open",
+        "name": "Apache",
+        "version": "2.4.58"
+      },
+      "7001": {
+        "accessibility": "open",
+        "name": "WebLogic",
+        "version": "12.2.1.3"
+      }
+    },
+    "OS": "Ubuntu",
+    "IP": "10.20.6.214"
+  },
+  "next_step": "Further investigation could involve waiting longer for the WebLogic console on port 7001 to fully deploy and then attempting to access it again. Additionally, exploring other common WebLogic default application paths or known vulnerabilities for Oracle WebLogic 12.2.1.3 would be beneficial.",
+  "executable": "None"
+}

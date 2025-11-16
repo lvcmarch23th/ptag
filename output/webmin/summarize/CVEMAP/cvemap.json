@@ -1,0 +1,4613 @@
+[
+  {
+    "cve_id": "CVE-2023-52046",
+    "cve_description": "Cross Site Scripting vulnerability (XSS) in webmin v.2.105 and earlier allows a remote attacker to execute arbitrary code via a crafted payload to the \"Execute cron job as\" tab Input field.",
+    "severity": "medium",
+    "cvss_score": 4.8,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 4.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00055,
+      "epss_percentile": 0.17466
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/Acklee/webadmin_xss/blob/main/xss.md",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/Acklee/webadmin_xss/blob/main/xss.md",
+        "source": "NVD",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2024-01-25T21:15:08.730",
+    "updated_at": "2025-05-30T15:15:27.030",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 514,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": false,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2023-43309",
+    "cve_description": "There is a stored cross-site scripting (XSS) vulnerability in Webmin 2.002 and below via the Cluster Cron Job tab Input field, which allows attackers to run malicious scripts by injecting a specially crafted payload.",
+    "severity": "medium",
+    "cvss_score": 4.8,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 4.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00063,
+      "epss_percentile": 0.19934
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "poc": [
+      {
+        "url": "https://github.com/TishaManandhar/Webmin_xss_POC/blob/main/XSS",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/TishaManandhar/Webmin_xss_POC/blob/main/XSS",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/TishaManandhar/Webmin_xss_POC/blob/main/XSS",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2023-09-21T14:15:10.750",
+    "updated_at": "2024-11-21T08:23:58.503",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 640,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": false,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2023-41163",
+    "cve_description": "A Reflected Cross-site scripting (XSS) vulnerability in the file manager tab in Usermin 2.000 allows remote attackers to inject arbitrary web script or HTML via the replace in results field while replacing the results under the tools drop down.",
+    "severity": "medium",
+    "cvss_score": 6.1,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00059,
+      "epss_percentile": 0.18648
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:2.000:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "https://github.com/shindeanik/Usermin-2.000/blob/main/CVE-2023-41163",
+      "https://webmin.com/tags/webmin-changelog/"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2023-08-30T22:15:10.297",
+    "updated_at": "2024-11-21T08:20:42.290",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 662,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:2.000:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2023-41162",
+    "cve_description": "A Reflected Cross-site scripting (XSS) vulnerability in the file manager tab in Usermin 2.000 allows remote attackers to inject arbitrary web script or HTML via the file mask field while searching under the tools drop down.",
+    "severity": "medium",
+    "cvss_score": 6.1,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00094,
+      "epss_percentile": 0.27592
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:usermin:2.000:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "usermin"
+    },
+    "reference": [
+      "https://github.com/shindeanik/Usermin-2.000/blob/main/CVE-2023-41162",
+      "https://webmin.com/tags/webmin-changelog/"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2023-09-13T22:15:09.017",
+    "updated_at": "2024-11-21T08:20:42.123",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 648,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:usermin:2.000:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2023-41161",
+    "cve_description": "Multiple stored cross-site scripting (XSS) vulnerabilities in Usermin 2.000 allow remote attackers to inject arbitrary web script or HTML via the key comment to different pages such as public key details, Export key, sign key, send to key server page, and fetch from key server page tab.",
+    "severity": "medium",
+    "cvss_score": 5.4,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00088,
+      "epss_percentile": 0.26365
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:usermin:2.000:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "usermin"
+    },
+    "reference": [
+      "https://github.com/shindeanik/Usermin-2.000/blob/main/CVE-2023-41161",
+      "https://webmin.com/tags/webmin-changelog/"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2023-09-07T22:15:07.793",
+    "updated_at": "2024-11-21T08:20:41.970",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 654,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:usermin:2.000:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2023-41160",
+    "cve_description": "A Stored Cross-Site Scripting (XSS) vulnerability in the SSH configuration tab in Usermin 2.001 allows remote attackers to inject arbitrary web script or HTML via the key name field while adding an authorized key.",
+    "severity": "medium",
+    "cvss_score": 5.4,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.0011,
+      "epss_percentile": 0.30339
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:usermin:2.001:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "usermin"
+    },
+    "reference": [
+      "https://webmin.com/tags/webmin-changelog/"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/shindeanik/Usermin-2.001/blob/main/CVE-2023-41160",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/shindeanik/Usermin-2.001/blob/main/CVE-2023-41160",
+        "source": "NVD",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2023-09-14T21:15:10.750",
+    "updated_at": "2024-11-21T08:20:41.823",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 647,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:usermin:2.001:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2023-41159",
+    "cve_description": "A Stored Cross-Site Scripting (XSS) vulnerability while editing the autoreply file page in Usermin 2.000 allows remote attackers to inject arbitrary web script or HTML by editing the forward file manually.",
+    "severity": "medium",
+    "cvss_score": 5.4,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00096,
+      "epss_percentile": 0.27881
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:usermin:2.000:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "usermin"
+    },
+    "reference": [
+      "https://github.com/shindeanik/Usermin-2.000/blob/main/CVE-2023-41159",
+      "https://webmin.com/tags/webmin-changelog/"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2023-09-14T21:15:10.690",
+    "updated_at": "2024-11-21T08:20:41.660",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 647,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:usermin:2.000:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2023-41158",
+    "cve_description": "A Stored Cross-Site Scripting (XSS) vulnerability in the MIME type programs tab in Usermin 2.000 allows remote attackers to inject arbitrary web script or HTML via the description field while creating a new MIME type program.",
+    "severity": "medium",
+    "cvss_score": 5.4,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00088,
+      "epss_percentile": 0.26365
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:usermin:2.000:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "usermin"
+    },
+    "reference": [
+      "https://github.com/shindeanik/Usermin-2.000/blob/main/CVE-2023-41158",
+      "https://webmin.com/tags/webmin-changelog/"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2023-09-13T22:15:08.887",
+    "updated_at": "2024-11-21T08:20:41.503",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 648,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:usermin:2.000:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2023-41157",
+    "cve_description": "Multiple stored cross-site scripting (XSS) vulnerabilities in Usermin 2.000 allow remote attackers to inject arbitrary web script or HTML via the folder name parameter while creating the folder to manage the folder tab, filter tab, and forward mail tab.",
+    "severity": "medium",
+    "cvss_score": 5.4,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00088,
+      "epss_percentile": 0.26332
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:usermin:2.000:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "usermin"
+    },
+    "reference": [
+      "https://github.com/shindeanik/Usermin-2.000/blob/main/CVE-2023-41157",
+      "https://webmin.com/tags/webmin-changelog/"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2023-09-16T06:15:07.627",
+    "updated_at": "2024-11-21T08:20:41.337",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 646,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:usermin:2.000:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2023-41156",
+    "cve_description": "A Stored Cross-Site Scripting (XSS) vulnerability in the filter and forward mail tab in Usermin 2.001 allows remote attackers to inject arbitrary web script or HTML via the save to new folder named field while creating a new filter.",
+    "severity": "medium",
+    "cvss_score": 5.4,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00096,
+      "epss_percentile": 0.27881
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:usermin:2.001:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "usermin"
+    },
+    "reference": [
+      "https://github.com/shindeanik/Usermin-2.001/blob/main/CVE-2023-41156",
+      "https://webmin.com/tags/webmin-changelog/"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2023-09-14T21:15:10.630",
+    "updated_at": "2024-11-21T08:20:41.177",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 647,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:usermin:2.001:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2023-41155",
+    "cve_description": "A Stored Cross-Site Scripting (XSS) vulnerability in the mail forwarding and replies tab in Webmin and Usermin 2.000 allows remote attackers to inject arbitrary web script or HTML via the forward to field while creating a mail forwarding rule.",
+    "severity": "medium",
+    "cvss_score": 5.4,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00088,
+      "epss_percentile": 0.26365
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:usermin:2.000:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "usermin"
+    },
+    "reference": [
+      "https://github.com/shindeanik/Usermin-2.000/blob/main/CVE-2023-41155",
+      "https://webmin.com/tags/webmin-changelog/"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2023-09-13T22:15:08.747",
+    "updated_at": "2024-11-21T08:20:41.027",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 648,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:usermin:2.000:*:*:*:*:*:*:*",
+      "cpe:2.3:a:webmin:webmin:2.000:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2023-41154",
+    "cve_description": "A Stored Cross-Site Scripting (XSS) vulnerability in the scheduled cron jobs tab in Usermin 2.000 allows remote attackers to inject arbitrary web script or HTML via the value field parameter while creating a new environment variable.",
+    "severity": "medium",
+    "cvss_score": 5.4,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00088,
+      "epss_percentile": 0.26365
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:usermin:2.000:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "usermin"
+    },
+    "reference": [
+      "https://github.com/shindeanik/Usermin-2.000/blob/main/CVE-2023-41154",
+      "https://webmin.com/tags/webmin-changelog/"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2023-09-13T22:15:08.623",
+    "updated_at": "2024-11-21T08:20:40.870",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 648,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:usermin:2.000:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2023-41153",
+    "cve_description": "A Stored Cross-Site Scripting (XSS) vulnerability in the SSH configuration tab in Usermin 2.001 allows remote attackers to inject arbitrary web script or HTML via options for the host value while editing the host options.",
+    "severity": "medium",
+    "cvss_score": 5.4,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00085,
+      "epss_percentile": 0.25682
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:usermin:2.001:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "usermin"
+    },
+    "reference": [
+      "https://github.com/shindeanik/Usermin-2.001/blob/main/CVE-2023-41153",
+      "https://webmin.com/tags/webmin-changelog/"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2023-08-29T22:15:09.217",
+    "updated_at": "2024-11-21T08:20:40.710",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 663,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:usermin:2.001:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2023-41152",
+    "cve_description": "A Stored Cross-Site Scripting (XSS) vulnerability in the MIME type programs tab in Usermin 2.000 allows remote attackers to inject arbitrary web script or HTML via the handle program field while creating a new MIME type program.",
+    "severity": "medium",
+    "cvss_score": 5.4,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00088,
+      "epss_percentile": 0.26365
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:usermin:2.000:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "usermin"
+    },
+    "reference": [
+      "https://github.com/shindeanik/Usermin-2.000/blob/main/CVE-2023-41152",
+      "https://webmin.com/tags/webmin-changelog/"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2023-09-13T22:15:08.490",
+    "updated_at": "2024-11-21T08:20:40.553",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 648,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:usermin:2.000:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2023-40986",
+    "cve_description": "A stored cross-site scripting (XSS) vulnerability in the Usermin Configuration function of Webmin v2.100 allows attackers to execute arbitrary web sripts or HTML via a crafted payload injected into the Custom field.",
+    "severity": "medium",
+    "cvss_score": 5.4,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00152,
+      "epss_percentile": 0.36838
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:2.100:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "http://webmin.com"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/Vi39/Webmin-2.100/blob/main/CVE-2023-40986",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/Vi39/Webmin-2.100/blob/main/CVE-2023-40986",
+        "source": "NVD",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2023-09-15T01:15:07.910",
+    "updated_at": "2024-11-21T08:20:22.477",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 647,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:2.100:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2023-40985",
+    "cve_description": "An issue was discovered in Webmin 2.100. The File Manager functionality allows an attacker to exploit a Cross-Site Scripting (XSS) vulnerability. By providing a malicious payload, an attacker can inject arbitrary code, which is then executed within the context of the victim's browser when any file is searched/replaced.",
+    "severity": "medium",
+    "cvss_score": 5.4,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00152,
+      "epss_percentile": 0.36838
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:2.100:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "http://webmin.com"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/Vi39/Webmin-2.100/blob/main/CVE-2023-40985",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/Vi39/Webmin-2.100/blob/main/CVE-2023-40985",
+        "source": "NVD",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2023-09-15T01:15:07.787",
+    "updated_at": "2024-11-21T08:20:22.323",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 647,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:2.100:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2023-40984",
+    "cve_description": "A reflected cross-site scripting (XSS) vulnerability in the File Manager function of Webmin v2.100 allows attackers to execute malicious scripts via injecting a crafted payload into the Replace in Results file.",
+    "severity": "medium",
+    "cvss_score": 5.4,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00206,
+      "epss_percentile": 0.43275
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:2.100:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "http://webmin.com"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/Vi39/Webmin-2.100/blob/main/CVE-2023-40984",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/Vi39/Webmin-2.100/blob/main/CVE-2023-40984",
+        "source": "NVD",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2023-09-15T01:15:07.653",
+    "updated_at": "2024-11-21T08:20:22.170",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 647,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:2.100:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2023-40983",
+    "cve_description": "A reflected cross-site scripting (XSS) vulnerability in the File Manager function of Webmin v2.100 allows attackers to execute malicious scripts via injecting a crafted payload into the Find in Results file.",
+    "severity": "medium",
+    "cvss_score": 6.1,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00515,
+      "epss_percentile": 0.65573
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:2.100:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "http://webmin.com",
+      "https://github.com/20142995/nuclei-templates",
+      "https://github.com/cyb3r-w0lf/nuclei-template-collection"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/Vi39/Webmin-2.100/blob/main/CVE-2023-40983",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/Vi39/Webmin-2.100/blob/main/CVE-2023-40983",
+        "source": "NVD",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2023-09-15T04:15:10.243",
+    "updated_at": "2024-11-21T08:20:22.010",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 647,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:2.100:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2023-40982",
+    "cve_description": "A stored cross-site scripting (XSS) vulnerability in Webmin v2.100 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the cloned module name parameter.",
+    "severity": "medium",
+    "cvss_score": 5.4,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00152,
+      "epss_percentile": 0.36838
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:2.100:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "http://webmin.com"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/Vi39/Webmin-2.100/blob/main/CVE-2023-40982",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/Vi39/Webmin-2.100/blob/main/CVE-2023-40982",
+        "source": "NVD",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2023-09-15T03:15:09.047",
+    "updated_at": "2024-11-21T08:20:21.847",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 647,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:2.100:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2023-38311",
+    "cve_description": "An issue was discovered in Webmin 2.021. A Stored Cross-Site Scripting (XSS) vulnerability was discovered in the System Logs Viewer functionality. The vulnerability allows an attacker to store a malicious payload in the configuration field, triggering the execution of the payload when saving the configuration or when accessing the System Logs Viewer page.",
+    "severity": "medium",
+    "cvss_score": 5.4,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00128,
+      "epss_percentile": 0.33275
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:2.021:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "https://webmin.com/tags/webmin-changelog/"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/jaysharma786/Webmin-2.021/blob/main/CVE-2023-38311",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/jaysharma786/Webmin-2.021/blob/main/CVE-2023-38311",
+        "source": "NVD",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2023-07-31T15:15:10.963",
+    "updated_at": "2024-11-21T08:13:18.150",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 692,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:2.021:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2023-38310",
+    "cve_description": "An issue was discovered in Webmin 2.021. A Stored Cross-Site Scripting (XSS) vulnerability was discovered in the configuration settings of the system logs functionality. The vulnerability allows an attacker to store an XSS payload in the configuration settings of specific log files. This results in the execution of that payload whenever the affected log files are accessed.",
+    "severity": "medium",
+    "cvss_score": 5.4,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00128,
+      "epss_percentile": 0.33275
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:2.021:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "https://webmin.com/tags/webmin-changelog/"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/jaysharma786/Webmin-2.021/blob/main/CVE-2023-38310",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/jaysharma786/Webmin-2.021/blob/main/CVE-2023-38310",
+        "source": "NVD",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2023-07-31T15:15:10.907",
+    "updated_at": "2024-11-21T08:13:17.997",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 692,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:2.021:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2023-38309",
+    "cve_description": "An issue was discovered in Webmin 2.021. A Reflected Cross-Site Scripting (XSS) vulnerability was discovered in the package search functionality. The vulnerability allows an attacker to inject a malicious payload in the \"Search for Package\" field, which gets reflected back in the application's response, leading to the execution of arbitrary JavaScript code within the context of the victim's browser.",
+    "severity": "medium",
+    "cvss_score": 6.1,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00405,
+      "epss_percentile": 0.60101
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:2.021:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "https://webmin.com/tags/webmin-changelog/",
+      "https://github.com/20142995/nuclei-templates",
+      "https://github.com/cyb3r-w0lf/nuclei-template-collection"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/jaysharma786/Webmin-2.021/blob/main/CVE-2023-38309",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/jaysharma786/Webmin-2.021/blob/main/CVE-2023-38309",
+        "source": "NVD",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2023-07-31T15:15:10.847",
+    "updated_at": "2024-11-21T08:13:17.847",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 692,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:2.021:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2023-38308",
+    "cve_description": "An issue was discovered in Webmin 2.021. A Cross-Site Scripting (XSS) vulnerability was discovered in the HTTP Tunnel functionality when handling third-party domain URLs. By providing a crafted URL from a third-party domain, an attacker can inject malicious code. leading to the execution of arbitrary JavaScript code within the context of the victim's browser.",
+    "severity": "medium",
+    "cvss_score": 6.1,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00405,
+      "epss_percentile": 0.60101
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:2.021:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "https://webmin.com/tags/webmin-changelog/",
+      "https://github.com/20142995/nuclei-templates",
+      "https://github.com/cyb3r-w0lf/nuclei-template-collection"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/jaysharma786/Webmin-2.021/blob/main/CVE-2023-38308",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/jaysharma786/Webmin-2.021/blob/main/CVE-2023-38308",
+        "source": "NVD",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2023-07-31T15:15:10.787",
+    "updated_at": "2024-11-21T08:13:17.693",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 692,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:2.021:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2023-38307",
+    "cve_description": "An issue was discovered in Webmin 2.021. A Stored Cross-Site Scripting (XSS) vulnerability was discovered in the Users and Groups functionality. The vulnerability occurs when an authenticated user adds a new user and inserts an XSS payload into the user's real name.",
+    "severity": "medium",
+    "cvss_score": 5.4,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00086,
+      "epss_percentile": 0.2599
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:2.021:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "https://webmin.com/tags/webmin-changelog/"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/jaysharma786/Webmin-2.021/blob/main/CVE-2023-38307",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/jaysharma786/Webmin-2.021/blob/main/CVE-2023-38307",
+        "source": "NVD",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2023-07-31T15:15:10.723",
+    "updated_at": "2024-11-21T08:13:17.540",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 692,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:2.021:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2023-38306",
+    "cve_description": "An issue was discovered in Webmin 2.021. A Cross-site Scripting (XSS) Bypass vulnerability was discovered in the file upload functionality. Normally, the application restricts the upload of certain file types such as .svg, .php, etc., and displays an error message if a prohibited file type is detected. However, by following certain steps, an attacker can bypass these restrictions and inject malicious code.",
+    "severity": "medium",
+    "cvss_score": 6.1,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00305,
+      "epss_percentile": 0.53202
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:2.021:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "https://webmin.com/tags/webmin-changelog/",
+      "https://github.com/cyb3r-w0lf/nuclei-template-collection",
+      "https://github.com/20142995/nuclei-templates"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/jaysharma786/Webmin-2.021/blob/main/CVE-2023-38306",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/jaysharma786/Webmin-2.021/blob/main/CVE-2023-38306",
+        "source": "NVD",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2023-07-31T15:15:10.663",
+    "updated_at": "2024-11-21T08:13:17.380",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 692,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:2.021:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2023-38305",
+    "cve_description": "An issue was discovered in Webmin 2.021. The download functionality allows an attacker to exploit a Cross-Site Scripting (XSS) vulnerability. By providing a crafted download path containing a malicious payload, an attacker can inject arbitrary code, which is then executed within the context of the victim's browser when the download link is accessed.",
+    "severity": "medium",
+    "cvss_score": 6.1,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00311,
+      "epss_percentile": 0.53621
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:2.021:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "https://webmin.com/tags/webmin-changelog/",
+      "https://github.com/cyb3r-w0lf/nuclei-template-collection",
+      "https://github.com/20142995/nuclei-templates"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/jaysharma786/Webmin-2.021/blob/main/CVE-2023-38305",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/jaysharma786/Webmin-2.021/blob/main/CVE-2023-38305",
+        "source": "NVD",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2023-07-31T15:15:10.607",
+    "updated_at": "2024-11-21T08:13:17.233",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 692,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:2.021:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2023-38304",
+    "cve_description": "An issue was discovered in Webmin 2.021. A Stored Cross-Site Scripting (XSS) vulnerability was discovered in the Users and Groups functionality, allowing an attacker to store a malicious payload in the Group Name field when creating a new group.",
+    "severity": "medium",
+    "cvss_score": 5.4,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00092,
+      "epss_percentile": 0.27056
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:2.021:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "https://webmin.com/tags/webmin-changelog/"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/jaysharma786/Webmin-2.021/blob/main/CVE-2023-38304",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/jaysharma786/Webmin-2.021/blob/main/CVE-2023-38304",
+        "source": "NVD",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2023-07-31T15:15:10.547",
+    "updated_at": "2024-11-21T08:13:17.080",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 692,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:2.021:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2023-38303",
+    "cve_description": "An issue was discovered in Webmin 2.021. One can exploit a stored Cross-Site Scripting (XSS) attack to achieve Remote Command Execution (RCE) through the Users and Group's real name parameter.",
+    "severity": "medium",
+    "cvss_score": 5.4,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00156,
+      "epss_percentile": 0.37355
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:2.021:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "https://webmin.com/tags/webmin-changelog/"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/jaysharma786/Webmin-2.021/blob/main/CVE-2023-38303",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/jaysharma786/Webmin-2.021/blob/main/CVE-2023-38303",
+        "source": "NVD",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2023-07-31T15:15:10.487",
+    "updated_at": "2024-11-21T08:13:16.927",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 692,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:2.021:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2022-3844",
+    "cve_description": "A vulnerability, which was classified as problematic, was found in Webmin 2.001. Affected is an unknown function of the file xterm/index.cgi. The manipulation leads to basic cross site scripting. It is possible to launch the attack remotely. Upgrading to version 2.003 is able to address this issue. The patch is identified as d3d33af3c0c3fd3a889c84e287a038b7a457d811. It is recommended to upgrade the affected component. VDB-212862 is the identifier assigned to this vulnerability.",
+    "severity": "low",
+    "cvss_score": 3.5,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 4,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:S/C:N/I:P/A:N",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 3.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:N/I:L/A:N",
+        "severity": "low"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-80",
+        "cwe_name": "Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS)"
+      },
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00069,
+      "epss_percentile": 0.21662
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:2.001:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "https://github.com/webmin/webmin/releases/tag/2.003",
+      "https://vuldb.com/?ctiid.212862",
+      "https://vuldb.com/?id.212862"
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/webmin/webmin/commit/d3d33af3c0c3fd3a889c84e287a038b7a457d811",
+      "https://github.com/webmin/webmin/commit/d3d33af3c0c3fd3a889c84e287a038b7a457d811"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cna@vuldb.com",
+    "published_at": "2022-11-02T20:15:11.023",
+    "updated_at": "2024-11-21T07:20:21.160",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 963,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:2.001:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2022-36880",
+    "cve_description": "The Read Mail module in Webmin 1.995 and Usermin through 1.850 allows XSS via a crafted HTML e-mail message.",
+    "severity": "medium",
+    "cvss_score": 6.1,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 4.3,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:N/C:N/I:P/A:N",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00408,
+      "epss_percentile": 0.60329
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:usermin:*:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "usermin"
+    },
+    "reference": [
+      "https://github.com/ARPSyndicate/cvemon",
+      "https://github.com/ly1g3/webmin-usermin-vulnerabilities"
+    ],
+    "vendor_advisory": "https://www.webmin.com/security.html",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2022-07-27T04:15:10.837",
+    "updated_at": "2024-11-21T07:13:58.237",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1062,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:usermin:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:webmin:webmin:1.995:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2022-36446",
+    "cve_description": "software/apt-lib.pl in Webmin before 1.997 lacks HTML escaping for a UI command.",
+    "severity": "critical",
+    "cvss_score": 9.8,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "critical"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-116",
+        "cwe_name": "Improper Encoding or Escaping of Output"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.93797,
+      "epss_percentile": 0.99851
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "http://packetstormsecurity.com/files/167894/Webmin-1.996-Remote-Code-Execution.html",
+      "https://github.com/webmin/webmin/compare/1.996...1.997",
+      "https://www.exploit-db.com/exploits/50998",
+      "https://github.com/manas3c/CVE-POC",
+      "https://github.com/daotuongcxz/Khai_thac_lo_hong_phan_mem",
+      "https://github.com/lions2012/Penetration_Testing_POC",
+      "https://github.com/WhooAmii/POC_to_review",
+      "https://github.com/k0mi-tg/CVE-POC",
+      "https://github.com/monzaviman/CVE_2022_36446",
+      "https://github.com/p0dalirius/p0dalirius"
+    ],
+    "poc": [
+      {
+        "url": "http://packetstormsecurity.com/files/168049/Webmin-Package-Updates-Command-Injection.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://gist.github.com/emirpolatt/cf19d6c0128fa3e25ebb47e09243919b",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "http://packetstormsecurity.com/files/168049/Webmin-Package-Updates-Command-Injection.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://gist.github.com/emirpolatt/cf19d6c0128fa3e25ebb47e09243919b",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/Kang3639/CVE-2022-36446",
+        "source": "gh-nomi-sec",
+        "added_at": "2024-06-11T04:21:28Z"
+      },
+      {
+        "url": "https://github.com/emirpolatt/CVE-2022-36446",
+        "source": "gh-nomi-sec",
+        "added_at": "2022-09-09T10:34:53Z"
+      },
+      {
+        "url": "https://github.com/p0dalirius/CVE-2022-36446-Webmin-Software-Package-Updates-RCE",
+        "source": "gh-nomi-sec",
+        "added_at": "2022-08-11T11:47:17Z"
+      },
+      {
+        "url": "http://packetstormsecurity.com/files/167894/Webmin-1.996-Remote-Code-Execution.html",
+        "source": "trickest",
+        "added_at": ""
+      },
+      {
+        "url": "http://packetstormsecurity.com/files/168049/Webmin-Package-Updates-Command-Injection.html",
+        "source": "trickest",
+        "added_at": ""
+      },
+      {
+        "url": "https://www.exploit-db.com/exploits/50998",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/webmin/webmin/commit/13f7bf9621a82d93f1e9dbd838d1e22020221bde",
+      "https://github.com/webmin/webmin/commit/13f7bf9621a82d93f1e9dbd838d1e22020221bde"
+    ],
+    "is_template": true,
+    "nuclei_templates": {
+      "template_path": "http/cves/2022/CVE-2022-36446.yaml",
+      "template_url": "https://cloud.projectdiscovery.io/public/CVE-2022-36446",
+      "created_at": "2022-08-21T14:03:11+09:00",
+      "updated_at": "2025-05-27T10:39:47+08:00"
+    },
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2022-07-25T06:15:07.900",
+    "updated_at": "2024-11-21T07:13:01.783",
+    "hackerone": {
+      "rank": 2499,
+      "count": 1
+    },
+    "age_in_days": 1064,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2022-35132",
+    "cve_description": "Usermin through 1.850 allows a remote authenticated user to execute OS commands via command injection in a filename for the GPG module.",
+    "severity": "high",
+    "cvss_score": 8.8,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-78",
+        "cwe_name": "Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.03549,
+      "epss_percentile": 0.87182
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:usermin:*:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "usermin"
+    },
+    "reference": [
+      "https://github.com/ARPSyndicate/cvemon",
+      "https://github.com/ly1g3/webmin-usermin-vulnerabilities"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/ly1g3/webmin-usermin-vulnerabilities",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/ly1g3/webmin-usermin-vulnerabilities",
+        "source": "NVD",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "https://webmin.com/uchanges.html",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2022-10-25T17:15:53.727",
+    "updated_at": "2025-05-07T21:15:54.270",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 971,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:usermin:*:*:*:*:*:*:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2022-30708",
+    "cve_description": "Webmin through 1.991, when the Authentic theme is used, allows remote code execution when a user has been manually created (i.e., not created in Virtualmin or Cloudmin). This occurs because settings-editor_write.cgi does not properly restrict the file parameter.",
+    "severity": "high",
+    "cvss_score": 8.8,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 6.5,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:S/C:P/I:P/A:P",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "NVD-CWE-noinfo"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.03917,
+      "epss_percentile": 0.8779
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "https://github.com/webmin/authentic-theme/releases",
+      "https://github.com/webmin/webmin/issues/1635",
+      "https://github.com/webmin/webmin/releases"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/esp0xdeadbeef/rce_webmin",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/esp0xdeadbeef/rce_webmin/blob/main/exploit.py",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://www.twitch.tv/videos/1483029790",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/esp0xdeadbeef/rce_webmin",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/esp0xdeadbeef/rce_webmin/blob/main/exploit.py",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://www.twitch.tv/videos/1483029790",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/esp0xdeadbeef/rce_webmin",
+        "source": "trickest",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/esp0xdeadbeef/rce_webmin/blob/main/exploit.py",
+        "source": "trickest",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/webmin/webmin/issues/1635",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "https://webmin.com/changes.html",
+    "patch_url": [
+      "https://github.com/webmin/webmin/commit/6a2334bf8b27d55c7edf0b2825cd14f3f8a69d4d",
+      "https://github.com/webmin/webmin/commit/6a2334bf8b27d55c7edf0b2825cd14f3f8a69d4d"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2022-05-15T03:15:07.060",
+    "updated_at": "2024-11-21T07:03:13.387",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1135,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2022-0829",
+    "cve_description": "Improper Authorization in GitHub repository webmin/webmin prior to 1.990.",
+    "severity": "high",
+    "cvss_score": 8.1,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 5.5,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:S/C:N/I:P/A:P",
+        "severity": "medium"
+      },
+      "cvss30": {
+        "score": 5.4,
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 8.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-285",
+        "cwe_name": "Improper Authorization"
+      },
+      {
+        "cwe_id": "CWE-863",
+        "cwe_name": "Incorrect Authorization"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00305,
+      "epss_percentile": 0.53171
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "https://github.com/faisalfs10x/Webmin-CVE-2022-0824-revshell",
+      "https://github.com/garthhumphreys/cvehound",
+      "https://github.com/gokul-ramesh/WebminRCE-exploit",
+      "https://github.com/kh4sh3i/Webmin-CVE",
+      "https://github.com/pizza-power/golang-webmin-CVE-2022-0824-revshell",
+      "https://github.com/ARPSyndicate/cvemon"
+    ],
+    "poc": [
+      {
+        "url": "https://huntr.dev/bounties/f2d0389f-d7d1-4f34-9f9d-268b0a0da05e",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://notes.netbytesec.com/2022/03/webmin-broken-access-control-to-post-auth-rce.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://huntr.dev/bounties/f2d0389f-d7d1-4f34-9f9d-268b0a0da05e",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://notes.netbytesec.com/2022/03/webmin-broken-access-control-to-post-auth-rce.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://huntr.dev/bounties/f2d0389f-d7d1-4f34-9f9d-268b0a0da05e",
+        "source": "trickest",
+        "added_at": ""
+      },
+      {
+        "url": "https://notes.netbytesec.com/2022/03/webmin-broken-access-control-to-post-auth-rce.html",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/webmin/webmin/commit/eeeea3c097f5cc473770119f7ac61f1dcfa671b9",
+      "https://github.com/webmin/webmin/commit/eeeea3c097f5cc473770119f7ac61f1dcfa671b9"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security@huntr.dev",
+    "published_at": "2022-03-02T12:15:07.847",
+    "updated_at": "2024-11-21T06:39:28.880",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1209,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2022-0824",
+    "cve_description": "Improper Access Control to Remote Code Execution in GitHub repository webmin/webmin prior to 1.990.",
+    "severity": "high",
+    "cvss_score": 8.8,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 9,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:S/C:C/I:C/A:C",
+        "severity": "critical"
+      },
+      "cvss30": {
+        "score": 8.3,
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L",
+        "severity": "high"
+      },
+      "cvss31": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-284",
+        "cwe_name": "Improper Access Control"
+      },
+      {
+        "cwe_id": "CWE-863",
+        "cwe_name": "Incorrect Authorization"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.93145,
+      "epss_percentile": 0.99777
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "https://github.com/J1ezds/Vulnerability-Wiki-page",
+      "https://github.com/KayCHENvip/vulnerability-poc",
+      "https://github.com/ezelnur6327/enesamaafkolan",
+      "https://github.com/trhacknon/Pocingit",
+      "https://github.com/KatherineHuangg/metasploit-POC",
+      "https://github.com/d4n-sec/d4n-sec.github.io",
+      "https://github.com/kh4sh3i/Webmin-CVE",
+      "https://github.com/nomi-sec/PoC-in-GitHub",
+      "https://github.com/0xkhapo/CVE-Collection",
+      "https://github.com/ARPSyndicate/kenzer-templates"
+    ],
+    "poc": [
+      {
+        "url": "http://packetstormsecurity.com/files/166240/Webmin-1.984-Remote-Code-Execution.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "http://packetstormsecurity.com/files/169700/Webmin-1.984-File-Manager-Remote-Code-Execution.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://huntr.dev/bounties/d0049a96-de90-4b1a-9111-94de1044f295",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://notes.netbytesec.com/2022/03/webmin-broken-access-control-to-post-auth-rce.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "http://packetstormsecurity.com/files/166240/Webmin-1.984-Remote-Code-Execution.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "http://packetstormsecurity.com/files/169700/Webmin-1.984-File-Manager-Remote-Code-Execution.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://huntr.dev/bounties/d0049a96-de90-4b1a-9111-94de1044f295",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://notes.netbytesec.com/2022/03/webmin-broken-access-control-to-post-auth-rce.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/gokul-ramesh/WebminRCE-exploit",
+        "source": "gh-nomi-sec",
+        "added_at": "2022-11-08T15:22:55Z"
+      },
+      {
+        "url": "https://github.com/pizza-power/golang-webmin-CVE-2022-0824-revshell",
+        "source": "gh-nomi-sec",
+        "added_at": "2022-10-17T11:47:04Z"
+      }
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/webmin/webmin/commit/39ea464f0c40b325decd6a5bfb7833fa4a142e38",
+      "https://github.com/webmin/webmin/commit/39ea464f0c40b325decd6a5bfb7833fa4a142e38"
+    ],
+    "is_template": true,
+    "nuclei_templates": {
+      "template_path": "http/cves/2022/CVE-2022-0824.yaml",
+      "template_url": "https://cloud.projectdiscovery.io/public/CVE-2022-0824",
+      "created_at": "2022-03-07T15:55:25+08:00",
+      "updated_at": "2025-05-27T10:39:47+08:00"
+    },
+    "is_exploited": false,
+    "assignee": "security@huntr.dev",
+    "published_at": "2022-03-02T12:15:07.777",
+    "updated_at": "2024-11-21T06:39:28.280",
+    "hackerone": {
+      "rank": 2499,
+      "count": 1
+    },
+    "age_in_days": 1209,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2021-32162",
+    "cve_description": "A Cross-site request forgery (CSRF) vulnerability exists in Webmin 1.973 through the File Manager feature.",
+    "severity": "high",
+    "cvss_score": 8.8,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 6.8,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:N/C:P/I:P/A:P",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-352",
+        "cwe_name": "Cross-Site Request Forgery (CSRF)"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.08015,
+      "epss_percentile": 0.91666
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:1.973:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "https://github.com/cyb3r-w0lf/nuclei-template-collection",
+      "https://github.com/zecool/cve",
+      "https://github.com/20142995/nuclei-templates",
+      "https://github.com/ARPSyndicate/cvemon",
+      "https://github.com/Mesh3l911/CVE-2021-32162",
+      "https://github.com/nomi-sec/PoC-in-GitHub",
+      "https://github.com/trhacknon/Pocingit",
+      "https://github.com/NaInSec/CVE-PoC-in-GitHub",
+      "https://github.com/SYRTI/POC_to_review",
+      "https://github.com/WhooAmii/POC_to_review"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-32162",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-32162",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-32162",
+        "source": "gh-nomi-sec",
+        "added_at": "2021-04-26T02:10:43Z"
+      },
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-32162",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2022-04-11T06:15:08.543",
+    "updated_at": "2024-11-21T06:06:53.547",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1169,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:1.973:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2021-32161",
+    "cve_description": "A Cross-Site Scripting (XSS) vulnerability exists in Webmin 1.973 through the File Manager feature.",
+    "severity": "medium",
+    "cvss_score": 6.1,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 4.3,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:N/C:N/I:P/A:N",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.08093,
+      "epss_percentile": 0.91709
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:1.973:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "https://github.com/NaInSec/CVE-PoC-in-GitHub",
+      "https://github.com/WhooAmii/POC_to_review",
+      "https://github.com/cyb3r-w0lf/nuclei-template-collection",
+      "https://github.com/trhacknon/Pocingit",
+      "https://github.com/20142995/nuclei-templates",
+      "https://github.com/ARPSyndicate/cvemon",
+      "https://github.com/Mesh3l911/CVE-2021-32161",
+      "https://github.com/SYRTI/POC_to_review",
+      "https://github.com/nomi-sec/PoC-in-GitHub",
+      "https://github.com/zecool/cve"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-32161",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-32161",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-32161",
+        "source": "gh-nomi-sec",
+        "added_at": "2021-04-26T01:59:44Z"
+      },
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-32161",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2022-04-11T06:15:08.493",
+    "updated_at": "2024-11-21T06:06:53.413",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1169,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:1.973:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2021-32160",
+    "cve_description": "A Cross-Site Scripting (XSS) vulnerability exists in Webmin 1.973 through the Add Users feature.",
+    "severity": "medium",
+    "cvss_score": 6.1,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 4.3,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:N/C:N/I:P/A:N",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.08093,
+      "epss_percentile": 0.91709
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:1.973:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "https://github.com/SYRTI/POC_to_review",
+      "https://github.com/cyb3r-w0lf/nuclei-template-collection",
+      "https://github.com/nomi-sec/PoC-in-GitHub",
+      "https://github.com/NaInSec/CVE-PoC-in-GitHub",
+      "https://github.com/ARPSyndicate/cvemon",
+      "https://github.com/Mesh3l911/CVE-2021-32160",
+      "https://github.com/WhooAmii/POC_to_review",
+      "https://github.com/trhacknon/Pocingit",
+      "https://github.com/zecool/cve",
+      "https://github.com/20142995/nuclei-templates"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-32160",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-32160",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-32160",
+        "source": "gh-nomi-sec",
+        "added_at": "2021-04-24T22:42:28Z"
+      },
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-32160",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2022-04-11T06:15:08.443",
+    "updated_at": "2024-11-21T06:06:53.277",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1169,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:1.973:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2021-32159",
+    "cve_description": "A Cross-site request forgery (CSRF) vulnerability exists in Webmin 1.973 via the Upload and Download feature.",
+    "severity": "high",
+    "cvss_score": 8.8,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 6.8,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:N/C:P/I:P/A:P",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-352",
+        "cwe_name": "Cross-Site Request Forgery (CSRF)"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.08015,
+      "epss_percentile": 0.91666
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:1.973:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "https://github.com/Mesh3l911/CVE-2021-32159",
+      "https://github.com/NaInSec/CVE-PoC-in-GitHub",
+      "https://github.com/SYRTI/POC_to_review",
+      "https://github.com/trhacknon/Pocingit",
+      "https://github.com/zecool/cve",
+      "https://github.com/20142995/nuclei-templates",
+      "https://github.com/ARPSyndicate/cvemon",
+      "https://github.com/WhooAmii/POC_to_review",
+      "https://github.com/cyb3r-w0lf/nuclei-template-collection",
+      "https://github.com/nomi-sec/PoC-in-GitHub"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-32159",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-32159",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-32159",
+        "source": "gh-nomi-sec",
+        "added_at": "2021-04-26T01:23:16Z"
+      },
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-32159",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2022-04-11T06:15:08.393",
+    "updated_at": "2024-11-21T06:06:53.143",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1169,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:1.973:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2021-32158",
+    "cve_description": "A Cross-Site Scripting (XSS) vulnerability exists in Webmin 1.973 via the Upload and Download feature.",
+    "severity": "medium",
+    "cvss_score": 6.1,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 4.3,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:N/C:N/I:P/A:N",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.08093,
+      "epss_percentile": 0.91709
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:1.973:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "https://github.com/20142995/nuclei-templates",
+      "https://github.com/Mesh3l911/CVE-2021-32158",
+      "https://github.com/NaInSec/CVE-PoC-in-GitHub",
+      "https://github.com/cyb3r-w0lf/nuclei-template-collection",
+      "https://github.com/ARPSyndicate/cvemon",
+      "https://github.com/SYRTI/POC_to_review",
+      "https://github.com/WhooAmii/POC_to_review",
+      "https://github.com/nomi-sec/PoC-in-GitHub",
+      "https://github.com/trhacknon/Pocingit",
+      "https://github.com/zecool/cve"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-32158",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-32158",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-32158",
+        "source": "gh-nomi-sec",
+        "added_at": "2021-04-26T01:42:19Z"
+      },
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-32158",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2022-04-11T06:15:08.340",
+    "updated_at": "2024-11-21T06:06:53.000",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1169,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:1.973:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2021-32157",
+    "cve_description": "A Cross-Site Scripting (XSS) vulnerability exists in Webmin 1.973 via the Scheduled Cron Jobs feature.",
+    "severity": "critical",
+    "cvss_score": 9.6,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 6.8,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:N/C:P/I:P/A:P",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 9.6,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+        "severity": "critical"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.25282,
+      "epss_percentile": 0.9591
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:1.973:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "https://github.com/ARPSyndicate/cve-scores",
+      "https://github.com/NaInSec/CVE-PoC-in-GitHub",
+      "https://github.com/SYRTI/POC_to_review",
+      "https://github.com/dnr6419/CVE-2021-32157",
+      "https://github.com/trhacknon/Pocingit",
+      "https://github.com/20142995/nuclei-templates",
+      "https://github.com/ARPSyndicate/cvemon",
+      "https://github.com/Mesh3l911/CVE-2021-32157",
+      "https://github.com/WhooAmii/POC_to_review",
+      "https://github.com/cyb3r-w0lf/nuclei-template-collection"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-32157",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-32157",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/dnr6419/CVE-2021-32157",
+        "source": "gh-nomi-sec",
+        "added_at": "2022-04-26T01:49:11Z"
+      },
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-32157",
+        "source": "gh-nomi-sec",
+        "added_at": "2021-04-25T02:08:34Z"
+      },
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-32157",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2022-04-11T06:15:08.290",
+    "updated_at": "2024-11-21T06:06:52.860",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1169,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:1.973:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2021-32156",
+    "cve_description": "A cross-site request forgery (CSRF) vulnerability exists in Webmin 1.973 via the Scheduled Cron Jobs feature.",
+    "severity": "high",
+    "cvss_score": 8.8,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 6.8,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:N/C:P/I:P/A:P",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-352",
+        "cwe_name": "Cross-Site Request Forgery (CSRF)"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.08015,
+      "epss_percentile": 0.91666
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:1.973:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "https://github.com/cyb3r-w0lf/nuclei-template-collection",
+      "https://github.com/trhacknon/Pocingit",
+      "https://github.com/zecool/cve",
+      "https://github.com/Mesh3l911/CVE-2021-32156",
+      "https://github.com/NaInSec/CVE-PoC-in-GitHub",
+      "https://github.com/SYRTI/POC_to_review",
+      "https://github.com/WhooAmii/POC_to_review",
+      "https://github.com/nomi-sec/PoC-in-GitHub",
+      "https://github.com/20142995/nuclei-templates",
+      "https://github.com/ARPSyndicate/cvemon"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-32156",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-32156",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-32156",
+        "source": "gh-nomi-sec",
+        "added_at": "2021-04-24T23:02:45Z"
+      },
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-32156",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2022-04-11T06:15:08.160",
+    "updated_at": "2024-11-21T06:06:52.717",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1169,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:1.973:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2021-31762",
+    "cve_description": "Webmin 1.973 is affected by Cross Site Request Forgery (CSRF) to create a privileged user through Webmin's add users feature, and then get a reverse shell through Webmin's running process feature.",
+    "severity": "high",
+    "cvss_score": 8.8,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 6.8,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:N/C:P/I:P/A:P",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-352",
+        "cwe_name": "Cross-Site Request Forgery (CSRF)"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.22718,
+      "epss_percentile": 0.95566
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:1.973:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "https://github.com/webmin/webmin",
+      "https://github.com/SYRTI/POC_to_review",
+      "https://github.com/cyb3r-w0lf/nuclei-template-collection",
+      "https://github.com/electronicbots/CVE-2021-31762",
+      "https://github.com/nomi-sec/PoC-in-GitHub",
+      "https://github.com/20142995/nuclei-templates",
+      "https://github.com/ARPSyndicate/cvemon",
+      "https://github.com/Mesh3l911/CVE-2021-31762",
+      "https://github.com/trhacknon/Pocingit",
+      "https://github.com/zecool/cve"
+    ],
+    "poc": [
+      {
+        "url": "http://packetstormsecurity.com/files/163492/Webmin-1.973-Cross-Site-Request-Forgery.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-31762",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/electronicbots/CVE-2021-31762",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://youtu.be/qCvEXwyaF5U",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "http://packetstormsecurity.com/files/163492/Webmin-1.973-Cross-Site-Request-Forgery.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-31762",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/electronicbots/CVE-2021-31762",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://youtu.be/qCvEXwyaF5U",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/electronicbots/CVE-2021-31762",
+        "source": "gh-nomi-sec",
+        "added_at": "2021-04-21T20:13:06Z"
+      },
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-31762",
+        "source": "gh-nomi-sec",
+        "added_at": "2021-04-21T20:06:09Z"
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2021-04-25T19:15:08.240",
+    "updated_at": "2024-11-21T06:06:11.810",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1519,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:1.973:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2021-31761",
+    "cve_description": "Webmin 1.973 is affected by reflected Cross Site Scripting (XSS) to achieve Remote Command Execution through Webmin's running process feature.",
+    "severity": "critical",
+    "cvss_score": 9.6,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 6.8,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:N/C:P/I:P/A:P",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 9.6,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+        "severity": "critical"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.81918,
+      "epss_percentile": 0.99138
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:1.973:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "https://github.com/webmin/webmin",
+      "https://github.com/20142995/nuclei-templates",
+      "https://github.com/NaInSec/CVE-PoC-in-GitHub",
+      "https://github.com/zecool/cve",
+      "https://github.com/electronicbots/CVE-2021-31761",
+      "https://github.com/nomi-sec/PoC-in-GitHub",
+      "https://github.com/soosmile/POC",
+      "https://github.com/ARPSyndicate/cvemon",
+      "https://github.com/Mesh3l911/CVE-2021-31761",
+      "https://github.com/SYRTI/POC_to_review"
+    ],
+    "poc": [
+      {
+        "url": "http://packetstormsecurity.com/files/163559/Webmin-1.973-Cross-Site-Request-Forgery.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-31761",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/electronicbots/CVE-2021-31761",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://youtu.be/23VvUMu-28c",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "http://packetstormsecurity.com/files/163559/Webmin-1.973-Cross-Site-Request-Forgery.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-31761",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/electronicbots/CVE-2021-31761",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://youtu.be/23VvUMu-28c",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/electronicbots/CVE-2021-31761",
+        "source": "gh-nomi-sec",
+        "added_at": "2021-04-21T20:00:09Z"
+      },
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-31761",
+        "source": "gh-nomi-sec",
+        "added_at": "2021-04-21T19:46:43Z"
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2021-04-25T19:15:08.207",
+    "updated_at": "2024-11-21T06:06:11.657",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1519,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:1.973:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2021-31760",
+    "cve_description": "Webmin 1.973 is affected by Cross Site Request Forgery (CSRF) to achieve Remote Command Execution (RCE) through Webmin's running process feature.",
+    "severity": "high",
+    "cvss_score": 8.8,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 6.8,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:N/C:P/I:P/A:P",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-352",
+        "cwe_name": "Cross-Site Request Forgery (CSRF)"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.39871,
+      "epss_percentile": 0.97145
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:1.973:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "https://github.com/Mesh3l911/CVE-2021-31760",
+      "https://github.com/electronicbots/CVE-2021-31760",
+      "https://github.com/webmin/webmin",
+      "https://github.com/0day404/vulnerability-poc",
+      "https://github.com/WhooAmii/POC_to_review",
+      "https://github.com/tzwlhack/Vulnerability",
+      "https://github.com/ARPSyndicate/cvemon",
+      "https://github.com/d4n-sec/d4n-sec.github.io",
+      "https://github.com/20142995/nuclei-templates",
+      "https://github.com/J1ezds/Vulnerability-Wiki-page"
+    ],
+    "poc": [
+      {
+        "url": "https://youtu.be/D45FN8QrzDo",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://youtu.be/D45FN8QrzDo",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/electronicbots/CVE-2021-31760",
+        "source": "gh-nomi-sec",
+        "added_at": "2021-04-21T19:43:53Z"
+      },
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-31760",
+        "source": "gh-nomi-sec",
+        "added_at": "2021-04-21T00:09:54Z"
+      },
+      {
+        "url": "https://github.com/Mesh3l911/CVE-2021-31760",
+        "source": "trickest",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/electronicbots/CVE-2021-31760",
+        "source": "trickest",
+        "added_at": ""
+      },
+      {
+        "url": "https://youtu.be/D45FN8QrzDo",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2021-04-25T19:15:08.173",
+    "updated_at": "2024-11-21T06:06:11.507",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1519,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:1.973:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2020-8821",
+    "cve_description": "An Improper Data Validation Vulnerability exists in Webmin 1.941 and earlier affecting the Command Shell Endpoint. A user may enter HTML code into the Command field and submit it. Then, after visiting the Action Logs Menu and displaying logs, the HTML code will be rendered (however, JavaScript is not executed). Changes are kept across users.",
+    "severity": "medium",
+    "cvss_score": 5.4,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 3.5,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:S/C:N/I:P/A:N",
+        "severity": "low"
+      },
+      "cvss31": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.02482,
+      "epss_percentile": 0.8459
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "https://github.com/MauroEldritch/mauroeldritch"
+    ],
+    "vendor_advisory": "https://www.webmin.com/security.html",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2020-10-12T16:15:12.590",
+    "updated_at": "2024-11-21T05:39:30.393",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1714,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2020-8820",
+    "cve_description": "An XSS Vulnerability exists in Webmin 1.941 and earlier affecting the Cluster Shell Commands Endpoint. A user may enter any XSS Payload into the Command field and execute it. Then, after revisiting the Cluster Shell Commands Menu, the XSS Payload will be rendered and executed.",
+    "severity": "medium",
+    "cvss_score": 5.4,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 3.5,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:S/C:N/I:P/A:N",
+        "severity": "low"
+      },
+      "cvss31": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00343,
+      "epss_percentile": 0.56176
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "https://github.com/MauroEldritch/mauroeldritch"
+    ],
+    "vendor_advisory": "https://www.webmin.com/security.html",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2020-10-12T16:15:12.513",
+    "updated_at": "2024-11-21T05:39:30.267",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1714,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2020-35769",
+    "cve_description": "miniserv.pl in Webmin 1.962 on Windows mishandles special characters in query arguments to the CGI program.",
+    "severity": "critical",
+    "cvss_score": 9.8,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 7.5,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:N/C:P/I:P/A:P",
+        "severity": "high"
+      },
+      "cvss31": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "critical"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "NVD-CWE-noinfo"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00433,
+      "epss_percentile": 0.61876
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:1.962:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/webmin/webmin/commit/1163f3a7f418f249af64890f4636575e687e9de7#diff-9b33fd8f5603d4f0d1428689bc36f24af4770608a22c0d92b7a8bcc522450dc6",
+      "https://vigilance.fr/vulnerability/Webmin-code-execution-via-miniserv-pl-handle-request-34220",
+      "https://github.com/webmin/webmin/commit/1163f3a7f418f249af64890f4636575e687e9de7#diff-9b33fd8f5603d4f0d1428689bc36f24af4770608a22c0d92b7a8bcc522450dc6",
+      "https://vigilance.fr/vulnerability/Webmin-code-execution-via-miniserv-pl-handle-request-34220"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2020-12-29T06:15:13.773",
+    "updated_at": "2024-11-21T05:28:02.853",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1637,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:1.962:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2020-35606",
+    "cve_description": "Arbitrary command execution can occur in Webmin through 1.962. Any user authorized for the Package Updates module can execute arbitrary commands with root privileges via vectors involving %0A and %0C. NOTE: this issue exists because of an incomplete fix for CVE-2019-12840.",
+    "severity": "high",
+    "cvss_score": 8.8,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 9,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:S/C:C/I:C/A:C",
+        "severity": "critical"
+      },
+      "cvss31": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-78",
+        "cwe_name": "Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.81698,
+      "epss_percentile": 0.99124
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "https://www.webmin.com/download.html",
+      "https://github.com/ARPSyndicate/cvemon",
+      "https://github.com/EdgeSecurityTeam/Vulnerability",
+      "https://github.com/anasbousselham/webminscan",
+      "https://github.com/nomi-sec/PoC-in-GitHub",
+      "https://github.com/SexyBeast233/SecBooks",
+      "https://github.com/fofapro/vulfocus-py",
+      "https://github.com/tanjiti/sec_profile",
+      "https://github.com/dudek-marcin/Poc-Exp",
+      "https://github.com/fofapro/vulfocus-spring-boot-starter"
+    ],
+    "poc": [
+      {
+        "url": "http://packetstormsecurity.com/files/160676/Webmin-1.962-Remote-Command-Execution.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://www.exploit-db.com/exploits/49318",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://www.pentest.com.tr/exploits/Webmin-1962-PU-Escape-Bypass-Remote-Command-Execution.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "http://packetstormsecurity.com/files/160676/Webmin-1.962-Remote-Command-Execution.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://www.exploit-db.com/exploits/49318",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://www.pentest.com.tr/exploits/Webmin-1962-PU-Escape-Bypass-Remote-Command-Execution.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/anasbousselham/webminscan",
+        "source": "gh-nomi-sec",
+        "added_at": "2020-12-23T18:22:36Z"
+      },
+      {
+        "url": "http://packetstormsecurity.com/files/160676/Webmin-1.962-Remote-Command-Execution.html",
+        "source": "trickest",
+        "added_at": ""
+      },
+      {
+        "url": "https://www.exploit-db.com/exploits/49318",
+        "source": "trickest",
+        "added_at": ""
+      },
+      {
+        "url": "https://www.pentest.com.tr/exploits/Webmin-1962-PU-Escape-Bypass-Remote-Command-Execution.html",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2020-12-21T20:15:12.617",
+    "updated_at": "2024-11-21T05:27:41.330",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1644,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2020-12670",
+    "cve_description": "XSS exists in Webmin 1.941 and earlier affecting the Save function of the Read User Email Module / mailboxes Endpoint when attempting to save HTML emails. This module parses any output without sanitizing SCRIPT elements, as opposed to the View function, which sanitizes the input correctly. A malicious user can send any JavaScript payload into the message body and execute it if the user decides to save that email.",
+    "severity": "medium",
+    "cvss_score": 6.1,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 4.3,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:N/C:N/I:P/A:N",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00359,
+      "epss_percentile": 0.57342
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "https://github.com/MauroEldritch/mauroeldritch"
+    ],
+    "vendor_advisory": "https://www.webmin.com/security.html",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2020-10-12T16:15:12.437",
+    "updated_at": "2024-11-21T05:00:02.340",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1714,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2019-9624",
+    "cve_description": "Webmin 1.900 allows remote attackers to execute arbitrary code by leveraging the \"Java file manager\" and \"Upload and Download\" privileges to upload a crafted .cgi file via the /updown/upload.cgi URI.",
+    "severity": "high",
+    "cvss_score": 7.8,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 6.8,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:N/C:P/I:P/A:P",
+        "severity": "medium"
+      },
+      "cvss30": {
+        "score": 7.8,
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-269",
+        "cwe_name": "Improper Privilege Management"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.51667,
+      "epss_percentile": 0.97754
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:1.900:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "http://www.rapid7.com/db/modules/exploit/unix/webapp/webmin_upload_exec",
+      "https://github.com/InesMartins31/iot-cves"
+    ],
+    "poc": [
+      {
+        "url": "https://pentest.com.tr/exploits/Webmin-1900-Remote-Command-Execution.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://www.exploit-db.com/exploits/46201",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://pentest.com.tr/exploits/Webmin-1900-Remote-Command-Execution.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://www.exploit-db.com/exploits/46201",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://pentest.com.tr/exploits/Webmin-1900-Remote-Command-Execution.html",
+        "source": "trickest",
+        "added_at": ""
+      },
+      {
+        "url": "https://www.exploit-db.com/exploits/46201",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2019-03-07T05:29:01.410",
+    "updated_at": "2024-11-21T04:51:59.507",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 2300,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": false,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:1.900:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2019-15642",
+    "cve_description": "rpc.cgi in Webmin through 1.920 allows authenticated Remote Code Execution via a crafted object name because unserialise_variable makes an eval call. NOTE: the Webmin_Servers_Index documentation states \"RPC can be used to run any command or modify any file on a server, which is why access to it must not be granted to un-trusted Webmin users.\"",
+    "severity": "high",
+    "cvss_score": 8.8,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 6.5,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:S/C:P/I:P/A:P",
+        "severity": "medium"
+      },
+      "cvss30": {
+        "score": 8.8,
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-94",
+        "cwe_name": "Improper Control of Generation of Code ('Code Injection')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.91534,
+      "epss_percentile": 0.99644
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "https://github.com/ARPSyndicate/cvemon",
+      "https://github.com/Awrrays/FrameVul",
+      "https://github.com/KayCHENvip/vulnerability-poc",
+      "https://github.com/ZTK-009/Penetration_PoC",
+      "https://github.com/huisetiankong478/poc",
+      "https://github.com/qazbnm456/awesome-cve-poc",
+      "https://github.com/hasee2018/Penetration_Testing_POC",
+      "https://github.com/hectorgie/PoC-in-GitHub",
+      "https://github.com/huike007/poc",
+      "https://github.com/orgTestCodacy11KRepos110MB/repo-3569-collection-document"
+    ],
+    "poc": [
+      {
+        "url": "https://www.calypt.com/blog/index.php/authenticated-rce-on-webmin/",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://www.calypt.com/blog/index.php/authenticated-rce-on-webmin/",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/jas502n/CVE-2019-15642",
+        "source": "gh-nomi-sec",
+        "added_at": "2019-09-01T09:28:56Z"
+      }
+    ],
+    "vendor_advisory": "https://doxfer.webmin.com/Webmin/Webmin_Servers_Index",
+    "patch_url": [
+      "https://github.com/webmin/webmin/blob/ab5e00e41ea1ecc1e24b8f8693f3495a0abb1aed/rpc.cgi#L26-L37",
+      "https://github.com/webmin/webmin/commit/df8a43fb4bdc9c858874f72773bcba597ae9432c",
+      "https://www.calypt.com/blog/index.php/authenticated-rce-on-webmin/",
+      "https://github.com/webmin/webmin/blob/ab5e00e41ea1ecc1e24b8f8693f3495a0abb1aed/rpc.cgi#L26-L37",
+      "https://github.com/webmin/webmin/commit/df8a43fb4bdc9c858874f72773bcba597ae9432c",
+      "https://www.calypt.com/blog/index.php/authenticated-rce-on-webmin/"
+    ],
+    "is_template": true,
+    "nuclei_templates": {
+      "template_path": "http/cves/2019/CVE-2019-15642.yaml",
+      "template_url": "https://cloud.projectdiscovery.io/public/CVE-2019-15642",
+      "created_at": "2023-08-09T17:28:16+05:30",
+      "updated_at": "2025-05-27T10:39:47+08:00"
+    },
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2019-08-26T18:15:12.983",
+    "updated_at": "2024-11-21T04:29:11.003",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 2127,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2019-15641",
+    "cve_description": "xmlrpc.cgi in Webmin through 1.930 allows authenticated XXE attacks. By default, only root, admin, and sysadm can access xmlrpc.cgi.",
+    "severity": "medium",
+    "cvss_score": 6.5,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 6.8,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:S/C:C/I:N/A:N",
+        "severity": "medium"
+      },
+      "cvss30": {
+        "score": 6.5,
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-611",
+        "cwe_name": "Improper Restriction of XML External Entity Reference"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00884,
+      "epss_percentile": 0.74364
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "https://github.com/ARPSyndicate/cvemon",
+      "https://github.com/InesMartins31/iot-cves"
+    ],
+    "poc": [
+      {
+        "url": "https://www.calypt.com/blog/index.php/authenticated-xxe-on-webmin/",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://www.calypt.com/blog/index.php/authenticated-xxe-on-webmin/",
+        "source": "NVD",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2019-08-26T18:15:12.920",
+    "updated_at": "2024-11-21T04:29:10.867",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 2127,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2019-15107",
+    "cve_description": "An issue was discovered in Webmin <=1.920. The parameter old in password_change.cgi contains a command injection vulnerability.",
+    "severity": "critical",
+    "cvss_score": 9.8,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 10,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:N/C:C/I:C/A:C",
+        "severity": "critical"
+      },
+      "cvss31": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "critical"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-78",
+        "cwe_name": "Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.94461,
+      "epss_percentile": 0.99992
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "http://packetstormsecurity.com/files/154485/Webmin-1.920-Remote-Code-Execution.html",
+      "https://attackerkb.com/topics/hxx3zmiCkR/webmin-password-change-cgi-command-injection",
+      "https://github.com/MasterCode112/CVE-2019-15107",
+      "https://github.com/hadrian3689/webmin_1.920",
+      "https://github.com/0day404/vulnerability-poc",
+      "https://github.com/HaleBera/A-NOVEL-CONTAINER-ATTACKS-DATASET-FOR-INTRUSION-DETECTION",
+      "https://github.com/lions2012/Penetration_Testing_POC",
+      "https://github.com/n0-traces/cve_monitor",
+      "https://github.com/f0rkr/CVE-2019-15107",
+      "https://github.com/g1vi/CVE-2019-15107"
+    ],
+    "poc": [
+      {
+        "url": "http://packetstormsecurity.com/files/154141/Webmin-1.920-Remote-Command-Execution.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "http://packetstormsecurity.com/files/154141/Webmin-Remote-Comman-Execution.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "http://packetstormsecurity.com/files/154197/Webmin-1.920-password_change.cgi-Backdoor.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "http://www.pentest.com.tr/exploits/DEFCON-Webmin-1920-Unauthenticated-Remote-Command-Execution.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://www.exploit-db.com/exploits/47230",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "http://packetstormsecurity.com/files/154141/Webmin-1.920-Remote-Command-Execution.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "http://packetstormsecurity.com/files/154141/Webmin-Remote-Comman-Execution.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "http://packetstormsecurity.com/files/154197/Webmin-1.920-password_change.cgi-Backdoor.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "http://www.pentest.com.tr/exploits/DEFCON-Webmin-1920-Unauthenticated-Remote-Command-Execution.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://www.exploit-db.com/exploits/47230",
+        "source": "NVD",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "http://www.webmin.com/security.html",
+    "is_template": true,
+    "nuclei_templates": {
+      "template_path": "http/cves/2019/CVE-2019-15107.yaml",
+      "template_url": "https://cloud.projectdiscovery.io/public/CVE-2019-15107",
+      "created_at": "2020-09-25T09:20:52-03:00",
+      "updated_at": "2025-05-27T10:39:47+08:00"
+    },
+    "is_exploited": true,
+    "kev": {
+      "added_date": "2022-03-25",
+      "due_date": "2022-04-15",
+      "known_ransomware_campaign_use": false
+    },
+    "assignee": "cve@mitre.org",
+    "published_at": "2019-08-16T03:15:11.387",
+    "updated_at": "2025-03-14T17:50:48.763",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 2138,
+    "vuln_status": "confirmed",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2019-12840",
+    "cve_description": "In Webmin through 1.910, any user authorized to the \"Package Updates\" module can execute arbitrary commands with root privileges via the data parameter to update.cgi.",
+    "severity": "high",
+    "cvss_score": 8.8,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 9,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:S/C:C/I:C/A:C",
+        "severity": "critical"
+      },
+      "cvss30": {
+        "score": 8.8,
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-78",
+        "cwe_name": "Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.8826,
+      "epss_percentile": 0.99443
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "http://packetstormsecurity.com/files/153372/Webmin-1.910-Remote-Command-Execution.html",
+      "http://www.securityfocus.com/bid/108790",
+      "https://github.com/0xT11/CVE-POC",
+      "https://github.com/ARPSyndicate/cvemon",
+      "https://github.com/PuddinCat/GithubRepoSpider",
+      "https://github.com/WizzzStark/CVE-2019-12840.py",
+      "https://github.com/nomi-sec/PoC-in-GitHub",
+      "https://github.com/InesMartins31/iot-cves",
+      "https://github.com/Pol-Ruiz/PoC-CVE-2019-12840",
+      "https://github.com/anquanscan/sec-tools"
+    ],
+    "poc": [
+      {
+        "url": "https://pentest.com.tr/exploits/Webmin-1910-Package-Updates-Remote-Command-Execution.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://www.exploit-db.com/exploits/46984",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://pentest.com.tr/exploits/Webmin-1910-Package-Updates-Remote-Command-Execution.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://www.exploit-db.com/exploits/46984",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/fenix0499/CVE-2019-12840-NodeJs-Exploit",
+        "source": "gh-nomi-sec",
+        "added_at": "2025-06-04T02:25:21Z"
+      },
+      {
+        "url": "https://github.com/Pol-Ruiz/PoC-CVE-2019-12840",
+        "source": "gh-nomi-sec",
+        "added_at": "2024-01-25T23:07:28Z"
+      },
+      {
+        "url": "https://github.com/WizzzStark/CVE-2019-12840.py",
+        "source": "gh-nomi-sec",
+        "added_at": "2021-10-05T18:10:05Z"
+      },
+      {
+        "url": "https://github.com/zAbuQasem/CVE-2019-12840",
+        "source": "gh-nomi-sec",
+        "added_at": "2021-03-30T17:32:30Z"
+      },
+      {
+        "url": "https://github.com/anasbousselham/webminscan",
+        "source": "gh-nomi-sec",
+        "added_at": "2020-12-23T18:22:36Z"
+      },
+      {
+        "url": "https://github.com/KrE80r/webmin_cve-2019-12840_poc",
+        "source": "gh-nomi-sec",
+        "added_at": "2019-11-09T17:48:39Z"
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2019-06-15T20:29:00.287",
+    "updated_at": "2024-11-21T04:23:41.737",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 2199,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2018-8712",
+    "cve_description": "An issue was discovered in Webmin 1.840 and 1.880 when the default Yes setting of \"Can view any file as a log file\" is enabled. As a result of weak default configuration settings, limited users have full access rights to the underlying Unix system files, allowing the user to read sensitive data from the local system (using Local File Include) such as the '/etc/shadow' file via a \"GET /syslog/save_log.cgi?view=1&file=/etc/shadow\" request.",
+    "severity": "critical",
+    "cvss_score": 9.8,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 5,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:N/C:P/I:N/A:N",
+        "severity": "medium"
+      },
+      "cvss30": {
+        "score": 9.8,
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "critical"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-22",
+        "cwe_name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.0083,
+      "epss_percentile": 0.7351
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:1.840:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "https://www.7elements.co.uk/resources/technical-advisories/webmin-1-840-1-880-unrestricted-access-arbitrary-files-using-local-file-include/",
+      "https://github.com/ARPSyndicate/cvemon",
+      "https://github.com/InesMartins31/iot-cves",
+      "https://github.com/dudek-marcin/Poc-Exp"
+    ],
+    "poc": [
+      {
+        "url": "https://www.7elements.co.uk/resources/technical-advisories/webmin-1-840-1-880-unrestricted-access-arbitrary-files-using-local-file-include/",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2018-03-14T19:29:00.830",
+    "updated_at": "2024-11-21T04:14:11.150",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 2657,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:1.840:*:*:*:*:*:*:*",
+      "cpe:2.3:a:webmin:webmin:1.880:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2018-19191",
+    "cve_description": "Webmin 1.890 has XSS via /config.cgi?webmin, the /shell/index.cgi history parameter, /shell/index.cgi?stripped=1, or the /webminlog/search.cgi uall or mall parameter.",
+    "severity": "medium",
+    "cvss_score": 5.4,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 3.5,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:S/C:N/I:P/A:N",
+        "severity": "low"
+      },
+      "cvss30": {
+        "score": 5.4,
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.01628,
+      "epss_percentile": 0.8103
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:1.890:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "http://www.webmin.com/index.html"
+    ],
+    "poc": [
+      {
+        "url": "http://packetstormsecurity.com/files/151144/Webmin-1.890-Cross-Site-Scripting.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "http://packetstormsecurity.com/files/151144/Webmin-1.890-Cross-Site-Scripting.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "http://packetstormsecurity.com/files/151144/Webmin-1.890-Cross-Site-Scripting.html",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2019-03-21T16:00:30.327",
+    "updated_at": "2024-11-21T03:57:30.837",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 2285,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:1.890:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2017-9313",
+    "cve_description": "Multiple Cross-site scripting (XSS) vulnerabilities in Webmin before 1.850 allow remote attackers to inject arbitrary web script or HTML via the sec parameter to view_man.cgi, the referers parameter to change_referers.cgi, or the name parameter to save_user.cgi. NOTE: these issues were not fixed in 1.840.",
+    "severity": "medium",
+    "cvss_score": 6.1,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 4.3,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:N/C:N/I:P/A:N",
+        "severity": "medium"
+      },
+      "cvss30": {
+        "score": 6.1,
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00515,
+      "epss_percentile": 0.65574
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "http://www.securityfocus.com/bid/99373",
+      "http://www.securitytracker.com/id/1038814"
+    ],
+    "poc": [
+      {
+        "url": "http://seclists.org/bugtraq/2017/Jul/3",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "http://seclists.org/bugtraq/2017/Jul/3",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "http://seclists.org/bugtraq/2017/Jul/3",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "http://www.webmin.com/changes.html",
+    "patch_url": [
+      "https://github.com/webmin/webmin/commit/a330e913ee099cb9c586ce1b9267647fc566c1ab",
+      "https://github.com/webmin/webmin/commit/c2d4a90639afb2403979aa91ba75cb332ae16d1b",
+      "https://github.com/webmin/webmin/commit/a330e913ee099cb9c586ce1b9267647fc566c1ab",
+      "https://github.com/webmin/webmin/commit/c2d4a90639afb2403979aa91ba75cb332ae16d1b"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2017-07-04T02:29:00.283",
+    "updated_at": "2025-04-20T01:37:25.860",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 2911,
+    "vuln_status": "rejected",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2017-2106",
+    "cve_description": "Multiple cross-site scripting vulnerabilities in Webmin versions prior to 1.830 allows remote attackers to inject arbitrary web script or HTML via unspecified vectors.",
+    "severity": "medium",
+    "cvss_score": 6.1,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 4.3,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:N/C:N/I:P/A:N",
+        "severity": "medium"
+      },
+      "cvss30": {
+        "score": 6.1,
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00343,
+      "epss_percentile": 0.56232
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "http://jvn.jp/en/jp/JVN34207650/index.html",
+      "http://www.securityfocus.com/bid/96227"
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/webmin/webmin/commit/475cc4fbdf51c865b291d252d81a58bad05de0c7",
+      "https://github.com/webmin/webmin/commit/475cc4fbdf51c865b291d252d81a58bad05de0c7"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "vultures@jpcert.or.jp",
+    "published_at": "2017-04-28T16:59:00.887",
+    "updated_at": "2025-04-20T01:37:25.860",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 2977,
+    "vuln_status": "rejected",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2017-17089",
+    "cve_description": "custom/run.cgi in Webmin before 1.870 allows remote authenticated administrators to conduct XSS attacks via the description field in the custom command functionality.",
+    "severity": "medium",
+    "cvss_score": 4.8,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 3.5,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:S/C:N/I:P/A:N",
+        "severity": "low"
+      },
+      "cvss30": {
+        "score": 4.8,
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:H/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00166,
+      "epss_percentile": 0.38514
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*",
+      "vendor": "webmin",
+      "product": "webmin"
+    },
+    "reference": [
+      "http://www.securityfocus.com/bid/102339"
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/webmin/webmin/commit/a9c97eea6c268fb83d93a817d58bac75e0d2599e",
+      "https://github.com/webmin/webmin/commit/a9c97eea6c268fb83d93a817d58bac75e0d2599e"
+    ],
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2017-12-30T17:29:00.263",
+    "updated_at": "2025-04-20T01:37:25.860",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 2731,
+    "vuln_status": "rejected",
+    "is_poc": false,
+    "is_remote": false,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 135300,
+      "query": [
+        "http.title:\"webmin\""
+      ]
+    }
+  }
+]

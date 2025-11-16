@@ -1,0 +1,8 @@
+2025-11-16 00:58:04 INFO     Logging to output/zabbix/logs/summarize_agent.log
+2025-11-16 00:58:04 INFO     Model loaded successfully (optional).
+2025-11-16 00:58:04 INFO     Preparing CVE list for target 'zabbix' (keyword 'Zabbix') at base output/zabbix
+2025-11-16 00:58:14 INFO     Version constraint has been set, will use this to save tokens. This MAY NOT ACCURATE, please double check!
+2025-11-16 00:58:49 INFO     The following CVEs will be searched:
+[{'cve_id': 'CVE-2020-15803', 'min_version': '0.0.0', 'max_version': '5.0.1'}, {'cve_id': 'CVE-2020-11800', 'min_version': '2.2.0', 'max_version': '3.2.999'}, {'cve_id': 'CVE-2019-17382', 'min_version': '0.0.0', 'max_version': '4.4.999'}, {'cve_id': 'CVE-2019-15132', 'min_version': '0.0.0', 'max_version': '4.4.0'}]
+2025-11-16 00:58:49 INFO     Saved 4 CVEs to output/zabbix/summarize/cve_list.json
+2025-11-16 00:58:49 INFO     Completed. Outputs under: output/zabbix/summarize (logs in output/zabbix/logs)

@@ -1,0 +1,20 @@
+{
+  "analysis": {
+    "ports": {
+      "80": {
+        "accessibility": "open",
+        "name": "Apache",
+        "version": "2.4.58"
+      },
+      "10000": {
+        "accessibility": "open",
+        "name": "Webmin",
+        "version": "1.910"
+      }
+    },
+    "OS": "Linux",
+    "IP": "10.20.6.214"
+  },
+  "next_step": "All accessible ports have been analyzed, and detailed information about the services and their versions has been gathered. The next logical step in the penetration testing process would be to research known vulnerabilities for Apache 2.4.58 and Webmin 1.910. You can use public vulnerability databases (e.g., CVE, Exploit-DB) to identify potential exploits or misconfigurations. Additionally, consider attempting default credential attacks or brute-forcing login pages if applicable.",
+  "executable": "None"
+}

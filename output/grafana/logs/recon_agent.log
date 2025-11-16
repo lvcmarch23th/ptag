@@ -1,0 +1,34 @@
+2025-11-15 18:50:57,150 - recon_agent - INFO - Log file: output/grafana/logs/recon_agent.log
+2025-11-15 18:50:57,152 - recon_agent - INFO - Starting ReconAgent
+2025-11-15 18:50:57,152 - recon_agent - INFO - Initializing ReconAgent with model=google
+2025-11-15 18:50:57,155 - recon_agent - INFO - .env loaded from: /home/lc/Desktop/pentest-agent/agents/.env
+2025-11-15 18:50:57,195 - recon_agent - INFO - Model google loaded successfully
+2025-11-15 18:50:57,195 - recon_agent - INFO - Current topic: grafana
+2025-11-15 18:50:57,196 - recon_agent - INFO - Target IP: 10.20.6.214
+2025-11-15 18:50:57,196 - recon_agent - INFO - Initializing thread for topic: grafana
+2025-11-15 18:50:57,196 - recon_agent - INFO - Created memory for topic: grafana
+2025-11-15 18:50:57,196 - recon_agent - INFO - No existing memory file for topic: grafana
+2025-11-15 18:50:57,196 - recon_agent - INFO - Running thread for topic: grafana
+2025-11-15 18:50:57,196 - recon_agent - INFO - Invoking LLM (attempt 1/3)
+2025-11-15 18:51:02,050 - recon_agent - INFO - LLM response appended to memory
+2025-11-15 18:52:34,345 - recon_agent - INFO - Command executed; output length=2818
+2025-11-15 18:52:34,347 - recon_agent - INFO - Running thread for topic: grafana
+2025-11-15 18:52:34,347 - recon_agent - INFO - Invoking LLM (attempt 1/3)
+2025-11-15 18:52:38,311 - recon_agent - INFO - LLM response appended to memory
+2025-11-15 18:52:39,625 - recon_agent - INFO - Command executed; output length=657
+2025-11-15 18:52:39,626 - recon_agent - INFO - Running thread for topic: grafana
+2025-11-15 18:52:39,626 - recon_agent - INFO - Invoking LLM (attempt 1/3)
+2025-11-15 18:52:43,327 - recon_agent - INFO - LLM response appended to memory
+2025-11-15 18:52:43,348 - recon_agent - INFO - Command executed; output length=26875
+2025-11-15 18:52:43,349 - recon_agent - INFO - Running thread for topic: grafana
+2025-11-15 18:52:43,349 - recon_agent - INFO - Invoking LLM (attempt 1/3)
+2025-11-15 18:52:46,779 - recon_agent - INFO - LLM response appended to memory
+2025-11-15 18:52:46,780 - recon_agent - INFO - Requesting final RECON_SUMMARY
+2025-11-15 18:52:46,780 - recon_agent - INFO - Running thread for final summary
+2025-11-15 18:52:46,780 - recon_agent - INFO - Running thread for topic: grafana
+2025-11-15 18:52:46,780 - recon_agent - INFO - Invoking LLM (attempt 1/3)
+2025-11-15 18:52:52,071 - recon_agent - INFO - LLM response appended to memory
+2025-11-15 18:52:52,071 - recon_agent - INFO - Wrote RECON_SUMMARY to: output/grafana/recon/recon_summary.json
+2025-11-15 18:52:52,071 - recon_agent - INFO - Saving memory to file
+2025-11-15 18:52:52,089 - recon_agent - INFO - Saved 10 messages to output/grafana/logs/recon_memory/grafana.json
+2025-11-15 18:52:52,090 - recon_agent - INFO - Reconnaissance agent execution completed in 114.94 seconds

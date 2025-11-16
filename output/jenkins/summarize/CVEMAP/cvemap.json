@@ -1,0 +1,3080 @@
+[
+  {
+    "cve_id": "CVE-2024-54004",
+    "cve_description": "Jenkins Filesystem List Parameter Plugin 0.0.14 and earlier does not restrict the path used for the File system objects list Parameter, allowing attackers with Item/Configure permission to enumerate file names on the Jenkins controller file system.",
+    "severity": "medium",
+    "cvss_score": 4.3,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-22",
+        "cwe_name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00085,
+      "epss_percentile": 0.25837
+    },
+    "reference": [
+      "https://www.jenkins.io/security/advisory/2024-11-27/#SECURITY-3367"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-11-27T17:15:15.443",
+    "updated_at": "2024-11-27T19:15:33.723",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 207,
+    "vuln_status": "unconfirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false
+  },
+  {
+    "cve_id": "CVE-2024-54003",
+    "cve_description": "Jenkins Simple Queue Plugin 1.4.4 and earlier does not escape the view name, resulting in a stored cross-site scripting (XSS) vulnerability exploitable by attackers with View/Create permission.",
+    "severity": "high",
+    "cvss_score": 8,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00061,
+      "epss_percentile": 0.19349
+    },
+    "reference": [
+      "https://www.jenkins.io/security/advisory/2024-11-27/#SECURITY-3467"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-11-27T17:15:15.333",
+    "updated_at": "2024-11-27T20:15:26.133",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 207,
+    "vuln_status": "unconfirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false
+  },
+  {
+    "cve_id": "CVE-2024-5273",
+    "cve_description": "Jenkins Report Info Plugin 1.2 and earlier does not perform path validation of the workspace directory while serving report files, allowing attackers with Item/Configure permission to retrieve Surefire failures, PMD violations, Findbugs bugs, and Checkstyle errors on the controller file system by editing the workspace path.",
+    "severity": "medium",
+    "cvss_score": 4.3,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-22",
+        "cwe_name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00041,
+      "epss_percentile": 0.11882
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/05/24/2",
+      "https://www.jenkins.io/security/advisory/2024-05-24/#SECURITY-3070",
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-05-24T14:15:17.823",
+    "updated_at": "2024-11-21T09:47:19.577",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 394,
+    "vuln_status": "unconfirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false
+  },
+  {
+    "cve_id": "CVE-2024-52554",
+    "cve_description": "Jenkins Shared Library Version Override Plugin 17.v786074c9fce7 and earlier declares folder-scoped library overrides as trusted, so that they're not executed in the Script Security sandbox, allowing attackers with Item/Configure permission on a folder to configure a folder-scoped library override that runs without sandbox protection.",
+    "severity": "high",
+    "cvss_score": 8.8,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-862",
+        "cwe_name": "Missing Authorization"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00115,
+      "epss_percentile": 0.31246
+    },
+    "reference": [
+      "https://www.jenkins.io/security/advisory/2024-11-13/#SECURITY-3466"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-11-13T21:15:29.540",
+    "updated_at": "2024-11-15T13:58:08.913",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 221,
+    "vuln_status": "unconfirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false
+  },
+  {
+    "cve_id": "CVE-2024-52553",
+    "cve_description": "Jenkins OpenId Connect Authentication Plugin 4.418.vccc7061f5b_6d and earlier does not invalidate the previous session on login.",
+    "severity": "high",
+    "cvss_score": 8.8,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-613",
+        "cwe_name": "Insufficient Session Expiration"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00201,
+      "epss_percentile": 0.42596
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:jenkins:openid_connect_authentication:*:*:*:*:*:jenkins:*:*",
+      "vendor": "jenkins",
+      "product": "openid_connect_authentication",
+      "framework": "jenkins"
+    },
+    "vendor_advisory": "https://www.jenkins.io/security/advisory/2024-11-13/#SECURITY-3473",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-11-13T21:15:29.473",
+    "updated_at": "2025-05-07T14:15:02.663",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 221,
+    "vuln_status": "confirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:jenkins:openid_connect_authentication:*:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2024-52552",
+    "cve_description": "Jenkins Authorize Project Plugin 1.7.2 and earlier evaluates a string containing the job name with JavaScript on the Authorization view, resulting in a stored cross-site scripting (XSS) vulnerability exploitable by attackers with Item/Configure permission.",
+    "severity": "high",
+    "cvss_score": 8,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.001,
+      "epss_percentile": 0.28616
+    },
+    "reference": [
+      "https://www.jenkins.io/security/advisory/2024-11-13/#SECURITY-3010"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-11-13T21:15:29.410",
+    "updated_at": "2024-11-15T14:00:09.720",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 221,
+    "vuln_status": "unconfirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false
+  },
+  {
+    "cve_id": "CVE-2024-52551",
+    "cve_description": "Jenkins Pipeline: Declarative Plugin 2.2214.vb_b_34b_2ea_9b_83 and earlier does not check whether the main (Jenkinsfile) script used to restart a build from a specific stage is approved, allowing attackers with Item/Build permission to restart a previous build whose (Jenkinsfile) script is no longer approved.",
+    "severity": "high",
+    "cvss_score": 8,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-276",
+        "cwe_name": "Incorrect Default Permissions"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00079,
+      "epss_percentile": 0.24422
+    },
+    "reference": [
+      "https://www.jenkins.io/security/advisory/2024-11-13/#SECURITY-3361"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-11-13T21:15:29.350",
+    "updated_at": "2024-11-15T14:00:09.720",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 221,
+    "vuln_status": "unconfirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false
+  },
+  {
+    "cve_id": "CVE-2024-52550",
+    "cve_description": "Jenkins Pipeline: Groovy Plugin 3990.vd281dd77a_388 and earlier, except 3975.3977.v478dd9e956c3 does not check whether the main (Jenkinsfile) script for a rebuilt build is approved, allowing attackers with Item/Build permission to rebuild a previous build whose (Jenkinsfile) script is no longer approved.",
+    "severity": "high",
+    "cvss_score": 8,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-354",
+        "cwe_name": "Improper Validation of Integrity Check Value"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00014,
+      "epss_percentile": 0.01683
+    },
+    "reference": [
+      "https://www.jenkins.io/security/advisory/2024-11-13/#SECURITY-3362"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/Anton-ai111/CVE-2024-52550",
+        "source": "gh-nomi-sec",
+        "added_at": "2025-04-15T14:30:43Z"
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-11-13T21:15:29.293",
+    "updated_at": "2024-11-26T15:15:34.650",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 221,
+    "vuln_status": "unconfirmed",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false
+  },
+  {
+    "cve_id": "CVE-2024-52549",
+    "cve_description": "Jenkins Script Security Plugin 1367.vdf2fc45f229c and earlier, except 1365.1367.va_3b_b_89f8a_95b_ and 1362.1364.v4cf2dc5d8776, does not perform a permission check in a method implementing form validation, allowing attackers with Overall/Read permission to check for the existence of files on the controller file system.",
+    "severity": "medium",
+    "cvss_score": 4.3,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-862",
+        "cwe_name": "Missing Authorization"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00065,
+      "epss_percentile": 0.20527
+    },
+    "reference": [
+      "https://www.jenkins.io/security/advisory/2024-11-13/#SECURITY-3447",
+      "https://github.com/CodingSimia/jenkins-shiftleft"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-11-13T21:15:29.233",
+    "updated_at": "2024-11-15T14:00:09.720",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 221,
+    "vuln_status": "unconfirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false
+  },
+  {
+    "cve_id": "CVE-2024-47807",
+    "cve_description": "Jenkins OpenId Connect Authentication Plugin 4.354.v321ce67a_1de8 and earlier does not check the `iss` (Issuer) claim of an ID Token, allowing attackers to subvert the authentication flow, potentially gaining administrator access to Jenkins.",
+    "severity": "high",
+    "cvss_score": 8.1,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 8.1,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-287",
+        "cwe_name": "Improper Authentication"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00195,
+      "epss_percentile": 0.41947
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:jenkins:openid_connect_authentication:*:*:*:*:*:jenkins:*:*",
+      "vendor": "jenkins",
+      "product": "openid_connect_authentication",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "https://www.jenkins.io/security/advisory/2024-10-02/#SECURITY-3441%20(2)",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-10-02T16:15:10.857",
+    "updated_at": "2025-05-06T21:13:38.657",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 263,
+    "vuln_status": "confirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:jenkins:openid_connect_authentication:*:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2024-47806",
+    "cve_description": "Jenkins OpenId Connect Authentication Plugin 4.354.v321ce67a_1de8 and earlier does not check the `aud` (Audience) claim of an ID Token, allowing attackers to subvert the authentication flow, potentially gaining administrator access to Jenkins.",
+    "severity": "high",
+    "cvss_score": 8.1,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 8.1,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-287",
+        "cwe_name": "Improper Authentication"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00195,
+      "epss_percentile": 0.41947
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:jenkins:openid_connect_authentication:*:*:*:*:*:jenkins:*:*",
+      "vendor": "jenkins",
+      "product": "openid_connect_authentication",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "https://www.jenkins.io/security/advisory/2024-10-02/#SECURITY-3441%20(1)",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-10-02T16:15:10.807",
+    "updated_at": "2025-05-06T21:14:25.667",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 263,
+    "vuln_status": "confirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:jenkins:openid_connect_authentication:*:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2024-47805",
+    "cve_description": "Jenkins Credentials Plugin 1380.va_435002fa_924 and earlier, except 1371.1373.v4eb_fa_b_7161e9, does not redact encrypted values of credentials using the `SecretBytes` type when accessing item `config.xml` via REST API or CLI.",
+    "severity": "high",
+    "cvss_score": 7.5,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-522",
+        "cwe_name": "Insufficiently Protected Credentials"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00166,
+      "epss_percentile": 0.38469
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:jenkins:credentials:*:*:*:*:*:jenkins:*:*",
+      "vendor": "jenkins",
+      "product": "credentials",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "https://www.jenkins.io/security/advisory/2024-10-02/#SECURITY-3373",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-10-02T16:15:10.753",
+    "updated_at": "2025-03-14T15:15:43.840",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 263,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:jenkins:credentials:*:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2024-47804",
+    "cve_description": "If an attempt is made to create an item of a type prohibited by `ACL#hasCreatePermission2` or `TopLevelItemDescriptor#isApplicableIn(ItemGroup)` through the Jenkins CLI or the REST API and either of these checks fail, Jenkins 2.478 and earlier, LTS 2.462.2 and earlier creates the item in memory, only deleting it from disk, allowing attackers with Item/Configure permission to save the item to persist it, effectively bypassing the item creation restriction.",
+    "severity": "medium",
+    "cvss_score": 4.3,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "NVD-CWE-noinfo"
+      },
+      {
+        "cwe_id": "CWE-843",
+        "cwe_name": "Access of Resource Using Incompatible Type ('Type Confusion')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00104,
+      "epss_percentile": 0.29435
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:jenkins:jenkins:*:*:*:*:lts:*:*:*",
+      "vendor": "jenkins",
+      "product": "jenkins"
+    },
+    "reference": [
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "https://www.jenkins.io/security/advisory/2024-10-02/#SECURITY-3448",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-10-02T16:15:10.697",
+    "updated_at": "2025-03-14T16:15:36.243",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 263,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:jenkins:jenkins:*:*:*:*:lts:*:*:*",
+      "cpe:2.3:a:jenkins:jenkins:*:*:*:*:-:*:*:*"
+    ],
+    "shodan": {
+      "count": 1016890,
+      "query": [
+        "x-jenkins"
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2024-47803",
+    "cve_description": "Jenkins 2.478 and earlier, LTS 2.462.2 and earlier does not redact multi-line secret values in error messages generated for form submissions involving the `secretTextarea` form field.",
+    "severity": "medium",
+    "cvss_score": 4.3,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-209",
+        "cwe_name": "Generation of Error Message Containing Sensitive Information"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00056,
+      "epss_percentile": 0.17763
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:jenkins:jenkins:*:*:*:*:lts:*:*:*",
+      "vendor": "jenkins",
+      "product": "jenkins"
+    },
+    "reference": [
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "https://www.jenkins.io/security/advisory/2024-10-02/#SECURITY-3451",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-10-02T16:15:10.630",
+    "updated_at": "2025-03-19T18:15:23.033",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 263,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:jenkins:jenkins:*:*:*:*:lts:*:*:*",
+      "cpe:2.3:a:jenkins:jenkins:*:*:*:*:-:*:*:*"
+    ],
+    "shodan": {
+      "count": 1016890,
+      "query": [
+        "x-jenkins"
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2024-4692",
+    "cve_description": "Improper Validation of Specified Quantity in Input vulnerability in OpenText OpenText Application Automation Tools allows Exploiting Incorrectly Configured Access Control Security Levels.\n\n\nMultiple missing permission checks - Service Virtualization config has been discovered in in OpenText Application Automation Tools. The vulnerability could allow users with Overall/Read permission to enumerate Service Virtualization server names.\n\nThis issue affects OpenText Application Automation Tools: 24.1.0 and below.",
+    "severity": "low",
+    "cvss_score": 2.4,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 2.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:U/C:L/I:N/A:N",
+        "severity": "low"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-280",
+        "cwe_name": "Improper Handling of Insufficient Permissions or Privileges "
+      },
+      {
+        "cwe_id": "NVD-CWE-noinfo"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.0005,
+      "epss_percentile": 0.15653
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:microfocus:application_automation_tools:*:*:*:*:*:jenkins:*:*",
+      "vendor": "microfocus",
+      "product": "application_automation_tools",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "https://portal.microfocus.com/s/article/KM000033546?language=en_US",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security@opentext.com",
+    "published_at": "2024-10-16T17:15:17.873",
+    "updated_at": "2024-10-21T16:10:14.873",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 249,
+    "vuln_status": "confirmed",
+    "is_poc": false,
+    "is_remote": false,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:microfocus:application_automation_tools:*:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2024-4690",
+    "cve_description": "Improper Restriction of XML External Entity Reference vulnerability in OpenText Application Automation Tools allows DTD Injection.This issue affects OpenText Application Automation Tools: 24.1.0 and below.",
+    "severity": "high",
+    "cvss_score": 8,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-611",
+        "cwe_name": "Improper Restriction of XML External Entity Reference"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00072,
+      "epss_percentile": 0.22671
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:microfocus:application_automation_tools:*:*:*:*:*:jenkins:*:*",
+      "vendor": "microfocus",
+      "product": "application_automation_tools",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "https://portal.microfocus.com/s/article/KM000033548?language=en_US",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security@opentext.com",
+    "published_at": "2024-10-16T17:15:17.740",
+    "updated_at": "2024-10-21T15:51:10.467",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 249,
+    "vuln_status": "confirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:microfocus:application_automation_tools:*:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2024-43045",
+    "cve_description": "Jenkins 2.470 and earlier, LTS 2.452.3 and earlier does not perform a permission check in an HTTP endpoint, allowing attackers with Overall/Read permission to access other users' \"My Views\".",
+    "severity": "medium",
+    "cvss_score": 6.3,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 6.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-862",
+        "cwe_name": "Missing Authorization"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00063,
+      "epss_percentile": 0.20131
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:jenkins:jenkins:*:*:*:*:lts:*:*:*",
+      "vendor": "jenkins",
+      "product": "jenkins"
+    },
+    "reference": [
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "https://www.jenkins.io/security/advisory/2024-08-07/#SECURITY-3349",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-08-07T14:15:33.077",
+    "updated_at": "2025-03-25T17:16:05.413",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 319,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:jenkins:jenkins:*:*:*:*:lts:*:*:*",
+      "cpe:2.3:a:jenkins:jenkins:*:*:*:*:-:*:*:*"
+    ],
+    "shodan": {
+      "count": 1016890,
+      "query": [
+        "x-jenkins"
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2024-43044",
+    "cve_description": "Jenkins 2.470 and earlier, LTS 2.452.3 and earlier allows agent processes to read arbitrary files from the Jenkins controller file system by using the `ClassLoaderProxy#fetchJar` method in the Remoting library.",
+    "severity": "high",
+    "cvss_score": 8.8,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-754",
+        "cwe_name": "Improper Check for Unusual or Exceptional Conditions"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.53187,
+      "epss_percentile": 0.97812
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:jenkins:jenkins:*:*:*:*:lts:*:*:*",
+      "vendor": "jenkins",
+      "product": "jenkins"
+    },
+    "reference": [
+      "https://github.com/wy876/wiki",
+      "https://github.com/Linxloop/fork_POC",
+      "https://github.com/eeeeeeeeee-code/POC",
+      "https://github.com/adysec/POC",
+      "https://github.com/wy876/POC",
+      "https://github.com/HwMex0/CVE-2024-43044",
+      "https://github.com/WhosGa/MyWiki",
+      "https://github.com/Threekiii/CVE",
+      "https://github.com/admin772/POC",
+      "https://github.com/cyb3r-w0lf/nuclei-template-collection"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/DACC4/CVE-2024-43044-jenkins-creds",
+        "source": "gh-nomi-sec",
+        "added_at": "2025-01-12T19:16:31Z"
+      },
+      {
+        "url": "https://github.com/convisolabs/CVE-2024-43044-jenkins",
+        "source": "gh-nomi-sec",
+        "added_at": "2024-08-23T20:26:26Z"
+      },
+      {
+        "url": "https://github.com/v9d0g/CVE-2024-43044-POC",
+        "source": "gh-nomi-sec",
+        "added_at": "2024-08-13T07:32:35Z"
+      },
+      {
+        "url": "https://github.com/jenkinsci-cert/SECURITY-3430",
+        "source": "gh-nomi-sec",
+        "added_at": "2024-08-08T11:55:32Z"
+      },
+      {
+        "url": "https://github.com/HwMex0/CVE-2024-43044",
+        "source": "gh-nomi-sec",
+        "added_at": "2024-08-08T08:28:26Z"
+      }
+    ],
+    "vendor_advisory": "https://www.jenkins.io/security/advisory/2024-08-07/#SECURITY-3430",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-08-07T14:15:33.000",
+    "updated_at": "2025-03-14T20:15:13.470",
+    "hackerone": {
+      "rank": 153,
+      "count": 2
+    },
+    "age_in_days": 319,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:jenkins:jenkins:*:*:*:*:lts:*:*:*",
+      "cpe:2.3:a:jenkins:jenkins:*:*:*:*:-:*:*:*"
+    ],
+    "shodan": {
+      "count": 1016890,
+      "query": [
+        "x-jenkins"
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2024-4211",
+    "cve_description": "Improper Validation of Specified Quantity in Input vulnerability in OpenText OpenText Application Automation Tools allows Exploiting Incorrectly Configured Access Control Security Levels.\n\n\nMultiple missing permission checks - ALM job config has been discovered in OpenText Application Automation Tools. The vulnerability could allow users with Overall/Read permission to enumerate ALM server names, usernames and client IDs configured to be used with ALM servers.\n\n\nThis issue affects OpenText Application Automation Tools: 24.1.0 and below.",
+    "severity": "low",
+    "cvss_score": 2.4,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 2.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:U/C:L/I:N/A:N",
+        "severity": "low"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-280",
+        "cwe_name": "Improper Handling of Insufficient Permissions or Privileges "
+      },
+      {
+        "cwe_id": "NVD-CWE-noinfo"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.0005,
+      "epss_percentile": 0.15653
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:microfocus:application_automation_tools:*:*:*:*:*:jenkins:*:*",
+      "vendor": "microfocus",
+      "product": "application_automation_tools",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "https://portal.microfocus.com/s/article/KM000033543?language=en_US",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security@opentext.com",
+    "published_at": "2024-10-16T17:15:17.617",
+    "updated_at": "2024-10-21T16:15:09.963",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 249,
+    "vuln_status": "confirmed",
+    "is_poc": false,
+    "is_remote": false,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:microfocus:application_automation_tools:*:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2024-4189",
+    "cve_description": "Improper Restriction of XML External Entity Reference vulnerability in OpenText Application Automation Tools allows DTD Injection.This issue affects OpenText Application Automation Tools: 24.1.0 and below.",
+    "severity": "high",
+    "cvss_score": 8,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-611",
+        "cwe_name": "Improper Restriction of XML External Entity Reference"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00085,
+      "epss_percentile": 0.25732
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:microfocus:application_automation_tools:*:*:*:*:*:jenkins:*:*",
+      "vendor": "microfocus",
+      "product": "application_automation_tools",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "https://portal.microfocus.com/s/article/KM000033547?language=en_US",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security@opentext.com",
+    "published_at": "2024-10-16T17:15:17.493",
+    "updated_at": "2024-10-21T14:08:57.430",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 249,
+    "vuln_status": "confirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:microfocus:application_automation_tools:*:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2024-4184",
+    "cve_description": "Improper Restriction of XML External Entity Reference vulnerability in OpenText Application Automation Tools allows DTD Injection.This issue affects OpenText Application Automation Tools: 24.1.0 and below.",
+    "severity": "high",
+    "cvss_score": 8,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-611",
+        "cwe_name": "Improper Restriction of XML External Entity Reference"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00085,
+      "epss_percentile": 0.25732
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:microfocus:application_automation_tools:*:*:*:*:*:jenkins:*:*",
+      "vendor": "microfocus",
+      "product": "application_automation_tools",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "https://portal.microfocus.com/s/article/KM000033540?language=en_US",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security@opentext.com",
+    "published_at": "2024-10-16T17:15:17.370",
+    "updated_at": "2024-10-21T14:09:02.020",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 249,
+    "vuln_status": "confirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:microfocus:application_automation_tools:*:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2024-39460",
+    "cve_description": "Jenkins Bitbucket Branch Source Plugin 886.v44cf5e4ecec5 and earlier prints the Bitbucket OAuth access token as part of the Bitbucket URL in the build log in some cases.",
+    "severity": "medium",
+    "cvss_score": 4.3,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-532",
+        "cwe_name": "Insertion of Sensitive Information into Log File"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00141,
+      "epss_percentile": 0.3528
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/06/26/2",
+      "https://www.jenkins.io/security/advisory/2024-06-26/#SECURITY-3363",
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-06-26T17:15:27.180",
+    "updated_at": "2024-11-29T16:15:10.243",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 361,
+    "vuln_status": "unconfirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false
+  },
+  {
+    "cve_id": "CVE-2024-39459",
+    "cve_description": "In rare cases Jenkins Plain Credentials Plugin 182.v468b_97b_9dcb_8 and earlier stores secret file credentials unencrypted (only Base64 encoded) on the Jenkins controller file system, where they can be viewed by users with access to the Jenkins controller file system (global credentials) or with Item/Extended Read permission (folder-scoped credentials).",
+    "severity": "medium",
+    "cvss_score": 4.3,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-922",
+        "cwe_name": "Insecure Storage of Sensitive Information"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00141,
+      "epss_percentile": 0.3518
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/06/26/2",
+      "https://www.jenkins.io/security/advisory/2024-06-26/#SECURITY-2495",
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-06-26T17:15:27.110",
+    "updated_at": "2024-11-21T09:27:42.417",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 361,
+    "vuln_status": "unconfirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false
+  },
+  {
+    "cve_id": "CVE-2024-39458",
+    "cve_description": "When Jenkins Structs Plugin 337.v1b_04ea_4df7c8 and earlier fails to configure a build step, it logs a warning message containing diagnostic information that may contain secrets passed as step parameters, potentially resulting in accidental exposure of secrets through the default system log.",
+    "severity": "low",
+    "cvss_score": 3.1,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 3.1,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N",
+        "severity": "low"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-209",
+        "cwe_name": "Generation of Error Message Containing Sensitive Information"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00115,
+      "epss_percentile": 0.3118
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/06/26/2",
+      "https://www.jenkins.io/security/advisory/2024-06-26/#SECURITY-3371",
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-06-26T17:15:27.020",
+    "updated_at": "2024-11-21T09:27:42.223",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 361,
+    "vuln_status": "unconfirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false
+  },
+  {
+    "cve_id": "CVE-2024-3825",
+    "cve_description": "Versions of the BlazeMeter Jenkins plugin prior to 4.22 contain a flaw which results in credential enumeration\n",
+    "severity": "medium",
+    "cvss_score": 4.3,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-352",
+        "cwe_name": "Cross-Site Request Forgery (CSRF)"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00093,
+      "epss_percentile": 0.27406
+    },
+    "reference": [
+      "https://github.com/Blazemeter/blazemeter-jenkins-plugin/commit/11ec94f68136a0612ae1b37b5370053132cb2528",
+      "https://portal.perforce.com/s/detail/a91PA000001STsvYAG"
+    ],
+    "poc": [
+      {
+        "url": "https://portal.perforce.com/s/detail/a91PA000001STsvYAG",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "security@puppet.com",
+    "published_at": "2024-04-17T15:15:07.463",
+    "updated_at": "2024-11-21T09:30:28.650",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 431,
+    "vuln_status": "unconfirmed",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false
+  },
+  {
+    "cve_id": "CVE-2024-34148",
+    "cve_description": "Jenkins Subversion Partial Release Manager Plugin 1.0.1 and earlier programmatically disables the fix for CVE-2016-3721 whenever a build is triggered from a release tag, by setting the Java system property 'hudson.model.ParametersAction.keepUndefinedParameters'.",
+    "severity": "medium",
+    "cvss_score": 6.8,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 6.8,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-1321",
+        "cwe_name": "Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00294,
+      "epss_percentile": 0.52274
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:jenkins:subversion_partial_release_manager:*:*:*:*:*:jenkins:*:*",
+      "vendor": "jenkins",
+      "product": "subversion_partial_release_manager",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/05/02/3",
+      "https://github.com/ARPSyndicate/cve-scores",
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "https://www.jenkins.io/security/advisory/2024-05-02/#SECURITY-3331",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-05-02T14:15:10.523",
+    "updated_at": "2025-06-06T15:28:57.410",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 416,
+    "vuln_status": "confirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:jenkins:subversion_partial_release_manager:*:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2024-34147",
+    "cve_description": "Jenkins Telegram Bot Plugin 1.4.0 and earlier stores the Telegram Bot token unencrypted in its global configuration file on the Jenkins controller where it can be viewed by users with access to the Jenkins controller file system.",
+    "severity": "medium",
+    "cvss_score": 4.3,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-522",
+        "cwe_name": "Insufficiently Protected Credentials"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00052,
+      "epss_percentile": 0.16351
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/05/02/3",
+      "https://www.jenkins.io/security/advisory/2024-05-02/#SECURITY-3294",
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-05-02T14:15:10.447",
+    "updated_at": "2024-11-21T09:18:11.790",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 416,
+    "vuln_status": "unconfirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false
+  },
+  {
+    "cve_id": "CVE-2024-34146",
+    "cve_description": "Jenkins Git server Plugin 114.v068a_c7cc2574 and earlier does not perform a permission check for read access to a Git repository over SSH, allowing attackers with a previously configured SSH public key but lacking Overall/Read permission to access these repositories.",
+    "severity": "medium",
+    "cvss_score": 6.5,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-269",
+        "cwe_name": "Improper Privilege Management"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00089,
+      "epss_percentile": 0.26495
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/05/02/3",
+      "https://www.jenkins.io/security/advisory/2024-05-02/#SECURITY-3342",
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-05-02T14:15:10.380",
+    "updated_at": "2024-11-21T09:18:11.610",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 416,
+    "vuln_status": "unconfirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false
+  },
+  {
+    "cve_id": "CVE-2024-34145",
+    "cve_description": "A sandbox bypass vulnerability involving sandbox-defined classes that shadow specific non-sandbox-defined classes in Jenkins Script Security Plugin 1335.vf07d9ce377a_e and earlier allows attackers with permission to define and run sandboxed scripts, including Pipelines, to bypass the sandbox protection and execute arbitrary code in the context of the Jenkins controller JVM.",
+    "severity": "high",
+    "cvss_score": 8.8,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-290",
+        "cwe_name": "Authentication Bypass by Spoofing"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00027,
+      "epss_percentile": 0.05775
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/05/02/3",
+      "https://www.jenkins.io/security/advisory/2024-05-02/#SECURITY-3341",
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-05-02T14:15:10.330",
+    "updated_at": "2024-11-21T09:18:11.417",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 416,
+    "vuln_status": "unconfirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false
+  },
+  {
+    "cve_id": "CVE-2024-34144",
+    "cve_description": "A sandbox bypass vulnerability involving crafted constructor bodies in Jenkins Script Security Plugin 1335.vf07d9ce377a_e and earlier allows attackers with permission to define and run sandboxed scripts, including Pipelines, to bypass the sandbox protection and execute arbitrary code in the context of the Jenkins controller JVM.",
+    "severity": "critical",
+    "cvss_score": 9.8,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "critical"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-693",
+        "cwe_name": "Protection Mechanism Failure"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.33006,
+      "epss_percentile": 0.96673
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/05/02/3",
+      "https://www.jenkins.io/security/advisory/2024-05-02/#SECURITY-3341",
+      "https://github.com/MXWXZ/CVE-2024-34144",
+      "https://github.com/fkie-cad/nvd-json-data-feeds",
+      "https://github.com/nomi-sec/PoC-in-GitHub"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/MXWXZ/CVE-2024-34144",
+        "source": "gh-nomi-sec",
+        "added_at": "2024-07-29T03:02:39Z"
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-05-02T14:15:10.280",
+    "updated_at": "2024-11-21T09:18:11.227",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 416,
+    "vuln_status": "unconfirmed",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false
+  },
+  {
+    "cve_id": "CVE-2024-28162",
+    "cve_description": "In Jenkins Delphix Plugin 3.0.1 through 3.1.0 (both inclusive) a global option for administrators to enable or disable SSL/TLS certificate validation for Data Control Tower (DCT) connections fails to take effect until Jenkins is restarted when switching from disabled validation to enabled validation.",
+    "severity": "medium",
+    "cvss_score": 4.2,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 4.2,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-295",
+        "cwe_name": "Improper Certificate Validation"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00035,
+      "epss_percentile": 0.08747
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:jenkins:delphix:*:*:*:*:*:jenkins:*:*",
+      "vendor": "jenkins",
+      "product": "delphix",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/03/06/3",
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "https://www.jenkins.io/security/advisory/2024-03-06/#SECURITY-3330",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-03-06T17:15:11.140",
+    "updated_at": "2025-05-07T14:27:52.307",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 473,
+    "vuln_status": "confirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:jenkins:delphix:*:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2024-28161",
+    "cve_description": "In Jenkins Delphix Plugin 3.0.1, a global option for administrators to enable or disable SSL/TLS certificate validation for Data Control Tower (DCT) connections is disabled by default.",
+    "severity": "medium",
+    "cvss_score": 5.3,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-295",
+        "cwe_name": "Improper Certificate Validation"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00011,
+      "epss_percentile": 0.00922
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:jenkins:delphix:3.0.1:*:*:*:*:jenkins:*:*",
+      "vendor": "jenkins",
+      "product": "delphix",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/03/06/3",
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "https://www.jenkins.io/security/advisory/2024-03-06/#SECURITY-3215",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-03-06T17:15:11.090",
+    "updated_at": "2025-05-07T14:24:50.257",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 473,
+    "vuln_status": "confirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:jenkins:delphix:3.0.1:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2024-28160",
+    "cve_description": "Jenkins iceScrum Plugin 1.1.6 and earlier does not sanitize iceScrum project URLs on build views, resulting in a stored cross-site scripting (XSS) vulnerability exploitable by attackers able to configure jobs.",
+    "severity": "high",
+    "cvss_score": 8.8,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00341,
+      "epss_percentile": 0.56038
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:jenkins:icescrum:*:*:*:*:*:jenkins:*:*",
+      "vendor": "jenkins",
+      "product": "icescrum",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/03/06/3",
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "https://www.jenkins.io/security/advisory/2024-03-06/#SECURITY-3248",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-03-06T17:15:11.040",
+    "updated_at": "2025-05-07T14:23:45.863",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 473,
+    "vuln_status": "confirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:jenkins:icescrum:*:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2024-28159",
+    "cve_description": "A missing permission check in Jenkins Subversion Partial Release Manager Plugin 1.0.1 and earlier allows attackers with Item/Read permission to trigger a build.",
+    "severity": "medium",
+    "cvss_score": 4.3,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-862",
+        "cwe_name": "Missing Authorization"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00074,
+      "epss_percentile": 0.23049
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:jenkins:subversion_partial_release_manager:*:*:*:*:*:jenkins:*:*",
+      "vendor": "jenkins",
+      "product": "subversion_partial_release_manager",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/03/06/3",
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "https://www.jenkins.io/security/advisory/2024-03-06/#SECURITY-3325",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-03-06T17:15:10.987",
+    "updated_at": "2025-06-06T15:28:51.160",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 473,
+    "vuln_status": "confirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:jenkins:subversion_partial_release_manager:*:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2024-28158",
+    "cve_description": "A cross-site request forgery (CSRF) vulnerability in Jenkins Subversion Partial Release Manager Plugin 1.0.1 and earlier allows attackers to trigger a build.",
+    "severity": "medium",
+    "cvss_score": 4.3,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-352",
+        "cwe_name": "Cross-Site Request Forgery (CSRF)"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.0006,
+      "epss_percentile": 0.19064
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:jenkins:subversion_partial_release_manager:*:*:*:*:*:jenkins:*:*",
+      "vendor": "jenkins",
+      "product": "subversion_partial_release_manager",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/03/06/3",
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "https://www.jenkins.io/security/advisory/2024-03-06/#SECURITY-3325",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-03-06T17:15:10.940",
+    "updated_at": "2025-06-06T15:26:24.780",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 473,
+    "vuln_status": "confirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:jenkins:subversion_partial_release_manager:*:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2024-28157",
+    "cve_description": "Jenkins GitBucket Plugin 0.8 and earlier does not sanitize Gitbucket URLs on build views, resulting in a stored cross-site scripting (XSS) vulnerability exploitable by attackers able to configure jobs.",
+    "severity": "high",
+    "cvss_score": 8,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00083,
+      "epss_percentile": 0.25299
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/03/06/3",
+      "https://www.jenkins.io/security/advisory/2024-03-06/#SECURITY-3249",
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-03-06T17:15:10.890",
+    "updated_at": "2024-11-21T09:05:55.187",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 473,
+    "vuln_status": "unconfirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false
+  },
+  {
+    "cve_id": "CVE-2024-28156",
+    "cve_description": "Jenkins Build Monitor View Plugin 1.14-860.vd06ef2568b_3f and earlier does not escape Build Monitor View names, resulting in a stored cross-site scripting (XSS) vulnerability exploitable by attackers able to configure Build Monitor Views.",
+    "severity": "medium",
+    "cvss_score": 5.4,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.35705,
+      "epss_percentile": 0.9688
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:jenkins:build_monitor_view:*:*:*:*:*:jenkins:*:*",
+      "vendor": "jenkins",
+      "product": "build_monitor_view",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/03/06/3",
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "https://www.jenkins.io/security/advisory/2024-03-06/#SECURITY-3280",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-03-06T17:15:10.837",
+    "updated_at": "2025-03-27T21:15:47.350",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 473,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:jenkins:build_monitor_view:*:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2024-28155",
+    "cve_description": "Jenkins AppSpider Plugin 1.0.16 and earlier does not perform permission checks in several HTTP endpoints, allowing attackers with Overall/Read permission to obtain information about available scan config names, engine group names, and client names.",
+    "severity": "medium",
+    "cvss_score": 4.3,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-862",
+        "cwe_name": "Missing Authorization"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00038,
+      "epss_percentile": 0.10627
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:jenkins:appspider:*:*:*:*:*:jenkins:*:*",
+      "vendor": "jenkins",
+      "product": "appspider",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/03/06/3",
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "https://www.jenkins.io/security/advisory/2024-03-06/#SECURITY-3144",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-03-06T17:15:10.787",
+    "updated_at": "2025-03-29T00:15:20.293",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 473,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:jenkins:appspider:*:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2024-28154",
+    "cve_description": "Jenkins MQ Notifier Plugin 1.4.0 and earlier logs potentially sensitive build parameters as part of debug information in build logs by default.",
+    "severity": "medium",
+    "cvss_score": 6.5,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "NVD-CWE-noinfo"
+      },
+      {
+        "cwe_id": "CWE-532",
+        "cwe_name": "Insertion of Sensitive Information into Log File"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00098,
+      "epss_percentile": 0.28227
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:jenkins:mq_notifier:*:*:*:*:*:jenkins:*:*",
+      "vendor": "jenkins",
+      "product": "mq_notifier",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/03/06/3",
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "https://www.jenkins.io/security/advisory/2024-03-06/#SECURITY-3180",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-03-06T17:15:10.733",
+    "updated_at": "2025-03-27T21:15:47.183",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 473,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:jenkins:mq_notifier:*:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2024-28153",
+    "cve_description": "Jenkins OWASP Dependency-Check Plugin 5.4.5 and earlier does not escape vulnerability metadata from Dependency-Check reports, resulting in a stored cross-site scripting (XSS) vulnerability.",
+    "severity": "medium",
+    "cvss_score": 5.4,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00825,
+      "epss_percentile": 0.73406
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:jenkins:owasp_dependency-check:*:*:*:*:*:jenkins:*:*",
+      "vendor": "jenkins",
+      "product": "owasp_dependency-check",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/03/06/3",
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "https://www.jenkins.io/security/advisory/2024-03-06/#SECURITY-3344",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-03-06T17:15:10.687",
+    "updated_at": "2025-03-25T17:15:52.910",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 473,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:jenkins:owasp_dependency-check:*:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2024-28152",
+    "cve_description": "In Jenkins Bitbucket Branch Source Plugin 866.vdea_7dcd3008e and earlier, except 848.850.v6a_a_2a_234a_c81, when discovering pull requests from forks, the trust policy \"Forks in the same account\" allows changes to Jenkinsfiles from users without write access to the project when using Bitbucket Server.",
+    "severity": "medium",
+    "cvss_score": 6.3,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 6.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:L",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-281",
+        "cwe_name": "Improper Preservation of Permissions"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00043,
+      "epss_percentile": 0.12667
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/03/06/3",
+      "https://www.jenkins.io/security/advisory/2024-03-06/#SECURITY-3300",
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-03-06T17:15:10.637",
+    "updated_at": "2024-11-21T09:05:54.547",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 473,
+    "vuln_status": "unconfirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false
+  },
+  {
+    "cve_id": "CVE-2024-28151",
+    "cve_description": "Jenkins HTML Publisher Plugin 1.32 and earlier archives invalid symbolic links in report directories on agents and recreates them on the controller, allowing attackers with Item/Configure permission to determine whether a path on the Jenkins controller file system exists, without being able to access it.",
+    "severity": "medium",
+    "cvss_score": 4.3,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-22",
+        "cwe_name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00154,
+      "epss_percentile": 0.37099
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:jenkins:html_publisher:*:*:*:*:*:jenkins:*:*",
+      "vendor": "jenkins",
+      "product": "html_publisher",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/03/06/3",
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "https://www.jenkins.io/security/advisory/2024-03-06/#SECURITY-3303",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-03-06T17:15:10.570",
+    "updated_at": "2025-05-06T20:45:17.777",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 473,
+    "vuln_status": "confirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:jenkins:html_publisher:*:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2024-28150",
+    "cve_description": "Jenkins HTML Publisher Plugin 1.32 and earlier does not escape job names, report names, and index page titles shown as part of the report frame, resulting in a stored cross-site scripting (XSS) vulnerability exploitable by attackers with Item/Configure permission.",
+    "severity": "medium",
+    "cvss_score": 4.7,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 4.7,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:N/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00176,
+      "epss_percentile": 0.39741
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:jenkins:html_publisher:*:*:*:*:*:jenkins:*:*",
+      "vendor": "jenkins",
+      "product": "html_publisher",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/03/06/3",
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "https://www.jenkins.io/security/advisory/2024-03-06/#SECURITY-3302",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-03-06T17:15:10.510",
+    "updated_at": "2025-05-06T20:45:06.060",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 473,
+    "vuln_status": "confirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:jenkins:html_publisher:*:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2024-28149",
+    "cve_description": "Jenkins HTML Publisher Plugin 1.16 through 1.32 (both inclusive) does not properly sanitize input, allowing attackers with Item/Configure permission to implement cross-site scripting (XSS) attacks and to determine whether a path on the Jenkins controller file system exists.",
+    "severity": "medium",
+    "cvss_score": 6.5,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00047,
+      "epss_percentile": 0.14445
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:jenkins:html_publisher:*:*:*:*:*:jenkins:*:*",
+      "vendor": "jenkins",
+      "product": "html_publisher",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/03/06/3",
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "https://www.jenkins.io/security/advisory/2024-03-06/#SECURITY-3301",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-03-06T17:15:10.450",
+    "updated_at": "2025-05-06T20:43:56.793",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 473,
+    "vuln_status": "confirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:jenkins:html_publisher:*:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2024-23905",
+    "cve_description": "Jenkins Red Hat Dependency Analytics Plugin 0.7.1 and earlier programmatically disables Content-Security-Policy protection for user-generated content in workspaces, archived artifacts, etc. that Jenkins offers for download.",
+    "severity": "medium",
+    "cvss_score": 5.4,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00432,
+      "epss_percentile": 0.6174
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:jenkins:red_hat_dependency_analytics:*:*:*:*:*:jenkins:*:*",
+      "vendor": "jenkins",
+      "product": "red_hat_dependency_analytics",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/01/24/6"
+    ],
+    "vendor_advisory": "https://www.jenkins.io/security/advisory/2024-01-24/#SECURITY-3322",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-01-24T18:15:09.750",
+    "updated_at": "2024-11-21T08:58:40.820",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 515,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:jenkins:red_hat_dependency_analytics:*:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2024-23904",
+    "cve_description": "Jenkins Log Command Plugin 1.0.2 and earlier does not disable a feature of its command parser that replaces an '@' character followed by a file path in an argument with the file's contents, allowing unauthenticated attackers to read content from arbitrary files on the Jenkins controller file system.",
+    "severity": "high",
+    "cvss_score": 7.5,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "NVD-CWE-noinfo"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00181,
+      "epss_percentile": 0.40384
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:jenkins:log_command:*:*:*:*:*:jenkins:*:*",
+      "vendor": "jenkins",
+      "product": "log_command",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/01/24/6"
+    ],
+    "vendor_advisory": "https://www.jenkins.io/security/advisory/2024-01-24/#SECURITY-3334",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-01-24T18:15:09.707",
+    "updated_at": "2024-11-21T08:58:40.703",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 515,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:jenkins:log_command:*:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2024-23903",
+    "cve_description": "Jenkins GitLab Branch Source Plugin 684.vea_fa_7c1e2fe3 and earlier uses a non-constant time comparison function when checking whether the provided and expected webhook token are equal, potentially allowing attackers to use statistical methods to obtain a valid webhook token.",
+    "severity": "medium",
+    "cvss_score": 5.3,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-697",
+        "cwe_name": "Incorrect Comparison"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.0008,
+      "epss_percentile": 0.24623
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:jenkins:github_branch_source:*:*:*:*:*:jenkins:*:*",
+      "vendor": "jenkins",
+      "product": "github_branch_source",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/01/24/6"
+    ],
+    "vendor_advisory": "https://www.jenkins.io/security/advisory/2024-01-24/#SECURITY-2871",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-01-24T18:15:09.653",
+    "updated_at": "2024-11-21T08:58:40.513",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 515,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:jenkins:github_branch_source:*:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2024-23902",
+    "cve_description": "A cross-site request forgery (CSRF) vulnerability in Jenkins GitLab Branch Source Plugin 684.vea_fa_7c1e2fe3 and earlier allows attackers to connect to an attacker-specified URL.",
+    "severity": "medium",
+    "cvss_score": 4.3,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-352",
+        "cwe_name": "Cross-Site Request Forgery (CSRF)"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00048,
+      "epss_percentile": 0.14925
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:jenkins:github_branch_source:*:*:*:*:*:jenkins:*:*",
+      "vendor": "jenkins",
+      "product": "github_branch_source",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/01/24/6"
+    ],
+    "vendor_advisory": "https://www.jenkins.io/security/advisory/2024-01-24/#SECURITY-3251",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-01-24T18:15:09.610",
+    "updated_at": "2025-05-30T15:15:39.690",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 515,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:jenkins:github_branch_source:*:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2024-23901",
+    "cve_description": "Jenkins GitLab Branch Source Plugin 684.vea_fa_7c1e2fe3 and earlier unconditionally discovers projects that are shared with the configured owner group, allowing attackers to configure and share a project, resulting in a crafted Pipeline being built by Jenkins during the next scan of the group.",
+    "severity": "medium",
+    "cvss_score": 6.5,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "NVD-CWE-noinfo"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00088,
+      "epss_percentile": 0.2642
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:jenkins:github_branch_source:*:*:*:*:*:jenkins:*:*",
+      "vendor": "jenkins",
+      "product": "github_branch_source",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/01/24/6"
+    ],
+    "vendor_advisory": "https://www.jenkins.io/security/advisory/2024-01-24/#SECURITY-3040",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-01-24T18:15:09.563",
+    "updated_at": "2025-05-30T15:15:39.480",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 515,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:jenkins:github_branch_source:*:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2024-23900",
+    "cve_description": "Jenkins Matrix Project Plugin 822.v01b_8c85d16d2 and earlier does not sanitize user-defined axis names of multi-configuration projects, allowing attackers with Item/Configure permission to create or replace any config.xml files on the Jenkins controller file system with content not controllable by the attackers.",
+    "severity": "medium",
+    "cvss_score": 4.3,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "NVD-CWE-noinfo"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.0007,
+      "epss_percentile": 0.22068
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:jenkins:matrix_project:*:*:*:*:*:jenkins:*:*",
+      "vendor": "jenkins",
+      "product": "matrix_project",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/01/24/6"
+    ],
+    "vendor_advisory": "https://www.jenkins.io/security/advisory/2024-01-24/#SECURITY-3289",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-01-24T18:15:09.523",
+    "updated_at": "2025-06-16T20:15:26.943",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 515,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:jenkins:matrix_project:*:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2024-23899",
+    "cve_description": "Jenkins Git server Plugin 99.va_0826a_b_cdfa_d and earlier does not disable a feature of its command parser that replaces an '@' character followed by a file path in an argument with the file's contents, allowing attackers with Overall/Read permission to read content from arbitrary files on the Jenkins controller file system.",
+    "severity": "medium",
+    "cvss_score": 6.5,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "NVD-CWE-noinfo"
+      },
+      {
+        "cwe_id": "CWE-22",
+        "cwe_name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00437,
+      "epss_percentile": 0.62052
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:jenkins:git_server:*:*:*:*:*:jenkins:*:*",
+      "vendor": "jenkins",
+      "product": "git_server",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/01/24/6"
+    ],
+    "vendor_advisory": "https://www.jenkins.io/security/advisory/2024-01-24/#SECURITY-3319",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-01-24T18:15:09.467",
+    "updated_at": "2025-06-04T15:15:23.400",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 515,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:jenkins:git_server:*:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2024-23898",
+    "cve_description": "Jenkins 2.217 through 2.441 (both inclusive), LTS 2.222.1 through 2.426.2 (both inclusive) does not perform origin validation of requests made through the CLI WebSocket endpoint, resulting in a cross-site WebSocket hijacking (CSWSH) vulnerability, allowing attackers to execute CLI commands on the Jenkins controller.",
+    "severity": "high",
+    "cvss_score": 8.8,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-346",
+        "cwe_name": "Origin Validation Error"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.38965,
+      "epss_percentile": 0.97088
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:jenkins:jenkins:*:*:*:*:-:*:*:*",
+      "vendor": "jenkins",
+      "product": "jenkins"
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/01/24/6",
+      "https://www.sonarsource.com/blog/excessive-expansion-uncovering-critical-security-vulnerabilities-in-jenkins/",
+      "https://github.com/tanjiti/sec_profile",
+      "https://github.com/davidmgaviria/CVE2_Jenkins_RCE",
+      "https://github.com/davidmgaviria/davidmgaviria",
+      "https://github.com/fkie-cad/nvd-json-data-feeds",
+      "https://github.com/jenkinsci-cert/SECURITY-3314-3315",
+      "https://github.com/murataydemir/CVE-2024-23897",
+      "https://github.com/nomi-sec/PoC-in-GitHub"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/davidmgaviria/CVE2_Jenkins_RCE",
+        "source": "gh-nomi-sec",
+        "added_at": "2024-11-14T00:02:53Z"
+      }
+    ],
+    "vendor_advisory": "https://www.jenkins.io/security/advisory/2024-01-24/#SECURITY-3315",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-01-24T18:15:09.420",
+    "updated_at": "2024-11-21T08:58:39.923",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 515,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:jenkins:jenkins:*:*:*:*:-:*:*:*",
+      "cpe:2.3:a:jenkins:jenkins:*:*:*:*:lts:*:*:*"
+    ],
+    "shodan": {
+      "count": 1016890,
+      "query": [
+        "x-jenkins"
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2024-23897",
+    "cve_description": "Jenkins 2.441 and earlier, LTS 2.426.2 and earlier does not disable a feature of its CLI command parser that replaces an '@' character followed by a file path in an argument with the file's contents, allowing unauthenticated attackers to read arbitrary files on the Jenkins controller file system.",
+    "severity": "critical",
+    "cvss_score": 9.8,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "critical"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-27",
+        "cwe_name": "Path Traversal: 'dir/../../filename'"
+      },
+      {
+        "cwe_id": "CWE-22",
+        "cwe_name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.94466,
+      "epss_percentile": 0.99994
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:jenkins:jenkins:*:*:*:*:lts:*:*:*",
+      "vendor": "jenkins",
+      "product": "jenkins"
+    },
+    "reference": [
+      "http://packetstormsecurity.com/files/176839/Jenkins-2.441-LTS-2.426.3-CVE-2024-23897-Scanner.html",
+      "http://www.openwall.com/lists/oss-security/2024/01/24/6",
+      "https://github.com/iota4/PoC-Fix-jenkins-rce_CVE-2024-23897",
+      "https://github.com/tvasari/CVE-2024-23897",
+      "https://github.com/g1san/Agents-for-Vulnerable-Dockers-and-related-Benchmarks",
+      "https://github.com/WLXQqwer/Jenkins-CVE-2024-23897-",
+      "https://github.com/forsaken0127/CVE-2024-23897",
+      "https://github.com/ARPSyndicate/cve-scores",
+      "https://github.com/h4x0r-dz/CVE-2024-23897",
+      "https://github.com/hxysaury/Target-Test"
+    ],
+    "poc": [
+      {
+        "url": "http://packetstormsecurity.com/files/176840/Jenkins-2.441-LTS-2.426.3-Arbitrary-File-Read.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://www.sonarsource.com/blog/excessive-expansion-uncovering-critical-security-vulnerabilities-in-jenkins/",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "http://packetstormsecurity.com/files/176840/Jenkins-2.441-LTS-2.426.3-Arbitrary-File-Read.html",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://www.sonarsource.com/blog/excessive-expansion-uncovering-critical-security-vulnerabilities-in-jenkins/",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://www.vicarius.io/vsociety/posts/the-anatomy-of-a-jenkins-vulnerability-cve-2024-23897-revealed-1",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/tvasari/CVE-2024-23897",
+        "source": "gh-nomi-sec",
+        "added_at": "2025-04-04T08:49:40Z"
+      },
+      {
+        "url": "https://github.com/brandonhjh/Jenkins-CVE-2024-23897-Exploit-Demo",
+        "source": "gh-nomi-sec",
+        "added_at": "2025-03-28T08:12:25Z"
+      },
+      {
+        "url": "https://github.com/slytechroot/CVE-2024-23897",
+        "source": "gh-nomi-sec",
+        "added_at": "2025-03-23T06:34:14Z"
+      },
+      {
+        "url": "https://github.com/Marouane133/jenkins-lfi",
+        "source": "gh-nomi-sec",
+        "added_at": "2025-01-02T03:28:56Z"
+      },
+      {
+        "url": "https://github.com/D1se0/CVE-2024-23897-Vulnerabilidad-Jenkins",
+        "source": "gh-nomi-sec",
+        "added_at": "2024-12-08T08:13:34Z"
+      }
+    ],
+    "vendor_advisory": "https://www.jenkins.io/security/advisory/2024-01-24/#SECURITY-3314",
+    "is_template": true,
+    "nuclei_templates": {
+      "template_path": "javascript/cves/2024/CVE-2024-23897.yaml",
+      "template_url": "https://cloud.projectdiscovery.io/public/CVE-2024-23897",
+      "created_at": "2024-01-28T16:16:42+05:30",
+      "updated_at": "2025-05-27T10:39:47+08:00"
+    },
+    "is_exploited": true,
+    "kev": {
+      "added_date": "2024-08-19",
+      "due_date": "2024-09-09",
+      "known_ransomware_campaign_use": true
+    },
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-01-24T18:15:09.370",
+    "updated_at": "2024-12-20T17:30:33.613",
+    "hackerone": {
+      "rank": 223,
+      "count": 78
+    },
+    "age_in_days": 515,
+    "vuln_status": "confirmed",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:jenkins:jenkins:*:*:*:*:lts:*:*:*",
+      "cpe:2.3:a:jenkins:jenkins:*:*:*:*:-:*:*:*"
+    ],
+    "shodan": {
+      "count": 1016890,
+      "query": [
+        "x-jenkins"
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2024-2216",
+    "cve_description": "A missing permission check in an HTTP endpoint in Jenkins docker-build-step Plugin 2.11 and earlier allows attackers with Overall/Read permission to connect to an attacker-specified TCP or Unix socket URL, and to reconfigure the plugin using the provided connection test parameters, affecting future build step executions.",
+    "severity": "high",
+    "cvss_score": 8.8,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-862",
+        "cwe_name": "Missing Authorization"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00088,
+      "epss_percentile": 0.26408
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/03/06/3",
+      "https://www.jenkins.io/security/advisory/2024-03-06/#SECURITY-3200",
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-03-06T17:15:11.640",
+    "updated_at": "2024-11-21T09:09:16.620",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 473,
+    "vuln_status": "unconfirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false
+  },
+  {
+    "cve_id": "CVE-2024-2215",
+    "cve_description": "A cross-site request forgery (CSRF) vulnerability in Jenkins docker-build-step Plugin 2.11 and earlier allows attackers to connect to an attacker-specified TCP or Unix socket URL, and to reconfigure the plugin using the provided connection test parameters, affecting future build step executions.",
+    "severity": "medium",
+    "cvss_score": 6.1,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:N/I:L/A:L",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-352",
+        "cwe_name": "Cross-Site Request Forgery (CSRF)"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00076,
+      "epss_percentile": 0.23542
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/03/06/3",
+      "https://www.jenkins.io/security/advisory/2024-03-06/#SECURITY-3200",
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2024-03-06T17:15:11.593",
+    "updated_at": "2024-11-21T09:09:16.423",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 473,
+    "vuln_status": "unconfirmed",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false
+  },
+  {
+    "cve_id": "CVE-2023-6149",
+    "cve_description": "\nQualys Jenkins Plugin for WAS prior to version and including 2.0.11 was identified to be affected by a security flaw, which was missing a permission check while performing a connectivity check to Qualys Cloud Services. This allowed any user with login access to configure or edit jobs to utilize the plugin and configure potential a rouge endpoint via which it was possible to control response for certain request which could be injected with XXE payloads leading to XXE while processing the response data",
+    "severity": "medium",
+    "cvss_score": 5.7,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 5.7,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:N/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-611",
+        "cwe_name": "Improper Restriction of XML External Entity Reference"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00186,
+      "epss_percentile": 0.40907
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:qualys:web_application_screening:*:*:*:*:*:jenkins:*:*",
+      "vendor": "qualys",
+      "product": "web_application_screening",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "poc": [
+      {
+        "url": "https://www.qualys.com/security-advisories/",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "https://www.qualys.com/security-advisories/",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "bugreport@qualys.com",
+    "published_at": "2024-01-09T09:15:42.737",
+    "updated_at": "2024-11-21T08:43:15.087",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 531,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:qualys:web_application_screening:*:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2023-6148",
+    "cve_description": "Qualys Jenkins Plugin for Policy Compliance prior to version and including 1.0.5 was identified to be affected by a security flaw, which was missing a permission check while performing a connectivity check to Qualys Cloud Services. This allowed any user with login access and access to configure or edit jobs to utilize the plugin to configure a potential rouge endpoint via which it was possible to control response for certain request which could be injected with XSS payloads leading to XSS while processing the response data",
+    "severity": "medium",
+    "cvss_score": 5.7,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 5.7,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:N/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00467,
+      "epss_percentile": 0.63436
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:qualys:policy_compliance:*:*:*:*:*:jenkins:*:*",
+      "vendor": "qualys",
+      "product": "policy_compliance",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/01/24/6",
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "poc": [
+      {
+        "url": "https://www.qualys.com/security-advisories/",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "https://www.qualys.com/security-advisories/",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "bugreport@qualys.com",
+    "published_at": "2024-01-09T09:15:42.530",
+    "updated_at": "2025-02-13T18:16:05.887",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 531,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:qualys:policy_compliance:*:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2023-6147",
+    "cve_description": "Qualys Jenkins Plugin for Policy Compliance prior to version and including 1.0.5 was identified to be affected by a security flaw, which was missing a permission check while performing a connectivity check to Qualys Cloud Services. This allowed any user with login access to configure or edit jobs to utilize the plugin and configure potential a rouge endpoint via which it was possible to control response for certain request which could be injected with XXE payloads leading to XXE while processing the response data",
+    "severity": "medium",
+    "cvss_score": 5.7,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 5.7,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:N/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-611",
+        "cwe_name": "Improper Restriction of XML External Entity Reference"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.0017,
+      "epss_percentile": 0.39061
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:qualys:policy_compliance:*:*:*:*:*:jenkins:*:*",
+      "vendor": "qualys",
+      "product": "policy_compliance",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2024/01/24/6",
+      "https://github.com/fkie-cad/nvd-json-data-feeds"
+    ],
+    "poc": [
+      {
+        "url": "https://www.qualys.com/security-advisories/",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "https://www.qualys.com/security-advisories/",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "bugreport@qualys.com",
+    "published_at": "2024-01-09T08:15:36.100",
+    "updated_at": "2025-02-13T18:16:04.900",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 531,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:qualys:policy_compliance:*:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2023-50779",
+    "cve_description": "Missing permission checks in Jenkins PaaSLane Estimate Plugin 1.0.4 and earlier allow attackers with Overall/Read permission to connect to an attacker-specified URL using an attacker-specified token.",
+    "severity": "medium",
+    "cvss_score": 4.3,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-862",
+        "cwe_name": "Missing Authorization"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00036,
+      "epss_percentile": 0.09359
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:jenkins:paaslane_estimate:*:*:*:*:*:jenkins:*:*",
+      "vendor": "jenkins",
+      "product": "paaslane_estimate",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2023/12/13/4"
+    ],
+    "vendor_advisory": "https://www.jenkins.io/security/advisory/2023-12-13/#SECURITY-3179",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2023-12-13T18:15:44.467",
+    "updated_at": "2024-11-21T08:37:17.907",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 557,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:jenkins:paaslane_estimate:*:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2023-50778",
+    "cve_description": "A cross-site request forgery (CSRF) vulnerability in Jenkins PaaSLane Estimate Plugin 1.0.4 and earlier allows attackers to connect to an attacker-specified URL using an attacker-specified token.",
+    "severity": "high",
+    "cvss_score": 8.8,
+    "cvss_metrics": {
+      "cvss31": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-352",
+        "cwe_name": "Cross-Site Request Forgery (CSRF)"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00083,
+      "epss_percentile": 0.25173
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:jenkins:paaslane_estimate:*:*:*:*:*:jenkins:*:*",
+      "vendor": "jenkins",
+      "product": "paaslane_estimate",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2023/12/13/4"
+    ],
+    "vendor_advisory": "https://www.jenkins.io/security/advisory/2023-12-13/#SECURITY-3179",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2023-12-13T18:15:44.420",
+    "updated_at": "2024-11-21T08:37:17.790",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 557,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:jenkins:paaslane_estimate:*:*:*:*:*:jenkins:*:*"
+    ]
+  }
+]

@@ -1,0 +1,305 @@
+[
+  {
+    "cve_id": "CVE-2019-20933",
+    "cve_description": "InfluxDB before 1.7.6 has an authentication bypass vulnerability in the authenticate function in services/httpd/handler.go because a JWT token may have an empty SharedSecret (aka shared secret).",
+    "severity": "critical",
+    "cvss_score": 9.8,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 7.5,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:N/C:P/I:P/A:P",
+        "severity": "high"
+      },
+      "cvss31": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "critical"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-287",
+        "cwe_name": "Improper Authentication"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.93437,
+      "epss_percentile": 0.99806
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:influxdata:influxdb:*:*:*:*:*:*:*:*",
+      "vendor": "influxdata",
+      "product": "influxdb"
+    },
+    "reference": [
+      "https://github.com/influxdata/influxdb/issues/12927",
+      "https://lists.debian.org/debian-lts-announce/2020/12/msg00030.html",
+      "https://www.debian.org/security/2021/dsa-4823",
+      "https://github.com/20142995/nuclei-templates",
+      "https://github.com/Live-Hack-CVE/CVE-2019-20933",
+      "https://github.com/apit-review-account/apit-tool",
+      "https://github.com/crpytoscooby/resourses_web",
+      "https://github.com/zhangziyang301/jwt_tool",
+      "https://github.com/ARPSyndicate/kenzer-templates",
+      "https://github.com/J1ezds/Vulnerability-Wiki-page"
+    ],
+    "poc": [
+      {
+        "url": "https://github.com/Hydragyrum/CVE-2019-20933",
+        "source": "gh-nomi-sec",
+        "added_at": "2021-07-24T11:12:13Z"
+      },
+      {
+        "url": "https://github.com/LorenzoTullini/InfluxDB-Exploit-CVE-2019-20933",
+        "source": "gh-nomi-sec",
+        "added_at": "2021-04-28T16:25:31Z"
+      }
+    ],
+    "vendor_advisory": "",
+    "patch_url": [
+      "https://github.com/influxdata/influxdb/commit/761b557315ff9c1642cf3b0e5797cd3d983a24c0",
+      "https://github.com/influxdata/influxdb/compare/v1.7.5...v1.7.6",
+      "https://github.com/influxdata/influxdb/commit/761b557315ff9c1642cf3b0e5797cd3d983a24c0",
+      "https://github.com/influxdata/influxdb/compare/v1.7.5...v1.7.6"
+    ],
+    "is_template": true,
+    "nuclei_templates": {
+      "template_path": "http/cves/2019/CVE-2019-20933.yaml",
+      "template_url": "https://cloud.projectdiscovery.io/public/CVE-2019-20933",
+      "created_at": "2022-08-23T09:29:33+05:30",
+      "updated_at": "2025-05-27T10:39:47+08:00"
+    },
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2020-11-19T02:15:11.913",
+    "updated_at": "2024-11-21T04:39:42.407",
+    "hackerone": {
+      "rank": 462,
+      "count": 19
+    },
+    "age_in_days": 1677,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:influxdata:influxdb:*:*:*:*:*:*:*:*",
+      "cpe:2.3:o:debian:debian_linux:9.0:*:*:*:*:*:*:*",
+      "cpe:2.3:o:debian:debian_linux:10.0:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 204,
+      "query": [
+        "http.title:\"influxdb - admin interface\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2019-10329",
+    "cve_description": "Jenkins InfluxDB Plugin 1.21 and earlier stored credentials unencrypted in its global configuration file on the Jenkins master where they can be viewed by users with access to the master file system.",
+    "severity": "high",
+    "cvss_score": 8.8,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 4,
+        "vector": "CVSS:2.0/AV:N/AC:L/Au:S/C:P/I:N/A:N",
+        "severity": "medium"
+      },
+      "cvss31": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "high"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-522",
+        "cwe_name": "Insufficiently Protected Credentials"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00327,
+      "epss_percentile": 0.54944
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:eficode:influxdb:*:*:*:*:*:jenkins:*:*",
+      "vendor": "eficode",
+      "product": "influxdb",
+      "framework": "jenkins"
+    },
+    "reference": [
+      "http://www.openwall.com/lists/oss-security/2019/05/31/2",
+      "http://www.securityfocus.com/bid/108540"
+    ],
+    "vendor_advisory": "https://jenkins.io/security/advisory/2019-05-31/#SECURITY-1403",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "jenkinsci-cert@googlegroups.com",
+    "published_at": "2019-05-31T15:29:00.543",
+    "updated_at": "2024-11-21T04:18:54.173",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 2214,
+    "vuln_status": "modified",
+    "is_poc": false,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:eficode:influxdb:*:*:*:*:*:jenkins:*:*"
+    ]
+  },
+  {
+    "cve_id": "CVE-2018-17572",
+    "cve_description": "InfluxDB 0.9.5 has Reflected XSS in the Write Data module.",
+    "severity": "medium",
+    "cvss_score": 4.8,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 3.5,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:S/C:N/I:P/A:N",
+        "severity": "low"
+      },
+      "cvss31": {
+        "score": 4.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00321,
+      "epss_percentile": 0.54463
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:influxdata:influxdb:*:*:*:*:*:*:*:*",
+      "vendor": "influxdata",
+      "product": "influxdb"
+    },
+    "reference": [
+      "https://github.com/influxdata/influxdb/releases/tag/v0.9.6"
+    ],
+    "poc": [
+      {
+        "url": "https://gist.github.com/Raghavrao29/1cb84f1f2d8ce993fd7b2d1366d35f48",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://gist.github.com/Raghavrao29/1cb84f1f2d8ce993fd7b2d1366d35f48",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://gist.github.com/Raghavrao29/1cb84f1f2d8ce993fd7b2d1366d35f48",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2020-03-02T20:15:11.147",
+    "updated_at": "2024-11-21T03:54:37.983",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 1938,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": false,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:influxdata:influxdb:*:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 204,
+      "query": [
+        "http.title:\"influxdb - admin interface\""
+      ]
+    }
+  },
+  {
+    "cve_id": "CVE-2018-1000816",
+    "cve_description": "Grafana version confirmed for 5.2.4 and 5.3.0 contains a Cross Site Scripting (XSS) vulnerability in Influxdb and Graphite query editor that can result in Running arbitrary js code in victims browser.. This attack appear to be exploitable via Authenticated user must click on the input field where the payload was previously inserted..",
+    "severity": "medium",
+    "cvss_score": 5.4,
+    "cvss_metrics": {
+      "cvss2": {
+        "score": 3.5,
+        "vector": "CVSS:2.0/AV:N/AC:M/Au:S/C:N/I:P/A:N",
+        "severity": "low"
+      },
+      "cvss30": {
+        "score": 5.4,
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "medium"
+      }
+    },
+    "weaknesses": [
+      {
+        "cwe_id": "CWE-79",
+        "cwe_name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      }
+    ],
+    "epss": {
+      "epss_score": 0.00424,
+      "epss_percentile": 0.61266
+    },
+    "cpe": {
+      "cpe": "cpe:2.3:a:grafana:grafana:5.2.4:*:*:*:*:*:*:*",
+      "vendor": "grafana",
+      "product": "grafana"
+    },
+    "poc": [
+      {
+        "url": "https://github.com/grafana/grafana/issues/13667",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/grafana/grafana/issues/13667",
+        "source": "NVD",
+        "added_at": ""
+      },
+      {
+        "url": "https://github.com/grafana/grafana/issues/13667",
+        "source": "trickest",
+        "added_at": ""
+      }
+    ],
+    "vendor_advisory": "",
+    "is_template": false,
+    "is_exploited": false,
+    "assignee": "cve@mitre.org",
+    "published_at": "2018-12-20T15:29:00.643",
+    "updated_at": "2024-11-21T03:40:25.107",
+    "hackerone": {
+      "rank": 7797,
+      "count": 0
+    },
+    "age_in_days": 2376,
+    "vuln_status": "modified",
+    "is_poc": true,
+    "is_remote": true,
+    "is_oss": false,
+    "vulnerable_cpe": [
+      "cpe:2.3:a:grafana:grafana:5.2.4:*:*:*:*:*:*:*",
+      "cpe:2.3:a:grafana:grafana:5.3.0:*:*:*:*:*:*:*"
+    ],
+    "shodan": {
+      "count": 130445,
+      "query": [
+        "cpe:\"cpe:2.3:a:grafana:grafana\""
+      ]
+    }
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "analysis": {
+    "ports": {
+      "80": {
+        "accessibility": "open",
+        "name": "Apache",
+        "version": "2.4.58"
+      },
+      "8080": {
+        "accessibility": "open",
+        "name": "Apache",
+        "version": "2.4.50"
+      }
+    },
+    "OS": "Linux 4.15 - 5.8",
+    "IP": "10.20.6.214"
+  },
+  "next_step": "All accessible ports have been analyzed. For further investigation, consider looking for known vulnerabilities in Apache httpd 2.4.58 and 2.4.50. Additionally, explore the `/icons/small/` directory on port 8080 for any other interesting files, and attempt to discover other hidden directories or files on both web servers using tools like `gobuster` or `dirb`.",
+  "executable": "None"
+}

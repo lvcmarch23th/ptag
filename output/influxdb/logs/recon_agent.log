@@ -1,0 +1,50 @@
+2025-11-16 01:09:33,015 - recon_agent - INFO - Log file: output/influxdb/logs/recon_agent.log
+2025-11-16 01:09:33,015 - recon_agent - INFO - Starting ReconAgent
+2025-11-16 01:09:33,016 - recon_agent - INFO - Initializing ReconAgent with model=google
+2025-11-16 01:09:33,016 - recon_agent - INFO - .env loaded from: /home/lc/Desktop/pentest-agent/agents/.env
+2025-11-16 01:09:33,035 - recon_agent - INFO - Model google loaded successfully
+2025-11-16 01:09:33,035 - recon_agent - INFO - Current topic: influxdb
+2025-11-16 01:09:33,035 - recon_agent - INFO - Target IP: 10.20.6.214
+2025-11-16 01:09:33,035 - recon_agent - INFO - Initializing thread for topic: influxdb
+2025-11-16 01:09:33,036 - recon_agent - INFO - Created memory for topic: influxdb
+2025-11-16 01:09:33,036 - recon_agent - INFO - No existing memory file for topic: influxdb
+2025-11-16 01:09:33,036 - recon_agent - INFO - Running thread for topic: influxdb
+2025-11-16 01:09:33,036 - recon_agent - INFO - Invoking LLM (attempt 1/3)
+2025-11-16 01:09:37,881 - recon_agent - INFO - LLM response appended to memory
+2025-11-16 01:09:48,703 - recon_agent - INFO - Command executed; output length=471
+2025-11-16 01:09:48,703 - recon_agent - INFO - Running thread for topic: influxdb
+2025-11-16 01:09:48,703 - recon_agent - INFO - Invoking LLM (attempt 1/3)
+2025-11-16 01:09:52,072 - recon_agent - INFO - LLM response appended to memory
+2025-11-16 01:09:52,756 - recon_agent - INFO - Command executed; output length=658
+2025-11-16 01:09:52,756 - recon_agent - INFO - Running thread for topic: influxdb
+2025-11-16 01:09:52,756 - recon_agent - INFO - Invoking LLM (attempt 1/3)
+2025-11-16 01:09:56,571 - recon_agent - INFO - LLM response appended to memory
+2025-11-16 01:09:56,585 - recon_agent - INFO - Command executed; output length=10671
+2025-11-16 01:09:56,586 - recon_agent - INFO - Running thread for topic: influxdb
+2025-11-16 01:09:56,586 - recon_agent - INFO - Invoking LLM (attempt 1/3)
+2025-11-16 01:10:00,963 - recon_agent - INFO - LLM response appended to memory
+2025-11-16 01:10:01,072 - recon_agent - INFO - Command executed; output length=236
+2025-11-16 01:10:01,073 - recon_agent - INFO - Running thread for topic: influxdb
+2025-11-16 01:10:01,073 - recon_agent - INFO - Invoking LLM (attempt 1/3)
+2025-11-16 01:10:05,416 - recon_agent - INFO - LLM response appended to memory
+2025-11-16 01:10:05,432 - recon_agent - INFO - Command executed; output length=19
+2025-11-16 01:10:05,432 - recon_agent - INFO - Running thread for topic: influxdb
+2025-11-16 01:10:05,432 - recon_agent - INFO - Invoking LLM (attempt 1/3)
+2025-11-16 01:10:09,524 - recon_agent - INFO - LLM response appended to memory
+2025-11-16 01:10:09,541 - recon_agent - INFO - Command executed; output length=0
+2025-11-16 01:10:09,541 - recon_agent - INFO - Running thread for topic: influxdb
+2025-11-16 01:10:09,541 - recon_agent - INFO - Invoking LLM (attempt 1/3)
+2025-11-16 01:10:17,355 - recon_agent - INFO - LLM response appended to memory
+2025-11-16 01:10:17,369 - recon_agent - INFO - Command executed; output length=55
+2025-11-16 01:10:17,369 - recon_agent - INFO - Running thread for topic: influxdb
+2025-11-16 01:10:17,369 - recon_agent - INFO - Invoking LLM (attempt 1/3)
+2025-11-16 01:10:19,711 - recon_agent - INFO - LLM response appended to memory
+2025-11-16 01:10:19,712 - recon_agent - INFO - Requesting final RECON_SUMMARY
+2025-11-16 01:10:19,712 - recon_agent - INFO - Running thread for final summary
+2025-11-16 01:10:19,712 - recon_agent - INFO - Running thread for topic: influxdb
+2025-11-16 01:10:19,712 - recon_agent - INFO - Invoking LLM (attempt 1/3)
+2025-11-16 01:10:25,995 - recon_agent - INFO - LLM response appended to memory
+2025-11-16 01:10:25,996 - recon_agent - INFO - Wrote RECON_SUMMARY to: output/influxdb/recon/recon_summary.json
+2025-11-16 01:10:25,996 - recon_agent - INFO - Saving memory to file
+2025-11-16 01:10:26,010 - recon_agent - INFO - Saved 18 messages to output/influxdb/logs/recon_memory/influxdb.json
+2025-11-16 01:10:26,010 - recon_agent - INFO - Reconnaissance agent execution completed in 52.99 seconds
